@@ -1,0 +1,1522 @@
+# see me at: http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default
+swagger: "2.0"
+info:
+  description: "日升木业后台接口"
+  version: "1.0.0"
+  title: "sunup"
+schemes:
+  - http
+securityDefinitions:
+  token:
+    type: apiKey
+    name: Cookie
+    in: header
+security:
+  - token: []
+basePath: /
+tags:
+  - name: Project
+    description: 项目
+  - name: ProjectPlan
+    description: 项目画布
+  - name: ProjectTable
+    description: 项目数据表
+  - name: ProjectModel
+    description: 项目模型
+  - name: ProjectData
+    description: 项目数据
+  - name: ProjectUser
+    description: 项目用户
+  - name: execution
+    description: 执行
+  - name: scheduler
+    description: 调度
+paths:
+  /project/{projectId}/plan:
+    post:
+      summary: 创建画布
+      description: |
+        创建画布，返回画布
+      tags:
+        - ProjectPlan
+      operationId: createProjectPlan
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: projectId
+          description: 项目ID
+        - in: body
+          name: PlanCreateArg
+          schema:
+            properties:
+              name:
+                type: string
+                description: 画布名称
+              memo:
+                type: string
+                description: 备注
+      responses:
+        '200':
+          description: 保存成功
+          schema:
+            properties:
+              Id:
+                type: string
+                description: 画布ID
+    get:
+      tags:
+        - ProjectPlan
+      operationId: getProjectPlans
+      produces:
+        - application/json
+      summary: 获取画布列表
+      description: |
+        获取画布
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          type: string
+          description: 项目ID
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/PlanDtoArray'
+  /project/{projectId}/plan/{planId}/execution/:
+    post:
+      summary: 提交执行任务
+      tags:
+        - execution
+      operationId: submitExecution
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: planId
+          required: true
+          type: string
+        - in: body
+          name: PlanExecutionArg
+          schema:
+            properties:
+              dag:
+                $ref: '#/definitions/DagDto'
+              viewInfo:
+                type: string
+                description: 画布配置
+              startNode:
+                type: string
+              stopNode:
+                type: string
+              force:
+                type: boolean
+              version:
+                type: integer
+                description: 实验版本
+            required:
+              - name
+              - dag
+      responses:
+        '200':
+          description: 提交成功
+          schema:
+            $ref: '#/definitions/SubmitSuccess'
+
+  /project/{projectId}/execution/{executionId}:
+    delete:
+      summary: 停止任务
+      tags:
+        - execution
+      operationId: stopExecution
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: executionId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 停止成功
+
+  /project/{userName}/scheduler/plan/{planId}/:
+    post:
+      summary: 执行调度任务
+      tags:
+        - scheduler
+      operationId: submitScheduler
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: userName
+          required: true
+          type: string
+        - in: path
+          name: planId
+          required: true
+          type: string
+        - in: body
+          name: PlanSchedulerArg
+          schema:
+            properties:
+              startNode:
+                type: string
+              stopNode:
+                type: string
+              force:
+                type: boolean
+              version:
+                type: integer
+                description: 实验版本
+              memo:
+                type: string
+                description: 调度备注
+      responses:
+        '200':
+          description: 提交成功
+          schema:
+            $ref: '#/definitions/SubmitSuccess'
+
+  /project/{userName}/scheduler/{executionId}/:
+    get:
+      summary: 查询调度执行情况
+      tags:
+        - scheduler
+      operationId: getSchedulerInfo
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: userName
+          type: string
+          description: 执行人
+        - in: path
+          required: true
+          name: executionId
+          type: string
+          description: 执行ID
+      description: |
+        获取画布详细
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/DetailPlanDto'
+
+    delete:
+      summary: 停止调度任务
+      tags:
+        - scheduler
+      operationId: stopScheduler
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: userName
+          type: string
+          required: true
+        - in: path
+          name: executionId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 停止成功
+
+
+  /project/{projectId}/plan/{planId}:
+    get:
+      summary: 获取画布详细
+      tags:
+        - ProjectPlan
+      operationId: getProjectPlan
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+          description: 项目ID
+        - in: path
+          required: true
+          name: planId
+          type: string
+          description: 画布ID
+      description: |
+        获取画布详细
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/DetailPlanDto'
+    post:
+      summary: 保存画布
+      tags:
+        - ProjectPlan
+      operationId: saveProjectPlan
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: projectId
+          description: 项目ID
+        - in: path
+          required: true
+          name: planId
+          type: string
+          description: 画布ID
+        - in: body
+          name: PlanSaveArg
+          schema:
+            properties:
+              name:
+                type: string
+                description: 画布名称
+              dag:
+                $ref: '#/definitions/DagDto'
+              viewInfo:
+                type: string
+                description: 画布配置
+      responses:
+        '200':
+          description: 保存成功
+    delete:
+      tags:
+        - ProjectPlan
+      summary: 删除画布
+      operationId: deleteProjectPlan
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+          description: 项目ID
+        - in: path
+          name: planId
+          type: string
+          required: true
+          description: 画布ID
+      responses:
+        '200':
+          description: 删除画布成功
+
+    put:
+      summary: 更新画布基础信息
+      description: |
+        更新画布基础信息
+      tags:
+        - ProjectPlan
+      operationId: updateProjectPlanBaseInfo
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+          description: 项目ID
+        - in: path
+          required: true
+          name: planId
+          type: string
+          description: 画布ID
+        - in: body
+          name: PlanUpdateArg
+          schema:
+            properties:
+              name:
+                type: string
+                description: 画布名称
+              memo:
+                type: string
+                description: 备注
+      responses:
+        '200':
+          description: 更新成功
+  /project/{projectId}/plan/{planId}/copy:
+    post:
+      summary: 复制画布
+      tags:
+        - ProjectPlan
+      operationId: copyProjectPlan
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: projectId
+          description: 项目ID
+        - in: path
+          required: true
+          name: planId
+          type: string
+          description: 画布ID
+        - in: body
+          name: PlanCopyArg
+          schema:
+            properties:
+              name:
+                type: string
+                description: 画布名称
+              memo:
+                type: string
+                description: 备注
+              version:
+                type: integer
+                description: 版本
+      responses:
+        '200':
+          description: 复制成功
+          schema:
+            properties:
+              Id:
+                type: string
+                description: 画布ID
+  /project/{projectId}/plan/{planId}/history:
+    get:
+      summary: 获取画布历史
+      operationId: getProjectPlanHistorys
+      produces:
+        - application/json
+      tags:
+        - ProjectPlan
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          type: string
+          description: 项目ID
+        - in: path
+          name: planId
+          required: true
+          type: string
+          description: 画布ID
+        - in: query
+          name: searchKey
+          required: false
+          type: string
+          description: 查询关键字（全匹配，查询版本号、创建用户)（模糊匹配，备注)
+        - in: query
+          name: startUpdateTime
+          required: false
+          type: string
+          description: "时间戳（到毫秒）,demo:1550040627000"
+        - in: query
+          name: endUpdateTime
+          required: false
+          type: string
+          description: "时间戳（到毫秒）,demo:1550040627000"
+        - in: query
+          name: pageNum
+          required: false
+          type: string
+          description: 第几页
+          default: 1
+        - in: query
+          name: pageSize
+          required: false
+          type: string
+          description: 一页展示几个
+          default: 25
+      description: |
+        获取画布历史
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/PlanHistoryDtoArray'
+  /project/{projectId}/plan/{planId}/history/{historyId}:
+    get:
+      summary: 获取画布历史详细
+      tags:
+        - ProjectPlan
+      operationId: getProjectPlanHistory
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          type: string
+          description: 项目ID
+        - in: path
+          name: planId
+          required: true
+          type: string
+          description: 画布ID
+        - in: path
+          name: historyId
+          required: true
+          type: string
+          description: 历史ID
+      description: |
+        获取画布历史详细
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/DetailPlanDto'
+
+  /project:
+    post:
+      summary: 创建项目
+      tags:
+        - Project
+      description: |
+        创建项目
+      operationId: createProject
+      produces:
+        - application/json
+      parameters:
+        - name: ProjectCreateArg
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              projectName:
+                type: string
+                description: 项目名称
+              memo:
+                type: string
+                description: 项目描述
+              projectUsers:
+                type: array
+                items:
+                  properties:
+                    userName:
+                      type: string
+                      description: 项目成员名称
+
+            required:
+              - projectName
+      responses:
+        '200':
+          description: 创建成功
+          schema:
+            properties:
+              Id:
+                type: string
+                description: 项目ID
+
+    get:
+      summary: 获取项目列表
+      operationId: getProjects
+      produces:
+        - application/json
+      tags:
+        - Project
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/ProjectDtoArray'
+
+  /project/{projectId}:
+    get:
+      tags:
+        - Project
+      summary: 获取某项目
+      operationId: getProject
+      produces:
+        - application/json
+      description: |
+        获取项目
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+          description: 项目ID
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/ProjectDto'
+    put:
+      summary: 更新某项目
+      tags:
+        - Project
+      description: |
+        更新项目
+      operationId: updateProject
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+          description: 项目ID
+        - name: ProjectUpdateArg
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              projectName:
+                type: string
+                description: 项目名称
+              memo:
+                type: string
+                description: 项目描述
+              projectUsers:
+                type: array
+                items:
+                  properties:
+                    userName:
+                      type: string
+                      description: 项目成员名称
+            required:
+              - projectName
+      responses:
+        '200':
+          description: 创建成功
+
+    delete:
+      tags:
+        - Project
+      summary: 删除某项目
+      operationId: deleteProject
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          type: string
+          description: 项目ID
+      responses:
+        '200':
+          description: 删除成功
+
+  /project/{projectId}/table:
+    post:
+      tags:
+        - ProjectTable
+      summary: 添加项目数据表
+      operationId: addProjectTable
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: body
+          name: createProjectTableArg
+          schema:
+            properties:
+              name:
+                type: string
+                description: 别名
+              tableId:
+                type: string
+                description: 数据表ID
+      responses:
+        '200':
+          description: 成功
+          schema:
+            properties:
+              Id:
+                type: string
+                description: 项目数据表ID
+    get:
+      tags:
+        - ProjectTable
+      summary: 获取项目数据表列表
+      operationId: getProjectTables
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/ProjectTableDtoArray'
+  /project/{projectId}/table/{tableId}:
+    delete:
+      summary: 删除项目数据表
+      operationId: deleteProjectTable
+      produces:
+        - application/json
+      tags:
+        - ProjectTable
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: tableId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 删除成功
+
+    get:
+      summary: 获取数据表信息
+      operationId: getProjectTable
+      produces:
+        - application/json
+      tags:
+        - ProjectTable
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: tableId
+          type: string
+          required: true
+        - in: query
+          name: isRandom
+          type: boolean
+          default: false
+          required: false
+          description: "false:表示获取前100条样例数据，true:表示随机获取100条数据"
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/TableInfoDto'
+  /project/{projectId}/table/checkHdfsQuote:
+    get:
+      tags:
+        - ProjectTable
+      summary: 检查HDFS文件是否被引用
+      operationId: checkHdfsIsQuote
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: query
+          name: hdfsIds
+          type: array
+          items:
+            type: string
+          required: true
+
+      responses:
+        '200':
+          description: 成功
+          schema:
+            type: object
+            description: result
+  /project/{projectId}/model:
+    get:
+      tags:
+        - ProjectModel
+      summary: 获取项目模型列表
+      operationId: getProjectModels
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/ProjectModelDtoArray'
+  /project/{projectId}/model/{id}:
+    delete:
+      tags:
+        - ProjectModel
+      summary: 删除模型
+      operationId: deleteProjectModel
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 删除成功
+    get:
+      tags:
+        - ProjectModel
+      summary: 获取模型
+      operationId: getProjectModel
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/ModelAllInfoDto'
+
+  /project/{projectId}/model/{id}/downloadPmml:
+    get:
+      tags:
+        - ProjectModel
+      summary: 导出PMML
+      operationId: downloadPmml
+      produces:
+        - application/octet-stream
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: "导出成功"
+          schema:
+            type: object
+            description: result
+
+  /project/{projectId}/model/{id}/downloadModel:
+    get:
+      tags:
+        - ProjectModel
+      summary: 导出整个模型
+      operationId: downloadModel
+      produces:
+        - application/octet-stream
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: "导出成功"
+          schema:
+            type: object
+            description: result
+
+  /project/{projectId}/model/uploadModel:
+    post:
+      summary: 导入模型
+      description: file：选择文件
+      operationId: uploadModel
+      tags:
+        - ProjectModel
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: formData
+          name: file
+          type: file
+          required: true
+        - in: formData
+          name: modelJson
+          type: string
+          required: true
+      responses:
+        '200':
+          description: "导入模型成功"
+          schema:
+            properties:
+              Id:
+                type: string
+                description: 模型ID
+  /project/{projectId}/model/uploadModelPmml:
+    post:
+      summary: 导入模型
+      description: file：选择文件
+      operationId: uploadModelPmml
+      tags:
+        - ProjectModel
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      parameters:
+        - in: path
+          name: projectId
+          type: string
+          required: true
+        - in: formData
+          name: file
+          type: file
+          required: true
+          description: 文件必须为pmml格式
+        - in: formData
+          name: modelJson
+          type: string
+          required: true
+      responses:
+        '200':
+          description: "导入模型成功"
+          schema:
+            properties:
+              Id:
+                type: string
+                description: 模型ID
+
+  /project/{projectId}/model/onlineDeploy:
+    post:
+      tags:
+        - ProjectModel
+      summary: 在线部署
+      operationId: onlineDeploy
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: body
+          name: onlineModelDto
+          schema:
+            $ref: '#/definitions/OnlineModelDto'
+      responses:
+        '200':
+          description: "结果"
+          schema:
+            type: object
+            description: result
+
+
+  /project/{projectId}/user:
+    get:
+      tags:
+        - ProjectUser
+      summary: 获取项目用户信息
+      operationId: getProjectUser
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: query
+          required: true
+          name: containSelf
+          type: boolean
+      responses:
+        '200':
+          description: 成功
+          schema:
+            $ref: '#/definitions/ProjectUserDtoArray'
+    post:
+      tags:
+        - ProjectUser
+      summary: 增加项目用户
+      operationId: addProjectUser
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: body
+          name: projectUserArg
+          schema:
+            properties:
+              username:
+                type: string
+                description: 用户名
+      responses:
+        '200':
+          description: 创建成功
+
+  /project/{projectId}/user/{username}:
+    delete:
+      tags:
+        - ProjectUser
+      summary: 删除项目用户
+      operationId: deleteProjectUser
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: path
+          required: true
+          name: username
+          type: string
+      responses:
+        '200':
+          description: 删除成功
+
+  /project/{projectId}/data/{portValueId}/command/downloadMar:
+    post:
+      tags:
+        - ProjectData
+      summary: 下载Mar
+      operationId: downloadMar
+      produces:
+        - application/octet-stream
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: path
+          name: portValueId
+          type: string
+          required: true
+        - in: body
+          name: cmdArg
+          schema:
+            $ref: '#/definitions/CmdArg'
+      responses:
+        '200':
+          description: "结果"
+          schema:
+            type: object
+            description: result
+
+
+  /project/{projectId}/data/{portValueId}/command/{cmd}:
+    post:
+      tags:
+        - ProjectData
+      summary: 调用projectdata方法
+      operationId: portValueAction
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: path
+          name: portValueId
+          type: string
+          required: true
+        - in: path
+          name: cmd
+          type: string
+          required: true
+        - in: body
+          name: cmdArg
+          schema:
+            $ref: '#/definitions/CmdArg'
+      responses:
+        '200':
+          description: "结果"
+          schema:
+            type: object
+            description: result
+  /project/{projectId}/data/{portValueId}/downloadCSV/{cmd}:
+    get:
+      tags:
+        - ProjectData
+      summary: 调用projectdata方法
+      operationId: downloadCSV
+      produces:
+        - application/octet-stream
+      parameters:
+        - in: path
+          required: true
+          name: projectId
+          type: string
+        - in: path
+          name: portValueId
+          type: string
+          required: true
+        - in: path
+          name: cmd
+          type: string
+          required: true
+      responses:
+        '200':
+          description: "结果"
+          schema:
+            type: object
+            description: result
+definitions:
+  OnlineModelDto:
+    type: object
+    properties:
+      modelIds:
+        type: array
+        items:
+          type: string
+      applicantDesc:
+        type: string
+
+  CmdArg:
+    type: object
+    properties:
+      plan:
+        type: object
+        properties:
+          planId:
+            type: string
+            description: planId
+          version:
+            type: integer
+            description: version
+          dag:
+            type: object
+            description: dag信息
+      data:
+        type: object
+        description: 具体方法需要的参数
+
+  ProjectUserDtoArray:
+    type: array
+    items:
+      $ref: '#/definitions/ProjectUserDto'
+  ProjectUserDto:
+    type: object
+    properties:
+      userName:
+        type: string
+        description: 用户名
+      createTime:
+        type: string
+        format: date-time
+        description: 创建时间
+      createOper:
+        type: string
+        description: 创建者
+  UserInfoDto:
+    type: object
+    properties:
+      createOper:
+        type: string
+        description: 创建者
+      createTime:
+        type: string
+        format: date-time
+        description: 创建时间
+      updateTime:
+        type: string
+        format: date-time
+        description: 更新时间
+      updateOper:
+        type: string
+        description: 更新者
+  ProjectDto:
+    allOf:
+      - $ref: '#/definitions/UserInfoDto'
+      - type: object
+        properties:
+          projectId:
+            type: string
+            description: 项目ID
+          memo:
+            type: string
+            description: 备注信息
+          projectName:
+            type: string
+            description: 项目名称
+          planCount:
+            type: integer
+            description: 实验数量
+          modelCount:
+            type: integer
+            description: 模型数量
+          tableCount:
+            type: integer
+            description: 数据表数量
+          projectUsers:
+            type: array
+            items:
+              properties:
+                userName:
+                  type: string
+                  description: 项目成员名称
+  ProjectDtoArray:
+    type: array
+    items:
+      $ref: '#/definitions/ProjectDto'
+  NodeDto:
+    type: object
+    properties:
+      id:
+        type: string
+        description: 组件实例ID
+      uuid:
+        type: string
+      config:
+        type: object
+        description: 组件参数
+      outputPortUuids:
+        type: array
+        description: 输出端口UUID数组
+        items:
+          type: string
+      status:
+        description: 组件状态
+        type: integer
+      inputPortUuids:
+        type: array
+        description: 输入端口UUID数组
+        items:
+          type: string
+      progress:
+        type: integer
+        maximum: 100
+        minimum: 0
+        description: 进度
+      position:
+        type: array
+        items:
+          type: integer
+      parentsId:
+        type: array
+        items:
+          type: string
+      template:
+        type: array
+        items:
+          type: object
+      name:
+        type: string
+        description: 组件名称
+      alias:
+        type: string
+        description: 组件别名
+      className:
+        type: string
+        description: 组件参数
+      msg:
+        type: string
+        description: 组件消息
+    required:
+      - id
+      - uuid
+      - config
+      - outputPortUuids
+      - status
+      - inputPortUuids
+  PortDto:
+    type: object
+    properties:
+      uuid:
+        type: string
+      name:
+        type: string
+      portValueUuid:
+        type: string
+      childrenPortsUuid:
+        type: array
+        items:
+          type: string
+      dataType:
+        type: string
+      format:
+        type: string
+    required:
+      - uuid
+  PortValueDto:
+    type: object
+    properties:
+      uuid:
+        type: string
+      value:
+        type: object
+      dataType:
+        type: string
+      format:
+        type: string
+      msg:
+        type: string
+      enabled:
+        type: boolean
+    required:
+      - uuid
+  DagDto:
+    type: object
+    properties:
+      nodes:
+        type: array
+        description: 组件数组
+        items:
+          $ref: '#/definitions/NodeDto'
+      ports:
+        type: array
+        description: 端口数组
+        items:
+          $ref: '#/definitions/PortDto'
+      portValues:
+        description: 端口数据数组(项目数据)
+        type: array
+        items:
+          $ref: '#/definitions/PortValueDto'
+    required:
+      - nodes
+      - ports
+      - portValues
+  DetailPlanDto:
+    allOf:
+      - $ref: '#/definitions/UserInfoDto'
+      - type: object
+        properties:
+          dag:
+            type: string
+          viewInfo:
+            type: string
+          name:
+            type: string
+            description: 画布名称
+          version:
+            type: integer
+            description: 画布版本
+          memo:
+            type: string
+            description: 画布描述
+          isRuning:
+            type: integer
+          executionId:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+            description: 开始时间
+          endTime:
+            type: string
+            format: date-time
+            description: 结束时间
+          runTime:
+            type: integer
+            format: int64
+            description: 运行时间
+  BasePlanDto:
+    allOf:
+      - $ref: '#/definitions/UserInfoDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          planId:
+            type: string
+          memo:
+            type: string
+          version:
+            type: integer
+  PlanDtoArray:
+    type: array
+    items:
+      $ref: '#/definitions/BasePlanDto'
+  PlanHistoryDto:
+    allOf:
+      - type: object
+        properties:
+          historyId:
+            type: string
+          planId:
+            type: string
+          version:
+            type: string
+          updateOper:
+            type: string
+          updateTime:
+            type: string
+            format: date-time
+          memo:
+            type: string
+            description: 描述信息
+  PlanHistoryDtoArray:
+    type: array
+    items:
+      $ref: '#/definitions/PlanHistoryDto'
+  ProjectTableDtoArray:
+    type: array
+    items:
+      $ref: '#/definitions/ProjectTableDto'
+  ProjectModelDtoArray:
+    type: array
+    items:
+      $ref: '#/definitions/ProjectModelDto'
+  ProjectModelDto:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      createOper:
+        type: string
+      algoName:
+        type: string
+        description: 算法名称
+      modelType:
+        type: string
+        description: 模型类型
+      modelFormat:
+        type: string
+        description: 模型格式
+      planId:
+        type: string
+        description: 实验id
+      planHistoryId:
+        type: string
+        description: 实验历史版本id
+      createTime:
+        type: string
+        format: 'date-time'
+  ProjectTableDto:
+    type: object
+    properties:
+      id:
+        type: string
+      alias:
+        type: string
+      createOper:
+        type: string
+      createTime:
+        type: string
+        format: date-time
+      columns:
+        type: integer
+      rows:
+        type: integer
+      size:
+        type: integer
+  TableInfoDto:
+    type: object
+    properties:
+      baseInfo:
+        type: object
+        properties:
+          tableId:
+            type: string
+            description: tableId
+          tableName:
+            type: string
+            description: 数据表名
+          columns:
+            type: integer
+            format: int64
+            description: 列数
+          rows:
+            type: integer
+            format: int64
+            description: 样本数
+          size:
+            type: number
+            format: double
+            description: 大小
+          filePath:
+            type: string
+            description: 文件位置
+      schemas:
+        type: array
+        items:
+          $ref: '#/definitions/SchemaDto'
+      datas:
+        type: array
+        items:
+          type: object
+  SchemaDto:
+    type: object
+    properties:
+      comment:
+        type: string
+      type:
+        type: string
+      name:
+        type: string
+  SubmitSuccess:
+    type: object
+    properties:
+      executionId:
+        type: string
+
+  ModelBaseInfoDto:
+    type: object
+    properties:
+      className:
+        type: string
+      algoName:
+        type: string
+      algoCategory:
+        type: string
+      modelFormat:
+        type: string
+      fromPlanId:
+        type: string
+      fromPlanName:
+        type: string
+      fromPlanVersion:
+        type: integer
+      algoParams:
+        type: object
+      targetLabels:
+        type: array
+        items:
+          $ref: '#/definitions/SchemaDto'
+      featureSechmas:
+        type: array
+        items:
+          $ref: '#/definitions/SchemaDto'
+      predictOutPut:
+        type: array
+        items:
+          $ref: '#/definitions/SchemaDto'
+
+  ModelAllInfoDto:
+    type: object
+    properties:
+      projectModelDto:
+        type: object
+        $ref: '#/definitions/ProjectModelDto'
+      modelBaseInfoDto:
+        type: object
+        $ref: '#/definitions/ModelBaseInfoDto'
+      featuresSampleData:
+        type: string
+        description: 特征数据预览

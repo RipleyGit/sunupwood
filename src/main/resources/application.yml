@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    name: sunup
+    url: jdbc:mysql://118.89.182.204:3306/sunup?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+#pagehelper分页插件配置
+#  pagehelper.helperDialect=mysql
+#  pagehelper.reasonable=true
+#  pagehelper.supportMethodsArguments=true
+#  pagehelper.params=count=countSql

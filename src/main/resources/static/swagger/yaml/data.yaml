@@ -1,0 +1,53 @@
+swagger: "2.0"
+info:
+  description: "日升木业后台接口"
+  version: "1.0.0"
+  title: "sunup"
+tags:
+- name: "User"
+  description: "用户相关接口"
+
+- name: "Product"
+  description: "商品相关接口"
+schemes:
+- "http"
+produces:
+- "application/json"
+securityDefinitions:
+  token:
+    type: apiKey
+    name: Cookie
+    in: header
+security:
+- token: []
+paths:
+
+  /user/signin:
+    post:
+      tags:
+        - "User"
+      summary : "注册用户"
+      deprecated: "注册用户"
+      operationId: "signinUser"
+      parameters:
+        - name: "userRegisterDTO"
+          in:  body
+          required: true
+          schema:
+            $ref: '#/definitions/UserRegisterDTO'
+      responses:
+        200:
+          description: "success"
+
+
+definitions:
+
+  UserRegisterDTO:
+    type: object
+    properties:
+      name:
+        type: string
+        description: "用户名"
+      password:
+        type: string
+        description: "用户密码"

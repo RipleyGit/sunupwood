@@ -1,9 +1,0 @@
-{
-  "interfaceOnly": true,
-  "library": "spring-boot",
-  "modelPackage": "cn.chainof.sunup.controller.dto.data",
-  "apiPackage": "cn.chainof.sunup.controller.api",
-  "dateLibrary": "legacy",
-  "hideGenerationTimestamp": true,
-  "useTags": true
-}

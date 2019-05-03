@@ -9,7 +9,8 @@
         <webroots />
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/resources/mapper" />
+          <root url="file://$MODULE_DIR$/src/main/resources/templates" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -20,7 +21,8 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/mapper" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/templates" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

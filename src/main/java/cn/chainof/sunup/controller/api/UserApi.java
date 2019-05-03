@@ -5,7 +5,7 @@
  */
 package cn.chainof.sunup.controller.api;
 
-import cn.chainof.sunup.controller.dto.data.UserRegisterDTO;
+import cn.chainof.sunup.controller.dto.data.UserDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,14 +25,36 @@ import java.util.List;
 @Api(value = "User", description = "the User API")
 public interface UserApi {
 
-    @ApiOperation(value = "注册用户", nickname = "signinUser", notes = "", authorizations = {
+    @ApiOperation(value = "用户登陆", nickname = "login", notes = "", authorizations = {
         @Authorization(value = "token")
     }, tags={ "User", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
-    @RequestMapping(value = "/user/signin",
+    @RequestMapping(value = "/user/login",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> signinUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserRegisterDTO userRegisterDTO);
+    ResponseEntity<Void> login(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserDTO user);
+
+
+    @ApiOperation(value = "用户登出", nickname = "loginOut", notes = "", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "User", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "success") })
+    @RequestMapping(value = "/user/loginOut",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<Void> loginOut();
+
+
+    @ApiOperation(value = "注册用户", nickname = "registerUser", notes = "", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "User", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "success") })
+    @RequestMapping(value = "/user/register",
+        produces = { "application/json" }, 
+        method = RequestMethod.POST)
+    ResponseEntity<Void> registerUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserDTO user);
 
 }

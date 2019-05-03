@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../sell/sell.iml" filepath="$PROJECT_DIR$/../sell/sell.iml" />
       <module fileurl="file://$PROJECT_DIR$/sunupwood.iml" filepath="$PROJECT_DIR$/sunupwood.iml" />
     </modules>
   </component>

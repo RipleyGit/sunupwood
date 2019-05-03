@@ -85,10 +85,25 @@
     <build>
         <resources>
             <resource>
+                <directory>src/main/resources/templates</directory>
+                <excludes>
+                    <exclude>logback-spring.xml</exclude>
+                    <exclude>application.yml</exclude>
+                </excludes>
+            </resource>
+            <resource>
                 <directory>src/main/resources</directory>
-                <includes>
-                    <include>mapper/*.xml</include>
-                </includes>
+                <excludes>
+                    <exclude>logback.xml</exclude>
+                    <exclude>logback-spring.xml</exclude>
+                    <exclude>application-prod.yml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/mapper</directory>
+                <excludes>
+                    <exclude>*.xml</exclude>
+                </excludes>
             </resource>
         </resources>
         <plugins>
@@ -106,21 +121,53 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.packagename}-${project.version}_${current.time}</finalName>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-my-jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <!--mybatis自动生成代码插件-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
                 <configuration>
-                    <!-- 是否覆盖，true表示会替换生成的JAVA文件，false则不覆盖 -->
+                    <configurationFile>src/main/resources/templates/mysql/generatorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <dependencies>
-                    <!--mysql驱动包-->
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.7</version>
+                    </dependency>
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.45</version>
+                        <version>5.1.47</version>
                     </dependency>
                 </dependencies>
             </plugin>

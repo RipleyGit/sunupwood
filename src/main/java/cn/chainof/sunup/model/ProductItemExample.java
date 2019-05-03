@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ProjectLabelExample {
+public class ProductItemExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ProjectLabelExample() {
+    public ProductItemExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -175,283 +175,403 @@ public class ProjectLabelExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("name is null");
+        public Criteria andRankIsNull() {
+            addCriterion("rank is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("name is not null");
+        public Criteria andRankIsNotNull() {
+            addCriterion("rank is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("name =", value, "name");
+        public Criteria andRankEqualTo(Integer value) {
+            addCriterion("rank =", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("name <>", value, "name");
+        public Criteria andRankNotEqualTo(Integer value) {
+            addCriterion("rank <>", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("name >", value, "name");
+        public Criteria andRankGreaterThan(Integer value) {
+            addCriterion("rank >", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("name >=", value, "name");
+        public Criteria andRankGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rank >=", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(String value) {
-            addCriterion("name <", value, "name");
+        public Criteria andRankLessThan(Integer value) {
+            addCriterion("rank <", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("name <=", value, "name");
+        public Criteria andRankLessThanOrEqualTo(Integer value) {
+            addCriterion("rank <=", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+        public Criteria andRankIn(List<Integer> values) {
+            addCriterion("rank in", values, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotLike(String value) {
-            addCriterion("name not like", value, "name");
+        public Criteria andRankNotIn(List<Integer> values) {
+            addCriterion("rank not in", values, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("name in", values, "name");
+        public Criteria andRankBetween(Integer value1, Integer value2) {
+            addCriterion("rank between", value1, value2, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("name not in", values, "name");
+        public Criteria andRankNotBetween(Integer value1, Integer value2) {
+            addCriterion("rank not between", value1, value2, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("name between", value1, value2, "name");
+        public Criteria andItemNameIsNull() {
+            addCriterion("item_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("name not between", value1, value2, "name");
+        public Criteria andItemNameIsNotNull() {
+            addCriterion("item_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeIsNull() {
-            addCriterion("label_code is null");
+        public Criteria andItemNameEqualTo(String value) {
+            addCriterion("item_name =", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeIsNotNull() {
-            addCriterion("label_code is not null");
+        public Criteria andItemNameNotEqualTo(String value) {
+            addCriterion("item_name <>", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeEqualTo(String value) {
-            addCriterion("label_code =", value, "labelCode");
+        public Criteria andItemNameGreaterThan(String value) {
+            addCriterion("item_name >", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeNotEqualTo(String value) {
-            addCriterion("label_code <>", value, "labelCode");
+        public Criteria andItemNameGreaterThanOrEqualTo(String value) {
+            addCriterion("item_name >=", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeGreaterThan(String value) {
-            addCriterion("label_code >", value, "labelCode");
+        public Criteria andItemNameLessThan(String value) {
+            addCriterion("item_name <", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("label_code >=", value, "labelCode");
+        public Criteria andItemNameLessThanOrEqualTo(String value) {
+            addCriterion("item_name <=", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeLessThan(String value) {
-            addCriterion("label_code <", value, "labelCode");
+        public Criteria andItemNameLike(String value) {
+            addCriterion("item_name like", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeLessThanOrEqualTo(String value) {
-            addCriterion("label_code <=", value, "labelCode");
+        public Criteria andItemNameNotLike(String value) {
+            addCriterion("item_name not like", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeLike(String value) {
-            addCriterion("label_code like", value, "labelCode");
+        public Criteria andItemNameIn(List<String> values) {
+            addCriterion("item_name in", values, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeNotLike(String value) {
-            addCriterion("label_code not like", value, "labelCode");
+        public Criteria andItemNameNotIn(List<String> values) {
+            addCriterion("item_name not in", values, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeIn(List<String> values) {
-            addCriterion("label_code in", values, "labelCode");
+        public Criteria andItemNameBetween(String value1, String value2) {
+            addCriterion("item_name between", value1, value2, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeNotIn(List<String> values) {
-            addCriterion("label_code not in", values, "labelCode");
+        public Criteria andItemNameNotBetween(String value1, String value2) {
+            addCriterion("item_name not between", value1, value2, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeBetween(String value1, String value2) {
-            addCriterion("label_code between", value1, value2, "labelCode");
+        public Criteria andItemImgIsNull() {
+            addCriterion("item_img is null");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeNotBetween(String value1, String value2) {
-            addCriterion("label_code not between", value1, value2, "labelCode");
+        public Criteria andItemImgIsNotNull() {
+            addCriterion("item_img is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareIsNull() {
-            addCriterion("label_declare is null");
+        public Criteria andItemImgEqualTo(String value) {
+            addCriterion("item_img =", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareIsNotNull() {
-            addCriterion("label_declare is not null");
+        public Criteria andItemImgNotEqualTo(String value) {
+            addCriterion("item_img <>", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareEqualTo(String value) {
-            addCriterion("label_declare =", value, "labelDeclare");
+        public Criteria andItemImgGreaterThan(String value) {
+            addCriterion("item_img >", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareNotEqualTo(String value) {
-            addCriterion("label_declare <>", value, "labelDeclare");
+        public Criteria andItemImgGreaterThanOrEqualTo(String value) {
+            addCriterion("item_img >=", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareGreaterThan(String value) {
-            addCriterion("label_declare >", value, "labelDeclare");
+        public Criteria andItemImgLessThan(String value) {
+            addCriterion("item_img <", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareGreaterThanOrEqualTo(String value) {
-            addCriterion("label_declare >=", value, "labelDeclare");
+        public Criteria andItemImgLessThanOrEqualTo(String value) {
+            addCriterion("item_img <=", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareLessThan(String value) {
-            addCriterion("label_declare <", value, "labelDeclare");
+        public Criteria andItemImgLike(String value) {
+            addCriterion("item_img like", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareLessThanOrEqualTo(String value) {
-            addCriterion("label_declare <=", value, "labelDeclare");
+        public Criteria andItemImgNotLike(String value) {
+            addCriterion("item_img not like", value, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareLike(String value) {
-            addCriterion("label_declare like", value, "labelDeclare");
+        public Criteria andItemImgIn(List<String> values) {
+            addCriterion("item_img in", values, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareNotLike(String value) {
-            addCriterion("label_declare not like", value, "labelDeclare");
+        public Criteria andItemImgNotIn(List<String> values) {
+            addCriterion("item_img not in", values, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareIn(List<String> values) {
-            addCriterion("label_declare in", values, "labelDeclare");
+        public Criteria andItemImgBetween(String value1, String value2) {
+            addCriterion("item_img between", value1, value2, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareNotIn(List<String> values) {
-            addCriterion("label_declare not in", values, "labelDeclare");
+        public Criteria andItemImgNotBetween(String value1, String value2) {
+            addCriterion("item_img not between", value1, value2, "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareBetween(String value1, String value2) {
-            addCriterion("label_declare between", value1, value2, "labelDeclare");
+        public Criteria andItemParentIsNull() {
+            addCriterion("item_parent is null");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareNotBetween(String value1, String value2) {
-            addCriterion("label_declare not between", value1, value2, "labelDeclare");
+        public Criteria andItemParentIsNotNull() {
+            addCriterion("item_parent is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgIsNull() {
-            addCriterion("label_img is null");
+        public Criteria andItemParentEqualTo(String value) {
+            addCriterion("item_parent =", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgIsNotNull() {
-            addCriterion("label_img is not null");
+        public Criteria andItemParentNotEqualTo(String value) {
+            addCriterion("item_parent <>", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgEqualTo(String value) {
-            addCriterion("label_img =", value, "labelImg");
+        public Criteria andItemParentGreaterThan(String value) {
+            addCriterion("item_parent >", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgNotEqualTo(String value) {
-            addCriterion("label_img <>", value, "labelImg");
+        public Criteria andItemParentGreaterThanOrEqualTo(String value) {
+            addCriterion("item_parent >=", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgGreaterThan(String value) {
-            addCriterion("label_img >", value, "labelImg");
+        public Criteria andItemParentLessThan(String value) {
+            addCriterion("item_parent <", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgGreaterThanOrEqualTo(String value) {
-            addCriterion("label_img >=", value, "labelImg");
+        public Criteria andItemParentLessThanOrEqualTo(String value) {
+            addCriterion("item_parent <=", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgLessThan(String value) {
-            addCriterion("label_img <", value, "labelImg");
+        public Criteria andItemParentLike(String value) {
+            addCriterion("item_parent like", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgLessThanOrEqualTo(String value) {
-            addCriterion("label_img <=", value, "labelImg");
+        public Criteria andItemParentNotLike(String value) {
+            addCriterion("item_parent not like", value, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgLike(String value) {
-            addCriterion("label_img like", value, "labelImg");
+        public Criteria andItemParentIn(List<String> values) {
+            addCriterion("item_parent in", values, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgNotLike(String value) {
-            addCriterion("label_img not like", value, "labelImg");
+        public Criteria andItemParentNotIn(List<String> values) {
+            addCriterion("item_parent not in", values, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgIn(List<String> values) {
-            addCriterion("label_img in", values, "labelImg");
+        public Criteria andItemParentBetween(String value1, String value2) {
+            addCriterion("item_parent between", value1, value2, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgNotIn(List<String> values) {
-            addCriterion("label_img not in", values, "labelImg");
+        public Criteria andItemParentNotBetween(String value1, String value2) {
+            addCriterion("item_parent not between", value1, value2, "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgBetween(String value1, String value2) {
-            addCriterion("label_img between", value1, value2, "labelImg");
+        public Criteria andItemDeclareIsNull() {
+            addCriterion("item_declare is null");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgNotBetween(String value1, String value2) {
-            addCriterion("label_img not between", value1, value2, "labelImg");
+        public Criteria andItemDeclareIsNotNull() {
+            addCriterion("item_declare is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareEqualTo(String value) {
+            addCriterion("item_declare =", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareNotEqualTo(String value) {
+            addCriterion("item_declare <>", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareGreaterThan(String value) {
+            addCriterion("item_declare >", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareGreaterThanOrEqualTo(String value) {
+            addCriterion("item_declare >=", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareLessThan(String value) {
+            addCriterion("item_declare <", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareLessThanOrEqualTo(String value) {
+            addCriterion("item_declare <=", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareLike(String value) {
+            addCriterion("item_declare like", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareNotLike(String value) {
+            addCriterion("item_declare not like", value, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareIn(List<String> values) {
+            addCriterion("item_declare in", values, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareNotIn(List<String> values) {
+            addCriterion("item_declare not in", values, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareBetween(String value1, String value2) {
+            addCriterion("item_declare between", value1, value2, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemDeclareNotBetween(String value1, String value2) {
+            addCriterion("item_declare not between", value1, value2, "itemDeclare");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootIsNull() {
+            addCriterion("is_root is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootIsNotNull() {
+            addCriterion("is_root is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootEqualTo(Byte value) {
+            addCriterion("is_root =", value, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootNotEqualTo(Byte value) {
+            addCriterion("is_root <>", value, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootGreaterThan(Byte value) {
+            addCriterion("is_root >", value, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootGreaterThanOrEqualTo(Byte value) {
+            addCriterion("is_root >=", value, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootLessThan(Byte value) {
+            addCriterion("is_root <", value, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootLessThanOrEqualTo(Byte value) {
+            addCriterion("is_root <=", value, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootIn(List<Byte> values) {
+            addCriterion("is_root in", values, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootNotIn(List<Byte> values) {
+            addCriterion("is_root not in", values, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootBetween(Byte value1, Byte value2) {
+            addCriterion("is_root between", value1, value2, "isRoot");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsRootNotBetween(Byte value1, Byte value2) {
+            addCriterion("is_root not between", value1, value2, "isRoot");
             return (Criteria) this;
         }
 
@@ -780,23 +900,23 @@ public class ProjectLabelExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameLikeInsensitive(String value) {
-            addCriterion("upper(name) like", value.toUpperCase(), "name");
+        public Criteria andItemNameLikeInsensitive(String value) {
+            addCriterion("upper(item_name) like", value.toUpperCase(), "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andLabelCodeLikeInsensitive(String value) {
-            addCriterion("upper(label_code) like", value.toUpperCase(), "labelCode");
+        public Criteria andItemImgLikeInsensitive(String value) {
+            addCriterion("upper(item_img) like", value.toUpperCase(), "itemImg");
             return (Criteria) this;
         }
 
-        public Criteria andLabelDeclareLikeInsensitive(String value) {
-            addCriterion("upper(label_declare) like", value.toUpperCase(), "labelDeclare");
+        public Criteria andItemParentLikeInsensitive(String value) {
+            addCriterion("upper(item_parent) like", value.toUpperCase(), "itemParent");
             return (Criteria) this;
         }
 
-        public Criteria andLabelImgLikeInsensitive(String value) {
-            addCriterion("upper(label_img) like", value.toUpperCase(), "labelImg");
+        public Criteria andItemDeclareLikeInsensitive(String value) {
+            addCriterion("upper(item_declare) like", value.toUpperCase(), "itemDeclare");
             return (Criteria) this;
         }
 

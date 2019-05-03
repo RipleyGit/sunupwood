@@ -7,8 +7,14 @@ tags:
 - name: "User"
   description: "用户相关接口"
 
-- name: "Product"
-  description: "商品相关接口"
+- name: "Project"
+  description: "项目全局相关接口"
+
+- name: "ProductItem"
+  description: "商品分类相关接口"
+
+- name: "File"
+  description: "文件相关接口"
 schemes:
 - "http"
 produces:
@@ -68,7 +74,7 @@ paths:
   /project/labels:
     get:
       tags:
-        - "Product"
+        - "Project"
       summary: "获取标签列表"
       operationId: "getLabels"
       parameters:
@@ -79,10 +85,12 @@ paths:
         200:
           description: "success"
           schema:
-            $ref: '#/definitions/LabelList'
+            type: array
+            items:
+              $ref: '#/definitions/LabelDTO'
     post:
       tags:
-        - "Product"
+        - "Project"
       summary: "添加标签"
       operationId: "addLabel"
       parameters:
@@ -93,12 +101,13 @@ paths:
             $ref: '#/definitions/LabelDTO'
             required:
               - name
+              - labelCode
       responses:
           200:
             description: "success"
     delete:
       tags:
-        - "Product"
+        - "Project"
       summary: "删除标签"
       operationId: "deletedLable"
       parameters:
@@ -111,7 +120,7 @@ paths:
           description: "success"
     put:
       tags:
-        - "Product"
+        - "Project"
       summary: "修改标签"
       operationId: "modifyLabel"
       parameters:
@@ -127,10 +136,128 @@ paths:
         200:
           description: "success"
 
+  /project/uploadImg:
+    post:
+      summary: 上传图片
+      description: file：选择文件
+      operationId: uploadImg
+      tags:
+        - "File"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          required: true
+      responses:
+        '200':
+          schema:
+            type: string
+          description: 返回图片地址
 
+  /project/product/item:
+    get:
+      tags:
+        - "ProductItem"
+      summary: "查看分类列表"
+      operationId: getItems
+      parameters:
+        - name: "key"
+          in: query
+          type: string
+          description: "分类关键字，分类名，描述，模糊查询"
+      responses:
+        '200':
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ItemDTO'
+          description: "分类列表"
+    post:
+      tags:
+        - "ProductItem"
+      summary: "增加分类"
+      operationId: addItem
+      parameters:
+        - name: "item"
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ItemDTO'
+            required:
+              - itemName
+              - isRoot
+      responses:
+        '200':
+          description: 新增成功
+    put:
+      tags:
+        - "ProductItem"
+      summary: "修改分类"
+      operationId: modifyItem
+      parameters:
+        - name: "item"
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ItemDTO'
+            required:
+              - id
+              - itemName
+              - isRoot
+      responses:
+        '200':
+          description: 修改成功
+    delete:
+      tags:
+        - "ProductItem"
+      summary: "删除分类"
+      operationId: deletedItem
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+          description: "分类ID"
+      responses:
+        200:
+          description: "删除成功"
+  /project/product/getRootItems:
+    get:
+      tags:
+        - "ProductItem"
+      summary: "获取根级分类"
+      operationId: getRootItems
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ItemDTO'
+          description: "获取主分类列表"
+  /project/product/getItemsByParentId:
+    get:
+      tags:
+        - "ProductItem"
+      summary: "根据上级分类获取下级分类列表"
+      operationId: getItemsByParentId
+      parameters:
+        - in: query
+          name: parentId
+          type: string
+          required: true
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ItemDTO'
+          description: "获取分类列表"
 
 definitions:
-
   UserDTO:
     type: object
     properties:
@@ -141,11 +268,6 @@ definitions:
         type: string
         description: "用户密码"
 
-  LabelList:
-    type: array
-    items:
-      $ref: '#/definitions/LabelDTO'
-
   LabelDTO:
     type: object
     properties:
@@ -153,6 +275,27 @@ definitions:
         type: string
       name:
         type: string
+      labelCode:
+        type: string
       labelDeclare:
         type: string
 
+  ItemDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      rank:
+        type: integer
+      itemName:
+        type: string
+      itemImg:
+        type: string
+      parentId:
+        type: string
+      parentName:
+        type: string
+      itemDeclare:
+        type: string
+      isRoot:
+        type: integer

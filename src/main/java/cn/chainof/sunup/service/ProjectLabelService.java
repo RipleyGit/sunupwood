@@ -8,13 +8,15 @@ public interface ProjectLabelService {
 
     ProjectLabel getLabelByName(String name);
 
-    Long addLable(ProjectLabel projectLabel);
+    String addLable(ProjectLabel projectLabel);
 
-    Integer deletedLabel(Long labelId);
+    Integer deletedLabel(String labelId);
 
     ProjectLabel updateLabel(ProjectLabel label);
 
     List<ProjectLabel> queryListByKey(String keyword);
 
     ProjectLabel getLabelById(String id);
+
+    ProjectLabel getLabelByCode(String labelCode);
 }

@@ -78,7 +78,13 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-codegen-cli</artifactId>
             <version>2.3.1</version>
-
+            <scope>test</scope>
+        </dependency>
+        <!--腾讯云OS-->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.5.2</version>
         </dependency>
     </dependencies>
 

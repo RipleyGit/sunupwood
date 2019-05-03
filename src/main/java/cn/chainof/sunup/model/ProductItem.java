@@ -3,16 +3,20 @@ package cn.chainof.sunup.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ProjectLabel implements Serializable {
+public class ProductItem implements Serializable {
     private String id;
 
-    private String name;
+    private Integer rank;
 
-    private String labelCode;
+    private String itemName;
 
-    private String labelDeclare;
+    private String itemImg;
 
-    private String labelImg;
+    private String itemParent;
+
+    private String itemDeclare;
+
+    private Byte isRoot;
 
     private Byte isDeleted;
 
@@ -34,36 +38,52 @@ public class ProjectLabel implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getName() {
-        return name;
+    public Integer getRank() {
+        return rank;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
-    public String getLabelCode() {
-        return labelCode;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setLabelCode(String labelCode) {
-        this.labelCode = labelCode == null ? null : labelCode.trim();
+    public void setItemName(String itemName) {
+        this.itemName = itemName == null ? null : itemName.trim();
     }
 
-    public String getLabelDeclare() {
-        return labelDeclare;
+    public String getItemImg() {
+        return itemImg;
     }
 
-    public void setLabelDeclare(String labelDeclare) {
-        this.labelDeclare = labelDeclare == null ? null : labelDeclare.trim();
+    public void setItemImg(String itemImg) {
+        this.itemImg = itemImg == null ? null : itemImg.trim();
     }
 
-    public String getLabelImg() {
-        return labelImg;
+    public String getItemParent() {
+        return itemParent;
     }
 
-    public void setLabelImg(String labelImg) {
-        this.labelImg = labelImg == null ? null : labelImg.trim();
+    public void setItemParent(String itemParent) {
+        this.itemParent = itemParent == null ? null : itemParent.trim();
+    }
+
+    public String getItemDeclare() {
+        return itemDeclare;
+    }
+
+    public void setItemDeclare(String itemDeclare) {
+        this.itemDeclare = itemDeclare == null ? null : itemDeclare.trim();
+    }
+
+    public Byte getIsRoot() {
+        return isRoot;
+    }
+
+    public void setIsRoot(Byte isRoot) {
+        this.isRoot = isRoot;
     }
 
     public Byte getIsDeleted() {
@@ -117,12 +137,14 @@ public class ProjectLabel implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        ProjectLabel other = (ProjectLabel) that;
+        ProductItem other = (ProductItem) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getLabelCode() == null ? other.getLabelCode() == null : this.getLabelCode().equals(other.getLabelCode()))
-            && (this.getLabelDeclare() == null ? other.getLabelDeclare() == null : this.getLabelDeclare().equals(other.getLabelDeclare()))
-            && (this.getLabelImg() == null ? other.getLabelImg() == null : this.getLabelImg().equals(other.getLabelImg()))
+            && (this.getRank() == null ? other.getRank() == null : this.getRank().equals(other.getRank()))
+            && (this.getItemName() == null ? other.getItemName() == null : this.getItemName().equals(other.getItemName()))
+            && (this.getItemImg() == null ? other.getItemImg() == null : this.getItemImg().equals(other.getItemImg()))
+            && (this.getItemParent() == null ? other.getItemParent() == null : this.getItemParent().equals(other.getItemParent()))
+            && (this.getItemDeclare() == null ? other.getItemDeclare() == null : this.getItemDeclare().equals(other.getItemDeclare()))
+            && (this.getIsRoot() == null ? other.getIsRoot() == null : this.getIsRoot().equals(other.getIsRoot()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()))
             && (this.getCreateUser() == null ? other.getCreateUser() == null : this.getCreateUser().equals(other.getCreateUser()))
             && (this.getUpdateUser() == null ? other.getUpdateUser() == null : this.getUpdateUser().equals(other.getUpdateUser()))
@@ -135,10 +157,12 @@ public class ProjectLabel implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getLabelCode() == null) ? 0 : getLabelCode().hashCode());
-        result = prime * result + ((getLabelDeclare() == null) ? 0 : getLabelDeclare().hashCode());
-        result = prime * result + ((getLabelImg() == null) ? 0 : getLabelImg().hashCode());
+        result = prime * result + ((getRank() == null) ? 0 : getRank().hashCode());
+        result = prime * result + ((getItemName() == null) ? 0 : getItemName().hashCode());
+        result = prime * result + ((getItemImg() == null) ? 0 : getItemImg().hashCode());
+        result = prime * result + ((getItemParent() == null) ? 0 : getItemParent().hashCode());
+        result = prime * result + ((getItemDeclare() == null) ? 0 : getItemDeclare().hashCode());
+        result = prime * result + ((getIsRoot() == null) ? 0 : getIsRoot().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         result = prime * result + ((getCreateUser() == null) ? 0 : getCreateUser().hashCode());
         result = prime * result + ((getUpdateUser() == null) ? 0 : getUpdateUser().hashCode());

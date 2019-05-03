@@ -6,7 +6,6 @@
 package cn.chainof.sunup.controller.api;
 
 import cn.chainof.sunup.controller.dto.data.LabelDTO;
-import cn.chainof.sunup.controller.dto.data.LabelList;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,12 +22,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 
-@Api(value = "Product", description = "the Product API")
-public interface ProductApi {
+@Api(value = "Project", description = "the Project API")
+public interface ProjectApi {
 
     @ApiOperation(value = "添加标签", nickname = "addLabel", notes = "", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Product", })
+    }, tags={ "Project", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
     @RequestMapping(value = "/project/labels",
@@ -39,7 +38,7 @@ public interface ProductApi {
 
     @ApiOperation(value = "删除标签", nickname = "deletedLable", notes = "", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Product", })
+    }, tags={ "Project", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
     @RequestMapping(value = "/project/labels",
@@ -48,20 +47,20 @@ public interface ProductApi {
     ResponseEntity<Void> deletedLable(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id);
 
 
-    @ApiOperation(value = "获取标签列表", nickname = "getLabels", notes = "", response = LabelList.class, authorizations = {
+    @ApiOperation(value = "获取标签列表", nickname = "getLabels", notes = "", response = LabelDTO.class, responseContainer = "List", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Product", })
+    }, tags={ "Project", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "success", response = LabelList.class) })
+        @ApiResponse(code = 200, message = "success", response = LabelDTO.class, responseContainer = "List") })
     @RequestMapping(value = "/project/labels",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<LabelList> getLabels(@ApiParam(value = "") @Valid @RequestParam(value = "keyword", required = false) String keyword);
+    ResponseEntity<List<LabelDTO>> getLabels(@ApiParam(value = "") @Valid @RequestParam(value = "keyword", required = false) String keyword);
 
 
     @ApiOperation(value = "修改标签", nickname = "modifyLabel", notes = "", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Product", })
+    }, tags={ "Project", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
     @RequestMapping(value = "/project/labels",

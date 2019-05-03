@@ -10,7 +10,7 @@ public interface ProjectLabelMapper {
 
     int deleteByExample(ProjectLabelExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
     int insert(ProjectLabel record);
 
@@ -18,7 +18,7 @@ public interface ProjectLabelMapper {
 
     List<ProjectLabel> selectByExample(ProjectLabelExample example);
 
-    ProjectLabel selectByPrimaryKey(Long id);
+    ProjectLabel selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") ProjectLabel record, @Param("example") ProjectLabelExample example);
 

@@ -21,6 +21,9 @@ public class LabelDTO   {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("labelCode")
+  private String labelCode = null;
+
   @JsonProperty("labelDeclare")
   private String labelDeclare = null;
 
@@ -64,6 +67,26 @@ public class LabelDTO   {
     this.name = name;
   }
 
+  public LabelDTO labelCode(String labelCode) {
+    this.labelCode = labelCode;
+    return this;
+  }
+
+  /**
+   * Get labelCode
+   * @return labelCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getLabelCode() {
+    return labelCode;
+  }
+
+  public void setLabelCode(String labelCode) {
+    this.labelCode = labelCode;
+  }
+
   public LabelDTO labelDeclare(String labelDeclare) {
     this.labelDeclare = labelDeclare;
     return this;
@@ -96,12 +119,13 @@ public class LabelDTO   {
     LabelDTO labelDTO = (LabelDTO) o;
     return Objects.equals(this.id, labelDTO.id) &&
         Objects.equals(this.name, labelDTO.name) &&
+        Objects.equals(this.labelCode, labelDTO.labelCode) &&
         Objects.equals(this.labelDeclare, labelDTO.labelDeclare);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, labelDeclare);
+    return Objects.hash(id, name, labelCode, labelDeclare);
   }
 
   @Override
@@ -111,6 +135,7 @@ public class LabelDTO   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    labelCode: ").append(toIndentedString(labelCode)).append("\n");
     sb.append("    labelDeclare: ").append(toIndentedString(labelDeclare)).append("\n");
     sb.append("}");
     return sb.toString();

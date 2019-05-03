@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
         ProjectUser user = new ProjectUser();
         Long id = KeyUtil.genUniqueKey();
-        user.setId(id);
+        user.setId(String.valueOf(id));
         user.setName(name);
         user.setPassword(password);
         user.setCreateTime(DateUtil.getCurrentDate());

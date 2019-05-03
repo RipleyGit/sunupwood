@@ -38,19 +38,20 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     }
 
     @Override
-    public Long addLable(ProjectLabel projectLabel) {
+    public String addLable(ProjectLabel projectLabel) {
         Long id = KeyUtil.genUniqueKey();
+        String labelId = String.valueOf(id);
         ProjectUser user = UserContext.getUserSession();
-        projectLabel.setId(id);
+        projectLabel.setId(labelId);
         projectLabel.setCreateTime(DateUtil.getCurrentDate());
         projectLabel.setIsDeleted(Const.IS_NORMAL);
         projectLabel.setCreateUser(user.getName());
         projectLabelMapper.insertSelective(projectLabel);//
-        return id;
+        return labelId;
     }
 
     @Override
-    public Integer deletedLabel(Long labelId) {
+    public Integer deletedLabel(String labelId) {
         int delete = projectLabelMapper.deleteByPrimaryKey(labelId);
         return delete;
     }
@@ -71,7 +72,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         List<ProjectLabel> list = new ArrayList<>();
         ProjectLabelExample example = new ProjectLabelExample();
         if (StringUtil.isNotEmpty(keyword)) {
-            keyword = "%"+keyword+"%";
+            keyword = "%" + keyword + "%";
             example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andNameLike(keyword);
             List<ProjectLabel> listByName = projectLabelMapper.selectByExample(example);
             list.addAll(listByName);
@@ -89,6 +90,17 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
 
     @Override
     public ProjectLabel getLabelById(String id) {
-        return projectLabelMapper.selectByPrimaryKey(Long.valueOf(id));
+        return projectLabelMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public ProjectLabel getLabelByCode(String labelCode) {
+        ProjectLabelExample example = new ProjectLabelExample();
+        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andLabelCodeEqualTo(labelCode);
+        List<ProjectLabel> list = projectLabelMapper.selectByExample(example);
+        if (list.size() < 1) {
+            return null;
+        }
+        return list.get(0);
     }
 }

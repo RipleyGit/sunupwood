@@ -1,6 +1,7 @@
 package cn.chainof.sunup.controller;
 
-import cn.chainof.sunup.controller.api.FileApi;
+import cn.chainof.sunup.controller.api.ProjectOtherApi;
+import cn.chainof.sunup.controller.dto.data.EmailMsgDTO;
 import cn.chainof.sunup.exception.ClientException;
 import cn.chainof.sunup.utils.KeyUtil;
 import com.qcloud.cos.COSClient;
@@ -10,12 +11,17 @@ import com.qcloud.cos.auth.COSCredentials;
 import com.qcloud.cos.exception.CosClientException;
 import com.qcloud.cos.model.PutObjectRequest;
 import com.qcloud.cos.region.Region;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,7 +31,14 @@ import java.io.IOException;
 
 @Slf4j
 @RestController
-public class FileApiController implements FileApi {
+public class ProjectOtherApiController implements ProjectOtherApi {
+
+    @Autowired
+    private JavaMailSender mailSender;
+    @Value("${spring.mail.from}")
+    private String from;
+    @Value("${spring.mail.to}")
+    private String to;
 
     @Value("${qcloud.cos.AppId}")
     private String COS_APPID;
@@ -39,8 +52,23 @@ public class FileApiController implements FileApi {
     private String COS_REGION;
     @Value("${qcloud.cos.ImgUrl}")
     private String COS_IMGURL;
-
     private static final String PATH = "img/";
+
+    @Override
+    public ResponseEntity<Void> sendEmailMsg(@ApiParam(value = ""  )  @Valid @RequestBody EmailMsgDTO emailMsgDTO){
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(from);
+        message.setTo(to);
+        message.setSubject(emailMsgDTO.getTitle());
+        message.setText(emailMsgDTO.getConcent()+"\n联系方式:"+emailMsgDTO.getEmail());
+        mailSender.send(message);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
+    }
+
+
 
     @Override
     public ResponseEntity<String> uploadImg(@Valid MultipartFile file) {

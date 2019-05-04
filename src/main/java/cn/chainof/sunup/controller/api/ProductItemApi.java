@@ -47,12 +47,23 @@ public interface ProductItemApi {
     ResponseEntity<Void> deletedItem(@NotNull @ApiParam(value = "分类ID", required = true) @Valid @RequestParam(value = "id", required = true) String id);
 
 
+    @ApiOperation(value = "查看分类内容", nickname = "getItem", notes = "", response = ItemDTO.class, authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductItem", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "分类内容", response = ItemDTO.class) })
+    @RequestMapping(value = "/project/product/item",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<ItemDTO> getItem(@NotNull @ApiParam(value = "分类详情", required = true) @Valid @RequestParam(value = "id", required = true) String id);
+
+
     @ApiOperation(value = "查看分类列表", nickname = "getItems", notes = "", response = ItemDTO.class, responseContainer = "List", authorizations = {
         @Authorization(value = "token")
     }, tags={ "ProductItem", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "分类列表", response = ItemDTO.class, responseContainer = "List") })
-    @RequestMapping(value = "/project/product/item",
+    @RequestMapping(value = "/project/product/itemList",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<ItemDTO>> getItems(@ApiParam(value = "分类关键字，分类名，描述，模糊查询") @Valid @RequestParam(value = "key", required = false) String key);

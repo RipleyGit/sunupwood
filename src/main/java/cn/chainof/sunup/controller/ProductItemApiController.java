@@ -76,6 +76,22 @@ public class ProductItemApiController implements ProductItemApi {
     }
 
     @Override
+    public ResponseEntity<ItemDTO> getItem(@ApiParam(value = "分类详情") @Valid @RequestParam(value = "id", required = true) String id){
+        ProductItem item = productItemService.getItemById(id);
+        ItemDTO dto = AutoConvertUtil.autoConvertTo(item, ItemDTO.class);
+        String parentId = item.getItemParent();
+        dto.setParentId(parentId);
+        ProductItem parentItem = productItemService.getItemById(parentId);
+        if (parentItem!= null) {
+            dto.setParentName(parentItem.getItemName());
+        }
+        dto.setIsRoot(item.getIsRoot().intValue());
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(dto,headers, HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<List<ItemDTO>> getItems(@ApiParam(value = "分类关键字，分类名，描述，模糊查询") @Valid @RequestParam(value = "key", required = false) String key) {
         List<ProductItem> list = productItemService.queryListByKey(key);
         List<ItemDTO> dtoList = new ArrayList<>();

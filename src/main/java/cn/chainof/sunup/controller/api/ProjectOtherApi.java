@@ -5,6 +5,7 @@
  */
 package cn.chainof.sunup.controller.api;
 
+import cn.chainof.sunup.controller.dto.data.EmailMsgDTO;
 import org.springframework.core.io.Resource;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,23 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 
-@Api(value = "File", description = "the File API")
-public interface FileApi {
+@Api(value = "ProjectOther", description = "the ProjectOther API")
+public interface ProjectOtherApi {
+
+    @ApiOperation(value = "发送邮件", nickname = "sendEmailMsg", notes = "", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProjectOther", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "发送成功") })
+    @RequestMapping(value = "/project/email/sendMsg",
+        produces = { "application/json" }, 
+        method = RequestMethod.POST)
+    ResponseEntity<Void> sendEmailMsg(@ApiParam(value = ""  )  @Valid @RequestBody EmailMsgDTO emailMsgDTO);
+
 
     @ApiOperation(value = "上传图片", nickname = "uploadImg", notes = "file：选择文件", response = String.class, authorizations = {
         @Authorization(value = "token")
-    }, tags={ "File", })
+    }, tags={ "ProjectOther", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "返回图片地址", response = String.class) })
     @RequestMapping(value = "/project/uploadImg",

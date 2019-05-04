@@ -36,9 +36,11 @@
 <!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
 <!--        </table>-->
 
-        <table tableName="product_info" domainObjectName="Product">
+<!--        <table tableName="product_info" domainObjectName="Product">-->
+<!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
+<!--        </table>-->
+        <table tableName="project_news" domainObjectName="ProjectNews">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-
     </context>
 </generatorConfiguration>

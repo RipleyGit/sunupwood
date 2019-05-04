@@ -18,4 +18,6 @@ public interface ProductService {
     List<Product> queryListByLabel(String labelId, Integer pageIndex, Integer pageSize);
 
     List<Product> queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize);
+
+    Product getProductById(String id);
 }

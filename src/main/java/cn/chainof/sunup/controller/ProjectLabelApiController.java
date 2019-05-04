@@ -1,8 +1,7 @@
 package cn.chainof.sunup.controller;
 
-import cn.chainof.sunup.controller.api.ProjectApi;
+import cn.chainof.sunup.controller.api.ProjectLabelApi;
 import cn.chainof.sunup.controller.dto.data.LabelDTO;
-import cn.chainof.sunup.controller.dto.data.LabelList;
 import cn.chainof.sunup.exception.ClientException;
 import cn.chainof.sunup.model.ProjectLabel;
 import cn.chainof.sunup.service.ProjectLabelService;
@@ -21,12 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @RestController
-public class ProjectApiController implements ProjectApi {
+public class ProjectLabelApiController implements ProjectLabelApi {
 
     @Autowired
     private ProjectLabelService projectLabelService;
@@ -69,6 +67,14 @@ public class ProjectApiController implements ProjectApi {
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<LabelDTO> getLabel(@Valid String id) {
+        ProjectLabel label = projectLabelService.getLabelById(id);
+        LabelDTO dto = AutoConvertUtil.autoConvertTo(label, LabelDTO.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(dto,headers, HttpStatus.OK);
+    }
 
 
     @Override

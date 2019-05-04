@@ -6,17 +6,16 @@ info:
 tags:
 - name: "User"
   description: "用户相关接口"
-- name: "Project"
+- name: "ProjectLabel"
   description: "项目全局相关接口"
 - name: "ProductItem"
   description: "商品分类相关接口"
-- name: "File"
-  description: "文件相关接口"
+- name: "ProjectOther"
+  description: "其他相关接口"
 - name: "Product"
   description: "商品相关接口"
-- name: "Email"
-  description: "email接口"
-
+- name: "ProjectNews"
+  description: "新闻中心"
 schemes:
 - "http"
 produces:
@@ -29,6 +28,56 @@ securityDefinitions:
 security:
 - token: []
 paths:
+  /project/email/sendMsg:
+    post:
+      tags:
+        - "ProjectOther"
+      summary: 发送邮件
+      operationId: sendEmailMsg
+      parameters:
+        - in: body
+          name: EmailMsgDTO
+          schema:
+            properties:
+              title:
+                type: string
+                description: "标题"
+              concent:
+                type: string
+                description: "内容"
+              email:
+                type: string
+                description: "联系方式"
+              code:
+                type: string
+                description: "代码"
+      responses:
+        200:
+          description: "发送成功"
+
+  /project/uploadImg:
+    post:
+      summary: 上传图片
+      description: file：选择文件
+      operationId: uploadImg
+      tags:
+        - "ProjectOther"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          required: true
+      responses:
+        '200':
+          schema:
+            type: string
+          description: 返回图片地址
+
+
 
   /user/register:
     post:
@@ -76,23 +125,21 @@ paths:
   /project/labels:
     get:
       tags:
-        - "Project"
+        - "ProjectLabel"
       summary: "获取标签列表"
-      operationId: "getLabels"
+      operationId: "getLabel"
       parameters:
         - in: query
-          name: "keyword"
+          name: id
           type: string
       responses:
         200:
           description: "success"
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/LabelDTO'
+            $ref: '#/definitions/LabelDTO'
     post:
       tags:
-        - "Project"
+        - "ProjectLabel"
       summary: "添加标签"
       operationId: "addLabel"
       parameters:
@@ -109,7 +156,7 @@ paths:
             description: "success"
     delete:
       tags:
-        - "Project"
+        - "ProjectLabel"
       summary: "删除标签"
       operationId: "deletedLable"
       parameters:
@@ -122,7 +169,7 @@ paths:
           description: "success"
     put:
       tags:
-        - "Project"
+        - "ProjectLabel"
       summary: "修改标签"
       operationId: "modifyLabel"
       parameters:
@@ -137,47 +184,42 @@ paths:
       responses:
         200:
           description: "success"
-
-  /project/uploadImg:
-    post:
-      summary: 上传图片
-      description: file：选择文件
-      operationId: uploadImg
+  /project/labelList:
+    get:
       tags:
-        - "File"
-      consumes:
-        - "multipart/form-data"
-      produces:
-        - "application/json"
+        - "ProjectLabel"
+      summary: "获取标签列表"
+      operationId: "getLabels"
       parameters:
-        - in: formData
-          name: file
-          type: file
-          required: true
+        - in: query
+          name: "keyword"
+          type: string
       responses:
-        '200':
+        200:
+          description: "success"
           schema:
-            type: string
-          description: 返回图片地址
+            type: array
+            items:
+              $ref: '#/definitions/LabelDTO'
+
 
   /project/product/item:
     get:
       tags:
         - "ProductItem"
-      summary: "查看分类列表"
-      operationId: getItems
+      summary: "查看分类内容"
+      operationId: getItem
       parameters:
-        - name: "key"
+        - name: id
           in: query
           type: string
-          description: "分类关键字，分类名，描述，模糊查询"
+          description: "分类详情"
+          required: true
       responses:
         '200':
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ItemDTO'
-          description: "分类列表"
+            $ref: '#/definitions/ItemDTO'
+          description: "分类内容"
     post:
       tags:
         - "ProductItem"
@@ -258,6 +300,24 @@ paths:
             items:
               $ref: '#/definitions/ItemDTO'
           description: "获取分类列表"
+  /project/product/itemList:
+    get:
+      tags:
+        - "ProductItem"
+      summary: "查看分类列表"
+      operationId: getItems
+      parameters:
+        - name: "key"
+          in: query
+          type: string
+          description: "分类关键字，分类名，描述，模糊查询"
+      responses:
+        '200':
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ItemDTO'
+          description: "分类列表"
   /project/product/info:
     post:
       tags:
@@ -311,6 +371,23 @@ paths:
     get:
       tags:
         - "Product"
+      summary: "获取商品内容"
+      operationId: getProductInfo
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/ProductDTO'
+          description: "商品"
+
+  /project/product/queryList:
+    get:
+      tags:
+        - "Product"
       summary: "获取商品列表"
       operationId: getProducts
       parameters:
@@ -321,10 +398,12 @@ paths:
           name: pageIndex
           type: integer
           description: 当前页数
+          default: 0
         - in: query
           name: pageSize
           type: integer
           description: 页面大小
+          default: 6
       responses:
         200:
           schema:
@@ -370,10 +449,12 @@ paths:
           name: pageIndex
           type: integer
           description: 当前页数
+          default: 0
         - in: query
           name: pageSize
           type: integer
           description: 页面大小
+          default: 6
         - in: query
           name: labelId
           type: string
@@ -398,10 +479,12 @@ paths:
           name: pageIndex
           type: integer
           description: 当前页数
+          default: 0
         - in: query
           name: pageSize
           type: integer
           description: 页面大小
+          default: 6
         - in: query
           name: labelId
           type: string
@@ -418,34 +501,127 @@ paths:
               $ref: '#/definitions/ProductDTO'
           description: "商品列表"
 
-  /project/email/sendMsg:
+
+  /project/center/news:
     post:
+      summary: "添加新闻"
+      operationId: addNews
       tags:
-        - "Email"
-      summary: 发送邮件
-      operationId: sendEmailMsg
+        - "ProjectNews"
       parameters:
         - in: body
-          name: EmailMsgDTO
+          name: newsDto
           schema:
-            properties:
-              title:
-                type: string
-                description: "标题"
-              concent:
-                type: string
-                description: "内容"
-              email:
-                type: string
-                description: "联系方式"
-              code:
-                type: string
-                description: "代码"
+            $ref: '#/definitions/NewsDTO'
+          required: true
       responses:
         200:
-          description: "发送成功"
+          description: "新增成功"
+    delete:
+      tags:
+        - "ProjectNews"
+      summary: "删除新闻"
+      operationId: deleteByIds
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          description: "删除成功"
+    put:
+      tags:
+        - "ProjectNews"
+      summary: "修改新闻"
+      operationId: modifyNewsInfo
+      parameters:
+        - in: body
+          name: newsDto
+          schema:
+            $ref: '#/definitions/NewsDTO'
+          required: true
+      responses:
+        200:
+          description: "修改成功"
+    get:
+      tags:
+        - "ProjectNews"
+      summary: "查看新闻内容"
+      operationId: getNewsInfo
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/NewsDTO'
+          description: "新闻内容信息"
+
+  /project/center/newsList:
+    get:
+      tags:
+        - "ProjectNews"
+      summary: "查看新闻内容"
+      operationId: getNewsInfoList
+      parameters:
+        - in: query
+          name: key
+          type: string
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 6
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/NewsDTO'
+          description: "新闻内容信息"
+
 
 definitions:
+  NewsDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      stye:
+        type: string
+        description: 新闻类型：1，公司新闻；2 行业新闻
+      title:
+        type: string
+        description: 新闻标题
+      intro:
+        type: string
+        description: 新闻简介
+      author:
+        type: string
+        description: 作者
+      back_img:
+        type: string
+        description: 背景图片
+      subject:
+        type: string
+        description: 新闻内容
+      createUser:
+        type: string
+      updateUser:
+        type: string
+      createTime:
+        type: string
+      updateTime:
+        type: string
+
 
   ProductDTO:
     type: object

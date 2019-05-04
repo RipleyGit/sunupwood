@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 
 @Api(value = "Project", description = "the Project API")
-public interface ProjectApi {
+public interface ProjectLabelApi {
 
     @ApiOperation(value = "添加标签", nickname = "addLabel", notes = "", authorizations = {
         @Authorization(value = "token")
@@ -47,12 +47,23 @@ public interface ProjectApi {
     ResponseEntity<Void> deletedLable(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id);
 
 
+    @ApiOperation(value = "获取标签列表", nickname = "getLabel", notes = "", response = LabelDTO.class, authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "Project", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "success", response = LabelDTO.class) })
+    @RequestMapping(value = "/project/labels",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<LabelDTO> getLabel(@ApiParam(value = "") @Valid @RequestParam(value = "id", required = false) String id);
+
+
     @ApiOperation(value = "获取标签列表", nickname = "getLabels", notes = "", response = LabelDTO.class, responseContainer = "List", authorizations = {
         @Authorization(value = "token")
     }, tags={ "Project", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success", response = LabelDTO.class, responseContainer = "List") })
-    @RequestMapping(value = "/project/labels",
+    @RequestMapping(value = "/project/labelList",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<LabelDTO>> getLabels(@ApiParam(value = "") @Valid @RequestParam(value = "keyword", required = false) String keyword);

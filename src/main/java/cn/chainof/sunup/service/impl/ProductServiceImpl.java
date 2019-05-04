@@ -146,4 +146,9 @@ public class ProductServiceImpl implements ProductService {
         List<Product>  list= productMapper.selectByExample(example);
         return list;
     }
+
+    @Override
+    public Product getProductById(String id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
 }

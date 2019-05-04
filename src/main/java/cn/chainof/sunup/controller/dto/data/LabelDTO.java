@@ -27,6 +27,9 @@ public class LabelDTO   {
   @JsonProperty("labelDeclare")
   private String labelDeclare = null;
 
+  @JsonProperty("labelImg")
+  private String labelImg = null;
+
   public LabelDTO id(String id) {
     this.id = id;
     return this;
@@ -53,10 +56,10 @@ public class LabelDTO   {
   }
 
   /**
-   * Get name
+   * 标签名
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "标签名")
 
 
   public String getName() {
@@ -73,10 +76,10 @@ public class LabelDTO   {
   }
 
   /**
-   * Get labelCode
+   * 标签代码，全系统唯一，且不可改
    * @return labelCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "标签代码，全系统唯一，且不可改")
 
 
   public String getLabelCode() {
@@ -93,10 +96,10 @@ public class LabelDTO   {
   }
 
   /**
-   * Get labelDeclare
+   * 描述标签
    * @return labelDeclare
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "描述标签")
 
 
   public String getLabelDeclare() {
@@ -105,6 +108,26 @@ public class LabelDTO   {
 
   public void setLabelDeclare(String labelDeclare) {
     this.labelDeclare = labelDeclare;
+  }
+
+  public LabelDTO labelImg(String labelImg) {
+    this.labelImg = labelImg;
+    return this;
+  }
+
+  /**
+   * 标签图片，暂不使用
+   * @return labelImg
+  **/
+  @ApiModelProperty(value = "标签图片，暂不使用")
+
+
+  public String getLabelImg() {
+    return labelImg;
+  }
+
+  public void setLabelImg(String labelImg) {
+    this.labelImg = labelImg;
   }
 
 
@@ -120,12 +143,13 @@ public class LabelDTO   {
     return Objects.equals(this.id, labelDTO.id) &&
         Objects.equals(this.name, labelDTO.name) &&
         Objects.equals(this.labelCode, labelDTO.labelCode) &&
-        Objects.equals(this.labelDeclare, labelDTO.labelDeclare);
+        Objects.equals(this.labelDeclare, labelDTO.labelDeclare) &&
+        Objects.equals(this.labelImg, labelDTO.labelImg);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, labelCode, labelDeclare);
+    return Objects.hash(id, name, labelCode, labelDeclare, labelImg);
   }
 
   @Override
@@ -137,6 +161,7 @@ public class LabelDTO   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    labelCode: ").append(toIndentedString(labelCode)).append("\n");
     sb.append("    labelDeclare: ").append(toIndentedString(labelDeclare)).append("\n");
+    sb.append("    labelImg: ").append(toIndentedString(labelImg)).append("\n");
     sb.append("}");
     return sb.toString();
   }

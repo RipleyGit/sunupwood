@@ -65,10 +65,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get rank
+   * 序号
    * @return rank
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "序号")
 
 
   public Integer getRank() {
@@ -85,10 +85,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get itemName
+   * 分类名
    * @return itemName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "分类名")
 
 
   public String getItemName() {
@@ -105,10 +105,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get itemImg
+   * 分类图片
    * @return itemImg
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "分类图片")
 
 
   public String getItemImg() {
@@ -125,10 +125,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get parentId
+   * 上级分类ID
    * @return parentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "上级分类ID")
 
 
   public String getParentId() {
@@ -145,10 +145,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get parentName
+   * 上级分类名
    * @return parentName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "上级分类名")
 
 
   public String getParentName() {
@@ -165,10 +165,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get itemDeclare
+   * 分类描述
    * @return itemDeclare
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "分类描述")
 
 
   public String getItemDeclare() {
@@ -185,10 +185,10 @@ public class ItemDTO   {
   }
 
   /**
-   * Get isRoot
+   * 是否是一级分类
    * @return isRoot
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "是否是一级分类")
 
 
   public Integer getIsRoot() {

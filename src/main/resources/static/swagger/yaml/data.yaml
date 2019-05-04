@@ -15,6 +15,8 @@ tags:
 
 - name: "File"
   description: "文件相关接口"
+- name: "Product"
+  description: "商品相关接口"
 schemes:
 - "http"
 produces:
@@ -256,8 +258,194 @@ paths:
             items:
               $ref: '#/definitions/ItemDTO'
           description: "获取分类列表"
-
+  /project/product/info:
+    post:
+      tags:
+        - "Product"
+      summary: "添加商品"
+      operationId: addProductInfo
+      parameters:
+        - in: body
+          name: productInfo
+          required: true
+          schema:
+            $ref: '#/definitions/ProductDTO'
+            required:
+              - name
+      responses:
+        200:
+          description: 添加成功
+    delete:
+      tags:
+        - "Product"
+      summary: 删除商品
+      operationId: deleteProducts
+      parameters:
+        - in: query
+          name: ids
+          required: true
+          type: array
+          items:
+            type: string
+      responses:
+        200:
+          description: 删除成功
+    put:
+      tags:
+        - "Product"
+      summary: 修改商品信息
+      operationId: modifyProductInfo
+      parameters:
+        - in: body
+          name: productInfo
+          schema:
+            $ref: '#/definitions/ProductDTO'
+            required:
+              - id
+              - name
+          required: true
+          description: id,name不能为空
+      responses:
+        200:
+          description: 修改完成
+    get:
+      tags:
+        - "Product"
+      summary: "获取商品列表"
+      operationId: getProducts
+      parameters:
+        - in: query
+          name: key
+          type: string
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDTO'
+          description: "商品列表"
+  /project/product/listbyItem:
+    get:
+      tags:
+        - "Product"
+      summary: 获取分类下的所有商品
+      operationId: queryListByItem
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+        - in: query
+          name: itemId
+          type: string
+          required: true
+          description: 必填 分类ID
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDTO'
+          description: "商品列表"
+  /project/product/listbyLabel:
+    get:
+      tags:
+        - "Product"
+      summary: 获取标签下的所有商品
+      operationId: queryListByLabel
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+        - in: query
+          name: labelId
+          type: string
+          required: true
+          description: 必填 标签ID
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDTO'
+          description: "商品列表"
 definitions:
+
+  ProductDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: string
+        description: "商品类型：1 普通商品，2整装商品"
+      name:
+        type: string
+        description: "商品名"
+      price:
+        type: string
+        description: "价格"
+      sales:
+        type: string
+        description: "销售量"
+      amount:
+        type: string
+        description: "数量"
+      measure:
+        type: string
+        description: "尺寸"
+      texture:
+        type: string
+        description: "材质，当商品为整装时，为整体特色"
+      productDeclare:
+        type: string
+        description: "商品描述"
+      imgUrls:
+        type: array
+        items:
+          type: string
+        description: "图片列表"
+      taobaoLink:
+        type: string
+        description: "淘宝链接"
+      itemId:
+        type: string
+        description: "分类ID"
+      labels:
+        type: array
+        items:
+          type: string
+        description: "标签列表"
+      createUser:
+        type: string
+        description: "创建人"
+      updateUser:
+        type: string
+        description: "更新人"
+      createTime:
+        type: string
+        description: "创建时间"
+      updateTime:
+        type: string
+        description: "更新时间"
+
   UserDTO:
     type: object
     properties:
@@ -275,10 +463,16 @@ definitions:
         type: string
       name:
         type: string
+        description: "标签名"
       labelCode:
         type: string
+        description: "标签代码，全系统唯一，且不可改"
       labelDeclare:
         type: string
+        description: "描述标签"
+      labelImg:
+        type: string
+        description: "标签图片，暂不使用"
 
   ItemDTO:
     type: object
@@ -287,15 +481,22 @@ definitions:
         type: string
       rank:
         type: integer
+        description: "序号"
       itemName:
         type: string
+        description: "分类名"
       itemImg:
         type: string
+        description: "分类图片"
       parentId:
         type: string
+        description: "上级分类ID"
       parentName:
         type: string
+        description: "上级分类名"
       itemDeclare:
         type: string
+        description: "分类描述"
       isRoot:
         type: integer
+        description: "是否是一级分类"

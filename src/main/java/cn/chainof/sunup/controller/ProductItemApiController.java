@@ -43,10 +43,12 @@ public class ProductItemApiController implements ProductItemApi {
         if (productItem != null) {
             throw new ClientException("该分类已存在");
         }
-        if (item.getIsRoot() != 0 && item.getParentId() == null) {
+        if (!Const.ONE.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {
-            item.setIsRoot(1);
+            item.setIsRoot(Const.ONE);
+        }else {
+            item.setIsRoot(Const.ZERO);
         }
         ProductItem newItem = AutoConvertUtil.autoConvertTo(item, ProductItem.class);
         newItem.setItemParent(item.getParentId());
@@ -131,10 +133,12 @@ public class ProductItemApiController implements ProductItemApi {
         if (productItem != null) {
             throw new ClientException("该分类已存在");
         }
-        if (item.getIsRoot() != 0 && item.getParentId() == null) {
+        if (!Const.ONE.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {
             item.setIsRoot(Const.ONE);
+        }else {
+            item.setIsRoot(Const.ZERO);
         }
         ProductItem updateItem = AutoConvertUtil.autoConvertTo(item, ProductItem.class);
         updateItem.setItemParent(item.getParentId());

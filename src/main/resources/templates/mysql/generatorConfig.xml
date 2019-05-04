@@ -32,7 +32,11 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="project_label" domainObjectName="ProjectLabel">
+<!--        <table tableName="project_label" domainObjectName="ProjectLabel">-->
+<!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
+<!--        </table>-->
+
+        <table tableName="product_info" domainObjectName="Product">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
 

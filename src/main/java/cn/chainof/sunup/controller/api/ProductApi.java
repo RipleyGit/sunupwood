@@ -80,6 +80,17 @@ public interface ProductApi {
     ResponseEntity<List<ProductDTO>> queryListByItem(@NotNull @ApiParam(value = "必填 分类ID", required = true) @Valid @RequestParam(value = "itemId", required = true) String itemId,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false) Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize);
 
 
+    @ApiOperation(value = "获取分类，标签下的所有商品", nickname = "queryListByItemLabel", notes = "", response = ProductDTO.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "Product", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "商品列表", response = ProductDTO.class, responseContainer = "List") })
+    @RequestMapping(value = "/project/product/listbyItemLabel",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ProductDTO>> queryListByItemLabel(@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false) Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,@ApiParam(value = "标签ID") @Valid @RequestParam(value = "labelId", required = false) String labelId,@ApiParam(value = "分类ID") @Valid @RequestParam(value = "itemId", required = false) String itemId);
+
+
     @ApiOperation(value = "获取标签下的所有商品", nickname = "queryListByLabel", notes = "", response = ProductDTO.class, responseContainer = "List", authorizations = {
         @Authorization(value = "token")
     }, tags={ "Product", })

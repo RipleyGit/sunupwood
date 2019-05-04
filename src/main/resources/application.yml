@@ -12,6 +12,21 @@ spring:
       multipart:
         max-file-size: 20MB
         max-request-size: 20MB
+  mail:
+    host: smtp.163.com
+    username: ripleyman@163.com
+    password: y123456u
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+    properties.mail.smtp.socketFactory.fallback: false
+    properties.mail.smtp.port: 994
+    properties.mail.smtp.socketFactory.port: 994
+    default-encoding: utf-8
+    from: ripleyman@163.com
+    to: 361732498@qq.com
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

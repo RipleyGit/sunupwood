@@ -16,4 +16,6 @@ public interface ProductService {
     List<Product> queryListByItem(String itemId, Integer pageIndex, Integer pageSize);
 
     List<Product> queryListByLabel(String labelId, Integer pageIndex, Integer pageSize);
+
+    List<Product> queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize);
 }

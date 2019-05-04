@@ -6,17 +6,17 @@ info:
 tags:
 - name: "User"
   description: "用户相关接口"
-
 - name: "Project"
   description: "项目全局相关接口"
-
 - name: "ProductItem"
   description: "商品分类相关接口"
-
 - name: "File"
   description: "文件相关接口"
 - name: "Product"
   description: "商品相关接口"
+- name: "Email"
+  description: "email接口"
+
 schemes:
 - "http"
 produces:
@@ -386,6 +386,65 @@ paths:
             items:
               $ref: '#/definitions/ProductDTO'
           description: "商品列表"
+
+  /project/product/listbyItemLabel:
+    get:
+      tags:
+        - "Product"
+      summary: 获取分类，标签下的所有商品
+      operationId: queryListByItemLabel
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+        - in: query
+          name: labelId
+          type: string
+          description: 标签ID
+        - in: query
+          name: itemId
+          type: string
+          description: 分类ID
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDTO'
+          description: "商品列表"
+
+  /project/email/sendMsg:
+    post:
+      tags:
+        - "Email"
+      summary: 发送邮件
+      operationId: sendEmailMsg
+      parameters:
+        - in: body
+          name: EmailMsgDTO
+          schema:
+            properties:
+              title:
+                type: string
+                description: "标题"
+              concent:
+                type: string
+                description: "内容"
+              email:
+                type: string
+                description: "联系方式"
+              code:
+                type: string
+                description: "代码"
+      responses:
+        200:
+          description: "发送成功"
+
 definitions:
 
   ProductDTO:

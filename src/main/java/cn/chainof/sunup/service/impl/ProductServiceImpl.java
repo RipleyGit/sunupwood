@@ -130,4 +130,20 @@ public class ProductServiceImpl implements ProductService {
         list = productMapper.selectByExample(example);
         return list;
     }
+
+    @Override
+    public List<Product> queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        ProductExample example = new ProductExample();
+        ProductExample.Criteria criteria = example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+        if (StringUtil.isNotEmpty(itemId)){
+            criteria.andItemIdEqualTo(itemId);
+        }
+        if (StringUtil.isNotEmpty(labelId)){
+            String like = "%" + labelId + "%";
+            criteria.andLabelsLike(like);
+        }
+        List<Product>  list= productMapper.selectByExample(example);
+        return list;
+    }
 }

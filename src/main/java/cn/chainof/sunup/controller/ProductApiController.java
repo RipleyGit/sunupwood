@@ -134,6 +134,35 @@ public class ProductApiController implements ProductApi {
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<List<ProductDTO>> queryListByItemLabel(@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false) Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,@ApiParam(value = "标签ID") @Valid @RequestParam(value = "labelId", required = false) String labelId,@ApiParam(value = "分类ID") @Valid @RequestParam(value = "itemId", required = false) String itemId){
+        pageIndex = pageIndex == null ? 0 : pageIndex;
+        pageSize = pageSize == null ? 10:pageSize;
+        List<Product> list = productService.queryListByItemLabel(itemId,labelId,pageIndex,pageSize);
+        List<ProductDTO> dtoList = new ArrayList<>();
+        for (Product product:list) {
+            ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
+            if (StringUtil.isNotEmpty(product.getImgUrls())){
+                List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
+                dto.setImgUrls(imgUrls);
+            }
+            if (StringUtil.isNotEmpty(product.getLabels())){
+                List<String> labels = JSON.parseArray(product.getLabels(), String.class);
+                dto.setLabels(labels);
+            }
+            if (product.getCreateTime() != null) {
+                dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
+            }
+            if (product.getUpdateTime()!=null) {
+                dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
+            }
+            dtoList.add(dto);
+        }
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+    }
+
 
     @Override
     public ResponseEntity<List<ProductDTO>> queryListByLabel(@NotNull @ApiParam(value = "必填 标签ID", required = true) @Valid @RequestParam(value = "labelId", required = true) String labelId,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false) Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize){

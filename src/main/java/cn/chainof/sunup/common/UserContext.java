@@ -1,10 +1,10 @@
 package cn.chainof.sunup.common;
 
-import cn.chainof.sunup.constant.Const;
 import cn.chainof.sunup.model.ProjectUser;
+import cn.chainof.sunup.constant.*;
+
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
-
 import java.io.Serializable;
 
 public class UserContext implements Serializable {

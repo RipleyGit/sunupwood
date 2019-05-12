@@ -3,6 +3,8 @@ package cn.chainof.sunup.controller;
 import cn.chainof.sunup.controller.api.ProjectOtherApi;
 import cn.chainof.sunup.controller.dto.data.EmailMsgDTO;
 import cn.chainof.sunup.exception.ClientException;
+import cn.chainof.sunup.model.ProjectUser;
+import cn.chainof.sunup.service.ProjectUserService;
 import cn.chainof.sunup.utils.KeyUtil;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -28,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -54,14 +57,18 @@ public class ProjectOtherApiController implements ProjectOtherApi {
     private String COS_IMGURL;
     private static final String PATH = "img/";
 
+    @Autowired
+    private ProjectUserService projectUserService;
+
     @Override
     public ResponseEntity<Void> sendEmailMsg(@ApiParam(value = ""  )  @Valid @RequestBody EmailMsgDTO emailMsgDTO){
 
+        List<ProjectUser> userList = projectUserService.queryList(0,10);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);
         message.setSubject(emailMsgDTO.getTitle());
-        message.setText(emailMsgDTO.getConcent()+"\n联系方式:"+emailMsgDTO.getEmail());
+        message.setText(emailMsgDTO.getConcent()+"\nEmail:"+emailMsgDTO.getEmail()+"\n手机号:"+emailMsgDTO.getPhone());
         mailSender.send(message);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.chainof.sunup.mapper.ProjectUserMapper">
-  <resultMap id="BaseResultMap" type="cn.chainof.sunup.model.ProjectUser">
+<mapper namespace="cn.chainof.sunup.mapper.ProjectModuleMapper">
+  <resultMap id="BaseResultMap" type="cn.chainof.sunup.model.ProjectModule">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="module" jdbcType="VARCHAR" property="module" />
+    <result column="keyword" jdbcType="VARCHAR" property="keyword" />
     <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.chainof.sunup.model.ProjectModule">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,16 +74,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, password, phone, email, is_deleted, create_user, update_user, create_time, 
-    update_time
+    id, intro, module, keyword, is_deleted, create_user, update_user, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.chainof.sunup.model.ProjectUserExample" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="cn.chainof.sunup.model.ProjectModuleExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from project_user
+    ,
+    <include refid="Blob_Column_List" />
+    from project_module
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,49 +95,62 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.chainof.sunup.model.ProjectModuleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from project_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
-    from project_user
+    ,
+    <include refid="Blob_Column_List" />
+    from project_module
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from project_user
+    delete from project_module
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.chainof.sunup.model.ProjectUserExample">
-    delete from project_user
+  <delete id="deleteByExample" parameterType="cn.chainof.sunup.model.ProjectModuleExample">
+    delete from project_module
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.chainof.sunup.model.ProjectUser">
-    insert into project_user (id, name, password, 
-      phone, email, is_deleted, 
-      create_user, update_user, create_time, 
-      update_time)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
-      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="cn.chainof.sunup.model.ProjectModule">
+    insert into project_module (id, intro, module, 
+      keyword, is_deleted, create_user, 
+      update_user, create_time, update_time, 
+      content)
+    values (#{id,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{module,jdbcType=VARCHAR}, 
+      #{keyword,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.chainof.sunup.model.ProjectUser">
-    insert into project_user
+  <insert id="insertSelective" parameterType="cn.chainof.sunup.model.ProjectModule">
+    insert into project_module
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="intro != null">
+        intro,
       </if>
-      <if test="password != null">
-        password,
+      <if test="module != null">
+        module,
       </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="email != null">
-        email,
+      <if test="keyword != null">
+        keyword,
       </if>
       <if test="isDeleted != null">
         is_deleted,
@@ -148,22 +167,22 @@
       <if test="updateTime != null">
         update_time,
       </if>
+      <if test="content != null">
+        content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="module != null">
+        #{module,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
+      <if test="keyword != null">
+        #{keyword,jdbcType=VARCHAR},
       </if>
       <if test="isDeleted != null">
         #{isDeleted,jdbcType=TINYINT},
@@ -180,31 +199,31 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.chainof.sunup.model.ProjectUserExample" resultType="java.lang.Long">
-    select count(*) from project_user
+  <select id="countByExample" parameterType="cn.chainof.sunup.model.ProjectModuleExample" resultType="java.lang.Long">
+    select count(*) from project_module
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update project_user
+    update project_module
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.intro != null">
+        intro = #{record.intro,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.module != null">
+        module = #{record.module,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.keyword != null">
+        keyword = #{record.keyword,jdbcType=VARCHAR},
       </if>
       <if test="record.isDeleted != null">
         is_deleted = #{record.isDeleted,jdbcType=TINYINT},
@@ -221,18 +240,36 @@
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
-    update project_user
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update project_module
     set id = #{record.id,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      module = #{record.module,jdbcType=VARCHAR},
+      keyword = #{record.keyword,jdbcType=VARCHAR},
+      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update project_module
+    set id = #{record.id,jdbcType=VARCHAR},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      module = #{record.module,jdbcType=VARCHAR},
+      keyword = #{record.keyword,jdbcType=VARCHAR},
       is_deleted = #{record.isDeleted,jdbcType=TINYINT},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
@@ -242,20 +279,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.chainof.sunup.model.ProjectUser">
-    update project_user
+  <update id="updateByPrimaryKeySelective" parameterType="cn.chainof.sunup.model.ProjectModule">
+    update project_module
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
+      <if test="module != null">
+        module = #{module,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
+      <if test="keyword != null">
+        keyword = #{keyword,jdbcType=VARCHAR},
       </if>
       <if test="isDeleted != null">
         is_deleted = #{isDeleted,jdbcType=TINYINT},
@@ -272,15 +306,30 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.chainof.sunup.model.ProjectUser">
-    update project_user
-    set name = #{name,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.chainof.sunup.model.ProjectModule">
+    update project_module
+    set intro = #{intro,jdbcType=VARCHAR},
+      module = #{module,jdbcType=VARCHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.chainof.sunup.model.ProjectModule">
+    update project_module
+    set intro = #{intro,jdbcType=VARCHAR},
+      module = #{module,jdbcType=VARCHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_user = #{updateUser,jdbcType=VARCHAR},

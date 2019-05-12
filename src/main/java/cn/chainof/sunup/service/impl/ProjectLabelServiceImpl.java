@@ -2,6 +2,7 @@ package cn.chainof.sunup.service.impl;
 
 import cn.chainof.sunup.common.UserContext;
 import cn.chainof.sunup.constant.Const;
+import cn.chainof.sunup.exception.ClientException;
 import cn.chainof.sunup.mapper.ProjectLabelMapper;
 import cn.chainof.sunup.model.ProjectLabel;
 import cn.chainof.sunup.model.ProjectLabelExample;
@@ -13,6 +14,8 @@ import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String addLable(ProjectLabel projectLabel) {
         Long id = KeyUtil.genUniqueKey();
         String labelId = String.valueOf(id);
@@ -51,13 +55,23 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public Integer deletedLabel(String labelId) {
         int delete = projectLabelMapper.deleteByPrimaryKey(labelId);
         return delete;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public ProjectLabel updateLabel(ProjectLabel label) {
+        ProjectLabelExample example = new ProjectLabelExample();
+        example.createCriteria().andNameEqualTo(label.getName())
+                .andIsDeletedEqualTo(Const.IS_NORMAL)
+                .andIdNotEqualTo(label.getId());
+        List<ProjectLabel> labels = projectLabelMapper.selectByExample(example);
+        if (labels != null && labels.size()>0){
+            throw new ClientException("该标签已经存在！");
+        }
         ProjectLabel projectLabel = projectLabelMapper.selectByPrimaryKey(label.getId());
         projectLabel.setName(label.getName());
         projectLabel.setLabelDeclare(label.getLabelDeclare());

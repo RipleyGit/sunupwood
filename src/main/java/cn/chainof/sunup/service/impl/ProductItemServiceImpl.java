@@ -3,6 +3,7 @@ package cn.chainof.sunup.service.impl;
 
 import cn.chainof.sunup.common.UserContext;
 import cn.chainof.sunup.constant.Const;
+import cn.chainof.sunup.exception.ClientException;
 import cn.chainof.sunup.mapper.ProductItemMapper;
 import cn.chainof.sunup.model.ProductItem;
 import cn.chainof.sunup.model.ProductItemExample;
@@ -14,6 +15,8 @@ import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String addItem(ProductItem newItem) {
         ProjectUser user = UserContext.getUserSession();
         if (newItem.getRank()==null){
@@ -62,7 +66,17 @@ public class ProductItemServiceImpl implements ProductItemService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String updateItem(ProductItem updateItem) {
+        ProductItemExample itemExample = new ProductItemExample();
+        itemExample.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL)
+                .andItemNameEqualTo(updateItem.getItemName())
+                .andIdNotEqualTo(updateItem.getId());
+        List<ProductItem> list = productItemMapper.selectByExample(itemExample);
+        if (list != null && list.size()>0){
+            throw new ClientException("该分类已存在");
+        }
+
         ProjectUser user = UserContext.getUserSession();
         if (updateItem.getRank()==null){
             ProductItemExample example = new ProductItemExample();
@@ -78,6 +92,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deletedItem(String id) {
         ProductItem productItem = productItemMapper.selectByPrimaryKey(id);
         productItem.setIsDeleted(Const.IS_DELETED);

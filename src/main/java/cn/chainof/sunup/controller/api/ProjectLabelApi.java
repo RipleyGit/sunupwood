@@ -22,12 +22,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 
-@Api(value = "Project", description = "the Project API")
+@Api(value = "ProjectLabel", description = "the ProjectLabel API")
 public interface ProjectLabelApi {
 
     @ApiOperation(value = "添加标签", nickname = "addLabel", notes = "", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Project", })
+    }, tags={ "ProjectLabel", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
     @RequestMapping(value = "/project/labels",
@@ -38,7 +38,7 @@ public interface ProjectLabelApi {
 
     @ApiOperation(value = "删除标签", nickname = "deletedLable", notes = "", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Project", })
+    }, tags={ "ProjectLabel", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
     @RequestMapping(value = "/project/labels",
@@ -49,7 +49,7 @@ public interface ProjectLabelApi {
 
     @ApiOperation(value = "获取标签列表", nickname = "getLabel", notes = "", response = LabelDTO.class, authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Project", })
+    }, tags={ "ProjectLabel", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success", response = LabelDTO.class) })
     @RequestMapping(value = "/project/labels",
@@ -60,7 +60,7 @@ public interface ProjectLabelApi {
 
     @ApiOperation(value = "获取标签列表", nickname = "getLabels", notes = "", response = LabelDTO.class, responseContainer = "List", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Project", })
+    }, tags={ "ProjectLabel", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success", response = LabelDTO.class, responseContainer = "List") })
     @RequestMapping(value = "/project/labelList",
@@ -71,7 +71,7 @@ public interface ProjectLabelApi {
 
     @ApiOperation(value = "修改标签", nickname = "modifyLabel", notes = "", authorizations = {
         @Authorization(value = "token")
-    }, tags={ "Project", })
+    }, tags={ "ProjectLabel", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success") })
     @RequestMapping(value = "/project/labels",

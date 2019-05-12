@@ -4,7 +4,7 @@ info:
   version: "1.0.0"
   title: "sunup"
 tags:
-- name: "User"
+- name: "ProjectUser"
   description: "用户相关接口"
 - name: "ProjectLabel"
   description: "项目全局相关接口"
@@ -16,6 +16,11 @@ tags:
   description: "商品相关接口"
 - name: "ProjectNews"
   description: "新闻中心"
+- name: "ProjectDesigner"
+  description: "设计师"
+- name: "ProjectBanner"
+  description: "Banner图管理"
+
 schemes:
 - "http"
 produces:
@@ -48,6 +53,9 @@ paths:
               email:
                 type: string
                 description: "联系方式"
+              phone:
+                type: string
+                description: "手机号码"
               code:
                 type: string
                 description: "代码"
@@ -79,10 +87,10 @@ paths:
 
 
 
-  /user/register:
+  /project/user/register:
     post:
       tags:
-        - "User"
+        - "ProjectUser"
       summary : "注册用户"
       operationId: "registerUser"
       parameters:
@@ -94,10 +102,10 @@ paths:
       responses:
         200:
           description: "success"
-  /user/login:
+  /project/user/login:
     post:
       tags:
-        - "User"
+        - "ProjectUser"
       summary: "用户登陆"
       operationId: "login"
       parameters:
@@ -105,22 +113,100 @@ paths:
           in:  body
           required: true
           schema:
-            $ref: '#/definitions/UserDTO'
-            required:
-              - name
-              - password
+            properties:
+              name:
+                type: string
+                description: 用户名
+              password:
+                type: string
+                description: 密码
       responses:
         200:
           description: "success"
-  /user/loginOut:
+  /project/user/loginOut:
     get:
       tags:
-        - "User"
+        - "ProjectUser"
       summary: "用户登出"
       operationId: "loginOut"
       responses:
         200:
           description: "success"
+
+  /project/user:
+    get:
+      tags:
+        - "ProjectUser"
+      summary: "获取用户信息"
+      operationId: getUser
+      parameters:
+        - in: query
+          name: id
+          type: string
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/UserDTO'
+          description: "用户列表"
+
+    delete:
+      summary: 删除用户
+      operationId: deleteById
+      tags:
+        - "ProjectUser"
+      parameters:
+        - in: query
+          type: string
+          name: id
+          description: 删除的ID
+      responses:
+        200:
+          description: "删除成功"
+    put:
+      tags:
+        - "ProjectUser"
+      summary: 修改用户信息（用户名不允许修改）
+      operationId: updateUser
+      parameters:
+        - name: "user"
+          in:  body
+          required: true
+          schema:
+            $ref: '#/definitions/UserDTO'
+
+      responses:
+        200:
+          description: "修改成功"
+
+
+  /project/user/queryList:
+    get:
+      tags:
+        - "ProjectUser"
+      summary: "获取用户列表"
+      operationId: getUserList
+      parameters:
+        - in: query
+          name: key
+          type: string
+          description: 关键字
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 10
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDTO'
+          description: "用户列表"
 
   /project/labels:
     get:
@@ -588,8 +674,233 @@ paths:
               $ref: '#/definitions/NewsDTO'
           description: "新闻内容信息"
 
+  /project/product/designer:
+    post:
+      summary: "添加设计师"
+      operationId: addDesigner
+      tags:
+        - "ProjectDesigner"
+      parameters:
+        - in: body
+          name: designerDto
+          schema:
+            $ref: '#/definitions/DesignerDTO'
+          required: true
+      responses:
+        200:
+          description: "新增成功"
+    delete:
+      tags:
+        - "ProjectDesigner"
+      summary: "删除设计师"
+      operationId: deleteById
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          description: "删除成功"
+    put:
+      tags:
+        - "ProjectDesigner"
+      summary: "修改设计师信息"
+      operationId: modifyDesignerInfo
+      parameters:
+        - in: body
+          name: designerDto
+          schema:
+            $ref: '#/definitions/DesignerDTO'
+          required: true
+      responses:
+        200:
+          description: "修改成功"
+    get:
+      tags:
+        - "ProjectDesigner"
+      summary: "查看设计师详细信息"
+      operationId: getDesignerInfo
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/DesignerDTO'
+          description: "设计师内容信息"
+  /project/product/designer/queryList:
+    get:
+      tags:
+        - "ProjectDesigner"
+      summary: "查看设计师列表"
+      operationId: getDesignerList
+      parameters:
+        - in: query
+          name: key
+          type: string
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 3
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DesignerDTO'
+          description: "设计师列表"
+  /project/product/designer/getReels:
+    get:
+      summary: 获取设计师作品列表
+      operationId: getReelsById
+      tags:
+        - "ProjectDesigner"
+      parameters:
+        - in: query
+          type: string
+          name: id
+          description: 设计师ID
+          required: true
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              type: string
+          description: 作品列表
+
+  /project/other/banner:
+    get:
+      summary: 获取banner图信息
+      operationId: getBannerById
+      tags:
+        - "ProjectBanner"
+      parameters:
+        - in: query
+          name: id
+          required: true
+          type: string
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/BannerDTO'
+          description: banner图内容
+    delete:
+      summary: 删除banner图信息
+      operationId: deleteBannerById
+      tags:
+        - "ProjectBanner"
+      parameters:
+        - in: query
+          name: id
+          required: true
+          type: string
+      responses:
+        200:
+          description: 删除成功
+    post:
+      summary: 新增banner图
+      operationId: addBanner
+      tags:
+        - "ProjectBanner"
+      parameters:
+        - in: body
+          name: banner
+          required: true
+          schema:
+            $ref: '#/definitions/BannerDTO'
+          description: 序号，图片必须有
+      responses:
+        200:
+          description: 新增成功
+    put:
+      summary: 新增banner图
+      operationId: updateBanner
+      tags:
+        - "ProjectBanner"
+      parameters:
+        - in: body
+          name: banner
+          required: true
+          schema:
+            $ref: '#/definitions/BannerDTO'
+      responses:
+        200:
+          description: 修改成功
+
+  /project/other/banner/queryList:
+    get:
+      tags:
+        - "ProjectBanner"
+      summary: "Banner图列表"
+      operationId: getBannerList
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 3
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BannerDTO'
+          description: "Banner图列表"
 
 definitions:
+
+  BannerDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+        description: 标题描述
+      imgUrl:
+        type: string
+        description: 图片地址
+      rank:
+        type: integer
+        description: 排序
+  DesignerDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+        description: 设计师名
+      sex:
+        type: string
+        description: 性别
+      age:
+        type: string
+        description: 年龄
+      introduce:
+        type: string
+        description: 个人介绍
+      imgReels:
+        type: array
+        items:
+          type: string
+        description: 设计师作品集图片列表
+
   NewsDTO:
     type: object
     properties:
@@ -684,12 +995,20 @@ definitions:
   UserDTO:
     type: object
     properties:
+      id:
+        type: string
       name:
         type: string
-        description: "用户名"
+        description: 用户名
       password:
         type: string
-        description: "用户密码"
+        description: 用户密码
+      email:
+          type: string
+          description: 邮箱
+      phone:
+          type: string
+          description: 手机号
 
   LabelDTO:
     type: object

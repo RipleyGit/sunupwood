@@ -13,6 +13,8 @@ import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,7 +24,9 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
 
     @Autowired
     private ProjectNewsMapper projectNewsMapper;
+
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String addProjectNews(ProjectNews news) {
         String newsId = String.valueOf(KeyUtil.genUniqueKey());
         news.setCreateTime(DateUtil.getCurrentDate());
@@ -32,6 +36,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String updateProjectNews(ProjectNews news) {
         String newsId = news.getId();
         ProjectNews projectNews = projectNewsMapper.selectByPrimaryKey(newsId);
@@ -44,6 +49,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deleteById(String id) {
         ProjectNews projectNews = projectNewsMapper.selectByPrimaryKey(id);
         projectNews.setIsDeleted(Const.IS_DELETED);

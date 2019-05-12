@@ -19,6 +19,20 @@ public class AutoConvertUtil {
         //构建目标对象
         try {
             T target = clazz.newInstance();
+            nullAutoFill(src,target);
+            return target;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void nullAutoFill(Object src,Object target){
+        if (src == null || target == null){
+            return ;
+        }
+        //构建目标对象
+        try {
             Map<String, Field> srcFieldMap = getAssignableFieldsMap(src);
             Map<String, Field> targetFieldMap = getAssignableFieldsMap(target);
             for (String srcFieldName : srcFieldMap.keySet()) {
@@ -44,12 +58,12 @@ public class AutoConvertUtil {
                 }
                 targetField.set(target, srcField.get(src));
             }
-            return target;
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
+
 
     private static Map<String, Field> getAssignableFieldsMap(Object obj) {
         if (obj == null) {

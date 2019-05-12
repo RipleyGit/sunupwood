@@ -3,16 +3,16 @@ package cn.chainof.sunup.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ProjectUser implements Serializable {
+public class ProjectDesigner implements Serializable {
     private String id;
 
     private String name;
 
-    private String password;
+    private String sex;
 
-    private String phone;
+    private String age;
 
-    private String email;
+    private String introduce;
 
     private Byte isDeleted;
 
@@ -23,6 +23,8 @@ public class ProjectUser implements Serializable {
     private Date createTime;
 
     private Date updateTime;
+
+    private String samplereels;
 
     private static final long serialVersionUID = 1L;
 
@@ -42,28 +44,28 @@ public class ProjectUser implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getSex() {
+        return sex;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public String getAge() {
+        return age;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setAge(String age) {
+        this.age = age == null ? null : age.trim();
     }
 
-    public String getEmail() {
-        return email;
+    public String getIntroduce() {
+        return introduce;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce == null ? null : introduce.trim();
     }
 
     public Byte getIsDeleted() {
@@ -106,6 +108,14 @@ public class ProjectUser implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public String getSamplereels() {
+        return samplereels;
+    }
+
+    public void setSamplereels(String samplereels) {
+        this.samplereels = samplereels == null ? null : samplereels.trim();
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -117,17 +127,18 @@ public class ProjectUser implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        ProjectUser other = (ProjectUser) that;
+        ProjectDesigner other = (ProjectDesigner) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
-            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
+            && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()))
+            && (this.getIntroduce() == null ? other.getIntroduce() == null : this.getIntroduce().equals(other.getIntroduce()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()))
             && (this.getCreateUser() == null ? other.getCreateUser() == null : this.getCreateUser().equals(other.getCreateUser()))
             && (this.getUpdateUser() == null ? other.getUpdateUser() == null : this.getUpdateUser().equals(other.getUpdateUser()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getSamplereels() == null ? other.getSamplereels() == null : this.getSamplereels().equals(other.getSamplereels()));
     }
 
     @Override
@@ -136,14 +147,15 @@ public class ProjectUser implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
-        result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
-        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
+        result = prime * result + ((getAge() == null) ? 0 : getAge().hashCode());
+        result = prime * result + ((getIntroduce() == null) ? 0 : getIntroduce().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         result = prime * result + ((getCreateUser() == null) ? 0 : getCreateUser().hashCode());
         result = prime * result + ((getUpdateUser() == null) ? 0 : getUpdateUser().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getSamplereels() == null) ? 0 : getSamplereels().hashCode());
         return result;
     }
 }

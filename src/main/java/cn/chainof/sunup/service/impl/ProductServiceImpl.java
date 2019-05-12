@@ -17,6 +17,8 @@ import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +38,17 @@ public class ProductServiceImpl implements ProductService {
     private ProjectLabelService projectLabelService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String addProductInfo(Product product) {
         String productId = String.valueOf(KeyUtil.genUniqueKey());
         product.setId(productId);
         product.setIsDeleted(Const.IS_NORMAL);
+        if (StringUtil.isEmpty(product.getImgUrls())){
+            product.setImgUrls("{}");
+        }
+        if (StringUtil.isEmpty(product.getLabels())){
+            product.setLabels("{}");
+        }
         product.setCreateTime(DateUtil.getCurrentDate());
         product.setCreateUser(UserContext.getUserSession().getName());
         productMapper.insertSelective(product);
@@ -47,6 +56,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public List<String> deleteProducts(List<String> ids) {
         ProductExample example = new ProductExample();
         example.createCriteria().andIdIn(ids);
@@ -89,6 +99,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String modifyProductInfo(Product product) {
         String productId = product.getId();
         Product pro = productMapper.selectByPrimaryKey(productId);

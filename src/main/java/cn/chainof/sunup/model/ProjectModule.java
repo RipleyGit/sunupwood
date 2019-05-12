@@ -3,16 +3,14 @@ package cn.chainof.sunup.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ProjectUser implements Serializable {
+public class ProjectModule implements Serializable {
     private String id;
 
-    private String name;
+    private String intro;
 
-    private String password;
+    private String module;
 
-    private String phone;
-
-    private String email;
+    private String keyword;
 
     private Byte isDeleted;
 
@@ -24,6 +22,8 @@ public class ProjectUser implements Serializable {
 
     private Date updateTime;
 
+    private String content;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -34,36 +34,28 @@ public class ProjectUser implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getIntro() {
+        return intro;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setIntro(String intro) {
+        this.intro = intro == null ? null : intro.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getModule() {
+        return module;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setModule(String module) {
+        this.module = module == null ? null : module.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setKeyword(String keyword) {
+        this.keyword = keyword == null ? null : keyword.trim();
     }
 
     public Byte getIsDeleted() {
@@ -106,6 +98,14 @@ public class ProjectUser implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -117,17 +117,17 @@ public class ProjectUser implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        ProjectUser other = (ProjectUser) that;
+        ProjectModule other = (ProjectModule) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
-            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getIntro() == null ? other.getIntro() == null : this.getIntro().equals(other.getIntro()))
+            && (this.getModule() == null ? other.getModule() == null : this.getModule().equals(other.getModule()))
+            && (this.getKeyword() == null ? other.getKeyword() == null : this.getKeyword().equals(other.getKeyword()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()))
             && (this.getCreateUser() == null ? other.getCreateUser() == null : this.getCreateUser().equals(other.getCreateUser()))
             && (this.getUpdateUser() == null ? other.getUpdateUser() == null : this.getUpdateUser().equals(other.getUpdateUser()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
     @Override
@@ -135,15 +135,15 @@ public class ProjectUser implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
-        result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
-        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getIntro() == null) ? 0 : getIntro().hashCode());
+        result = prime * result + ((getModule() == null) ? 0 : getModule().hashCode());
+        result = prime * result + ((getKeyword() == null) ? 0 : getKeyword().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         result = prime * result + ((getCreateUser() == null) ? 0 : getCreateUser().hashCode());
         result = prime * result + ((getUpdateUser() == null) ? 0 : getUpdateUser().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
 }

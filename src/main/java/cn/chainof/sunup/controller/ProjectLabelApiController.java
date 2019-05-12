@@ -95,10 +95,6 @@ public class ProjectLabelApiController implements ProjectLabelApi {
         if (labelById == null){
             throw new ClientException("该标签不存在！");
         }
-        ProjectLabel labelByName = projectLabelService.getLabelByName(label.getName());
-        if (labelByName != null){
-            throw new ClientException("该标签已存在！");
-        }
         labelById.setLabelDeclare(label.getLabelDeclare());
         labelById.setName(label.getName());
         projectLabelService.updateLabel(labelById);

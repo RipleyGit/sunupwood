@@ -8,4 +8,5 @@ public class Const {
     public static final Integer ONE = 1;
 
     public static final String LOGINED_KEY ="login";
+
 }

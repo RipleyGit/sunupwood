@@ -2,24 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55fe4665-c93e-46d1-b721-287b5c7a96a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectNewsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/ModuleConst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectBannerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectDesignerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BannerModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BaseModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/JacksonUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/EmailApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/FileApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/UserContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/UserContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/CookieConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/CookieConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/RedisConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/RedisConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/EmailApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/FileApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductItemApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductItemApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectLabelApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectLabelApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectLabelApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/UserApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/EmailMsgDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/EmailMsgDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/enums/CodeEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/enums/ResultEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/ClientException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/ClientException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/LoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/LoginException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/filter/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/filter/LoginFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectUserExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectUserExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/WebSocket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/AutoConvertUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/AutoConvertUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/CookieUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/CookieUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/EnumUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/KeyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/KeyUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/MathUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/MathUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/serializer/Date2LongSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/serializer/Date2LongSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ProjectUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProjectUserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/front.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mysql/generator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mysql/generator.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -64,119 +98,93 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="sell" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="90" column="64" selection-start-line="90" selection-start-column="64" selection-end-line="90" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-41">
+              <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
+        <entry file="file://$PROJECT_DIR$/doc/data.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="189" column="24" lean-forward="true" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
+            <state relative-caret-position="150">
+              <caret line="98" column="66" lean-forward="true" selection-start-line="98" selection-start-column="66" selection-end-line="98" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/mysql/generator.properties">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectNewsService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="275">
+              <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#662#663#0" expanded="true" />
-                <element signature="e#689#690#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="107" column="10" lean-forward="true" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-353">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6159#6160#0" expanded="true" />
-                <element signature="e#6218#6219#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="81">
+              <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectUserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-227">
-              <caret line="191" column="289" selection-start-line="191" selection-start-column="289" selection-end-line="191" selection-end-column="289" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="37" column="50" lean-forward="true" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+            <state relative-caret-position="129">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectUserApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectLabelApi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
+            <state relative-caret-position="102">
               <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/SwaggerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -186,8 +194,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit4 Test Class" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -203,6 +212,8 @@
       <find>m</find>
       <find>Project</find>
       <find>pageIndex</find>
+      <find>Blob_Column_List</find>
+      <find>UserDTO</find>
     </findStrings>
     <replaceStrings>
       <replace>ProductItem</replace>
@@ -216,57 +227,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/SessionCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/cache/SessionCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/interceptor/LoginAuthInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/dto/UserSession.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/S.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/SellerAuthorizeException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/LoginException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/UserApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatisGenerator/mysql/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductLabelService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductLabelServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/AutoConvertUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/filter/LoginFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/UserContext.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectLabelExample.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/CosClientTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/QcloudCosClient.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/QcloudCosClientTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/FileApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectLabelService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/FileApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/email/IMailService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/email/IMailServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/EmailController.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/email/IMailServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/email/MailUtil.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/email/MailUtilTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/swaggercodegen/SwaggerCodeGenUtil.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/EmailApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectNewsService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/mysql/generator.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/mapper/ProjectDesignerMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/AutoConvertUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/JacksonUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/ResultEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/utils/JacksonUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/TypeEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/ClassEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/TestEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/constant/Type.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/constant/TypeConst.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/constant/Const.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/type/BannerType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/type/TypeBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/UserContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/base/TypeBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ClientException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/ModuleConst.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BannerModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BannerModule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BaseModule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectDesignerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectBannerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/doc/data.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/UserApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" />
       </list>
     </option>
   </component>
@@ -324,8 +335,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="45" />
+    <option name="y" value="23" />
+    <option name="width" value="1395" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -343,6 +356,11 @@
             <path>
               <item name="sell" type="b2602c69:ProjectViewProjectNode" />
               <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -365,6 +383,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sunup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sunup" type="462c0819:PsiDirectoryNode" />
+              <item name="constant" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sell" type="b2602c69:ProjectViewProjectNode" />
@@ -374,6 +401,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sunup" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sunup" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sell" type="b2602c69:ProjectViewProjectNode" />
@@ -393,6 +430,92 @@
               <item name="sunup" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sunup" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="swagger" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="swagger" type="462c0819:PsiDirectoryNode" />
+              <item name="yaml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="swaggercodegen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -415,6 +538,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="database.console.LAST_STATE" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -425,6 +549,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cn.chainof.sunup.service" />
+      <recent name="cn.chainof.sunup.controller" />
+      <recent name="cn.chainof.sunup.common.interceptor" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="cn.chainof.sunup.common.email" />
       <recent name="cn.chainof.sunup.common" />
@@ -432,19 +561,16 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/mysql" />
-      <recent name="$PROJECT_DIR$/src/main/resources/mybatisGenerator" />
-      <recent name="$PROJECT_DIR$/src/main/resources/templaters" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.chainof.sunup" />
+      <recent name="cn.chainof.sunup.common" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.chainof.sunup.controller" />
+      <recent name="cn.chainof.sunup.common.base" />
+      <recent name="cn.chainof.sunup.service.type" />
       <recent name="cn.chainof.sunup.utils" />
       <recent name="cn.chainof.sunup.conf" />
-      <recent name="cn.chainof.sunup.exception" />
-      <recent name="swaggercodegen" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -453,9 +579,12 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/../sell/src/main/resources" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="cn.chainof.sunup.service" />
-      <recent name="cn.chainof.sunup.common.interceptor" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/mysql" />
+      <recent name="$PROJECT_DIR$/src/main/resources/mybatisGenerator" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templaters" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -550,9 +679,9 @@
     <list>
       <item itemvalue="Application.SwaggerCodeGenUtil" />
       <item itemvalue="JUnit.QcloudCosClientTest.test" />
-      <item itemvalue="Spring Boot.SunUpApplication" />
       <item itemvalue="JUnit.IMailServiceImplTest.test" />
       <item itemvalue="JUnit.MailUtilTest.test" />
+      <item itemvalue="Spring Boot.SunUpApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -576,7 +705,12 @@
       <updated>1556693980385</updated>
       <workItem from="1556693981705" duration="36966000" />
       <workItem from="1556841977399" duration="34618000" />
-      <workItem from="1556940206772" duration="27600000" />
+      <workItem from="1556940206772" duration="28751000" />
+      <workItem from="1557073845917" duration="1251000" />
+      <workItem from="1557216649235" duration="1427000" />
+      <workItem from="1557238597645" duration="852000" />
+      <workItem from="1557496474334" duration="14726000" />
+      <workItem from="1557587602430" duration="9721000" />
     </task>
     <servers />
   </component>
@@ -613,30 +747,30 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99184000" />
+    <option name="totallyTimeSpent" value="128312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4982079" visible="true" weight="0.3125894" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.3211731" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" sideWeight="0.5018587" side_tool="true" weight="0.3211731" />
       <window_info id="Image Layers" order="6" />
       <window_info id="Web" order="7" sideWeight="0.50179213" side_tool="true" weight="0.23319027" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32961586" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.16109046" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38785625" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.488228" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2267658" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Database Console" order="8" weight="0.32961586" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.2788104" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3667906" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.54522926" />
@@ -725,7 +859,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java</url>
-          <line>136</line>
+          <line>133</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
@@ -793,535 +927,332 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProductExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11175">
-          <caret line="1413" column="24" selection-start-line="1413" selection-start-column="24" selection-end-line="1413" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/EmailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/QcloudCosClientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="17" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/apache/repo/org/springframework/boot/spring-boot-starter-mail/2.0.5.RELEASE/spring-boot-starter-mail-2.0.5.RELEASE.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/com/sun/mail/javax.mail/1.6.2/javax.mail-1.6.2.jar!/com/sun/mail/util/MailLogger.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/ResultEnum.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/JsonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar!/javax/mail/URLName.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <element signature="e#5803#5804#0" expanded="true" />
-            <element signature="e#5835#5836#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/email/MailUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#164#165#0" expanded="true" />
-            <element signature="e#187#188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/email/MailUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="51" column="21" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1503#1707#0" expanded="true" />
-            <element signature="e#1706#1707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-test/5.0.9.RELEASE/spring-test-5.0.9.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunBeforeTestMethodCallbacks.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-test/5.0.9.RELEASE/spring-test-5.0.9.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestMethodCallbacks.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/TestEnum.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/CookieConstant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-test/5.0.9.RELEASE/spring-test-5.0.9.RELEASE.jar!/org/springframework/test/context/junit4/SpringJUnit4ClassRunner.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/RedisConstant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/exception/ClientException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        <state relative-caret-position="119">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectCommon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" selection-start-line="6" selection-end-line="22" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/constant/Type.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/type/BannerType.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/utils/EnumUtil.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/type/TypeBase.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/base/Base.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/base/TypeBase.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ClientException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/UserContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
-            <element signature="e#2111#2112#0" expanded="true" />
-            <element signature="e#2155#2156#0" expanded="true" />
-            <element signature="e#5951#6086#0" expanded="true" />
-            <element signature="e#6484#6648#0" expanded="true" />
-            <element signature="e#6647#6648#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-test/5.0.9.RELEASE/spring-test-5.0.9.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunBeforeTestClassCallbacks.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-test/5.0.9.RELEASE/spring-test-5.0.9.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestClassCallbacks.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="26" column="34" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar!/javax/mail/Service.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/email/IMailService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-context-support/5.0.9.RELEASE/spring-context-support-5.0.9.RELEASE.jar!/org/springframework/mail/SimpleMailMessage.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/AutoConvertUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="68">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="uml://MAVEN/cn.chainof.sunupwood:sunupwood:0.0.1-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>cn.chainof.sunupwood:sunupwood:0.0.1-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="" y="">cn.chainof.sunupwood:sunupwood:0.0.1-SNAPSHOT</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0/org.apache.logging.log4j:log4j-api:jar:2.10.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.yaml:snakeyaml:jar:1.19</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.12.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.12.Final/javax.validation:validation-api:jar:2.0.1.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.12.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE/org.springframework:spring-beans:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-aop:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-expression:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-test:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-test-autoconfigure:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/net.minidev:json-smart:jar:2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/net.minidev:json-smart:jar:2.3/net.minidev:accessors-smart:jar:1.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/net.minidev:json-smart:jar:2.3/net.minidev:accessors-smart:jar:1.2/org.ow2.asm:asm:jar:5.0.4</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/junit:junit:jar:4.12</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.assertj:assertj-core:jar:3.9.1</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.mockito:mockito-core:jar:2.15.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.mockito:mockito-core:jar:2.15.0/net.bytebuddy:byte-buddy:jar:1.7.11</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.mockito:mockito-core:jar:2.15.0/net.bytebuddy:byte-buddy-agent:jar:1.7.11</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.mockito:mockito-core:jar:2.15.0/org.objenesis:objenesis:jar:2.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.hamcrest:hamcrest-core:jar:1.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.hamcrest:hamcrest-library:jar:1.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.skyscreamer:jsonassert:jar:1.5.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.skyscreamer:jsonassert:jar:1.5.0/com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE/org.springframework:spring-jcl:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.springframework:spring-test:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.0.5.RELEASE/org.xmlunit:xmlunit-core:jar:2.5.1</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/com.zaxxer:HikariCP:jar:2.7.9</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE/org.springframework:spring-tx:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.2</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis:mybatis:jar:3.4.6</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis:mybatis-spring:jar:1.3.2</node>
-            <node x="" y="">com.github.pagehelper:pagehelper-spring-boot-starter:jar:1.2.10</node>
-            <node x="" y="">com.github.pagehelper:pagehelper-spring-boot-starter:jar:1.2.10/com.github.pagehelper:pagehelper-spring-boot-autoconfigure:jar:1.2.10</node>
-            <node x="" y="">com.github.pagehelper:pagehelper-spring-boot-starter:jar:1.2.10/com.github.pagehelper:pagehelper:jar:5.1.8</node>
-            <node x="" y="">com.github.pagehelper:pagehelper-spring-boot-starter:jar:1.2.10/com.github.pagehelper:pagehelper:jar:5.1.8/com.github.jsqlparser:jsqlparser:jar:1.2</node>
-            <node x="" y="">mysql:mysql-connector-java:jar:5.1.47</node>
-            <node x="" y="">org.projectlombok:lombok:jar:1.16.18</node>
-            <node x="" y="">com.google.code.gson:gson:jar:2.8.5</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.swagger:swagger-annotations:jar:1.5.13</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.swagger:swagger-models:jar:1.5.13</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.swagger:swagger-models:jar:1.5.13/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-spi:jar:2.7.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-spi:jar:2.7.0/io.springfox:springfox-core:jar:2.7.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-schema:jar:2.7.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-swagger-common:jar:2.7.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-spring-web:jar:2.7.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-spring-web:jar:2.7.0/org.reflections:reflections:jar:0.9.11</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-spring-web:jar:2.7.0/org.reflections:reflections:jar:0.9.11/com.google.guava:guava:jar:20.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/io.springfox:springfox-spring-web:jar:2.7.0/org.reflections:reflections:jar:0.9.11/org.javassist:javassist:jar:3.21.0-GA</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/com.google.guava:guava:jar:18.0</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/com.fasterxml:classmate:jar:1.3.4</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/org.slf4j:slf4j-api:jar:1.7.25</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE</node>
-            <node x="" y="">io.springfox:springfox-swagger2:jar:2.7.0/org.mapstruct:mapstruct:jar:1.1.0.Final</node>
-            <node x="" y="">io.springfox:springfox-swagger-ui:jar:2.7.0</node>
-            <node x="" y="">io.swagger:swagger-codegen-cli:jar:2.3.1</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/org.apache.httpcomponents:httpclient:jar:4.5.6</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/org.apache.httpcomponents:httpclient:jar:4.5.6/org.apache.httpcomponents:httpcore:jar:4.4.10</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/org.slf4j:slf4j-log4j12:jar:1.7.25</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/org.slf4j:slf4j-log4j12:jar:1.7.25/log4j:log4j:jar:1.2.17</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/commons-codec:commons-codec:jar:1.11</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/joda-time:joda-time:jar:2.9.9</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-core:jar:2.9.6</node>
-            <node x="" y="">com.qcloud:cos_api:jar:5.5.2/org.bouncycastle:bcprov-jdk15on:jar:1.59</node>
-            <node x="" y="">com.alibaba:fastjson:jar:1.2.56</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-mail:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-mail:jar:2.0.5.RELEASE/org.springframework:spring-context:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-mail:jar:2.0.5.RELEASE/org.springframework:spring-context-support:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-mail:jar:2.0.5.RELEASE/com.sun.mail:javax.mail:jar:1.6.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-mail:jar:2.0.5.RELEASE/com.sun.mail:javax.mail:jar:1.6.2/javax.activation:activation:jar:1.1</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.09934031819945673" x="4123.9453125" y="3795.1015625000005" />
-          <SelectedNodes />
-          <Categories />
-          <VISIBILITY>All</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-test/5.0.9.RELEASE/spring-test-5.0.9.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestExecutionCallbacks.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/utils/JacksonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        <state relative-caret-position="629">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/swaggercodegen/SwaggerCodeGenUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/apache/repo/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar!/com/sun/mail/util/TraceInputStream.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="20" />
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/com/sun/mail/javax.mail/1.6.2/javax.mail-1.6.2.jar!/com/sun/mail/util/TraceInputStream.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/ModuleConst.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/EmailApi.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="35" column="107" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="107" />
+        <state relative-caret-position="276">
+          <caret line="22" column="28" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="22" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/email/IMailServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BaseModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="34" selection-end-column="33" />
+        <state relative-caret-position="230">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-context-support/5.0.9.RELEASE/spring-context-support-5.0.9.RELEASE.jar!/org/springframework/mail/javamail/JavaMailSenderImpl.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectDesignerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="306" selection-start-line="306" selection-end-line="306" />
+        <state relative-caret-position="264">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/apache/repo/com/sun/mail/javax.mail/1.6.2/javax.mail-1.6.2.jar!/com/sun/mail/smtp/SMTPTransport.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="378" selection-start-line="378" selection-end-line="378" />
+        <state relative-caret-position="130">
+          <caret line="92" column="19" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/chainof/sunup/common/email/IMailServiceImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductItemApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="57" column="150" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectOtherApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/EmailApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="42" column="5" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/FileApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="102" column="5" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="102" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectNewsApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="79" column="115" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="67" column="60" lean-forward="true" selection-start-line="65" selection-start-column="8" selection-end-line="67" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="101" column="180" selection-start-line="101" selection-start-column="164" selection-end-line="101" selection-end-column="180" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-227">
-          <caret line="191" column="289" selection-start-line="191" selection-start-column="289" selection-end-line="191" selection-end-column="289" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="90" column="64" selection-start-line="90" selection-start-column="64" selection-end-line="90" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="189" column="24" lean-forward="true" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectLabelApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="37" column="50" lean-forward="true" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectNewsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-353">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state relative-caret-position="2268">
+          <caret line="136" column="49" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6159#6160#0" expanded="true" />
-            <element signature="e#6218#6219#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/swaggercodegen/SwaggerCodeGenUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="107" column="60" lean-forward="true" selection-start-line="105" selection-start-column="8" selection-end-line="107" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BannerModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectBannerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="102" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectBannerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/EmailMsgDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="65" column="52" lean-forward="true" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
+        <state relative-caret-position="78">
+          <caret line="68" column="51" lean-forward="true" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="81" column="64" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="98" column="66" lean-forward="true" selection-start-line="98" selection-start-column="66" selection-end-line="98" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/mysql/generator.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/SwaggerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/DefaultApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-124">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-41">
+          <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectUserApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="107" column="10" lean-forward="true" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
         </state>
       </provider>
     </entry>

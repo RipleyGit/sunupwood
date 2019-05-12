@@ -10,47 +10,18 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * UserDTO
+ * User
  */
 @Validated
 
-public class UserDTO   {
-  @JsonProperty("id")
-  private String id = null;
-
+public class User   {
   @JsonProperty("name")
   private String name = null;
 
   @JsonProperty("password")
   private String password = null;
 
-  @JsonProperty("email")
-  private String email = null;
-
-  @JsonProperty("phone")
-  private String phone = null;
-
-  public UserDTO id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public UserDTO name(String name) {
+  public User name(String name) {
     this.name = name;
     return this;
   }
@@ -70,16 +41,16 @@ public class UserDTO   {
     this.name = name;
   }
 
-  public UserDTO password(String password) {
+  public User password(String password) {
     this.password = password;
     return this;
   }
 
   /**
-   * 用户密码
+   * 密码
    * @return password
   **/
-  @ApiModelProperty(value = "用户密码")
+  @ApiModelProperty(value = "密码")
 
 
   public String getPassword() {
@@ -88,46 +59,6 @@ public class UserDTO   {
 
   public void setPassword(String password) {
     this.password = password;
-  }
-
-  public UserDTO email(String email) {
-    this.email = email;
-    return this;
-  }
-
-  /**
-   * 邮箱
-   * @return email
-  **/
-  @ApiModelProperty(value = "邮箱")
-
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public UserDTO phone(String phone) {
-    this.phone = phone;
-    return this;
-  }
-
-  /**
-   * 手机号
-   * @return phone
-  **/
-  @ApiModelProperty(value = "手机号")
-
-
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
   }
 
 
@@ -139,29 +70,23 @@ public class UserDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserDTO userDTO = (UserDTO) o;
-    return Objects.equals(this.id, userDTO.id) &&
-        Objects.equals(this.name, userDTO.name) &&
-        Objects.equals(this.password, userDTO.password) &&
-        Objects.equals(this.email, userDTO.email) &&
-        Objects.equals(this.phone, userDTO.phone);
+    User user = (User) o;
+    return Objects.equals(this.name, user.name) &&
+        Objects.equals(this.password, user.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, password, email, phone);
+    return Objects.hash(name, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserDTO {\n");
+    sb.append("class User {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("}");
     return sb.toString();
   }

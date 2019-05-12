@@ -145,10 +145,6 @@ public class ProductItemApiController implements ProductItemApi {
         if (item == null || StringUtil.isEmpty(item.getId())|| StringUtil.isEmpty(item.getItemName())){
             throw new ClientException("修改的分类不能为空！");
         }
-        ProductItem productItem = productItemService.getItemByName(item.getItemName(),item.getParentId());
-        if (productItem != null) {
-            throw new ClientException("该分类已存在");
-        }
         if (!Const.ONE.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {

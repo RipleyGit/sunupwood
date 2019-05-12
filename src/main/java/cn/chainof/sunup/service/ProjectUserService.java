@@ -15,4 +15,10 @@ public interface ProjectUserService {
     String addNewUser(ProjectUser projectUser);
 
     String updateUser(ProjectUser projectUser);
+
+    List<ProjectUser> queryList(String key, Integer pageIndex, Integer pageSize1);
+
+    ProjectUser getUserById(String id);
+
+    String deletedById(String id);
 }

@@ -25,6 +25,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin
 public class ProjectBannerApiController implements ProjectBannerApi {
 
     @Autowired

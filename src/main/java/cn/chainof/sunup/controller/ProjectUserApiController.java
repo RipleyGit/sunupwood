@@ -16,15 +16,18 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
 
 
-@RestController
 @Slf4j
+@CrossOrigin
+@RestController
 public class ProjectUserApiController implements ProjectUserApi {
 
     @Autowired
@@ -49,7 +52,7 @@ public class ProjectUserApiController implements ProjectUserApi {
     }
 
     @Override
-    public ResponseEntity<Void> updateUser(@Valid UserDTO user) {
+    public ResponseEntity<Void> updateUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserDTO user) {
         if (user.getName().length()>10){
             throw new ClientException("用户名长度不能超过10个字符");
         }
@@ -65,28 +68,33 @@ public class ProjectUserApiController implements ProjectUserApi {
 
 
     @Override
-    public ResponseEntity<Void> deleteById(@Valid String id) {
+    public ResponseEntity<Void> deleteById(@ApiParam(value = "删除的ID") @Valid @RequestParam(value = "id", required = false) String id){
+        projectUserService.deletedById(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<UserDTO> getUser(@Valid String id) {
+    public ResponseEntity<UserDTO> getUser(@ApiParam(value = "") @Valid @RequestParam(value = "id", required = false) String id){
+        ProjectUser user = projectUserService.getUserById(id);
+        UserDTO dto = AutoConvertUtil.autoConvertTo(user, UserDTO.class);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(dto,headers, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<UserDTO>> getUserList(@Valid String key, @Valid Integer pageIndex, @Valid Integer pageSize) {
+    public ResponseEntity<List<UserDTO>> getUserList(@ApiParam(value = "关键字") @Valid @RequestParam(value = "key", required = false) String key,@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "10") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="10") Integer pageSize){
+        List<ProjectUser> userList = projectUserService.queryList(key,pageIndex,pageSize);
+        List<UserDTO> dtoList = AutoConvertUtil.convert2List(userList, UserDTO.class);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Void> login(@Valid User user) {
+    public ResponseEntity<Void> login(@ApiParam(value = "" ,required=true )  @Valid @RequestBody User user){
         if (StringUtil.isEmpty(user.getName())|| StringUtil.isEmpty(user.getPassword())){
             throw new ClientException("用户名和密码不能为空");
         }

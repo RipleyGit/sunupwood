@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Data
-public class BannerModule extends BaseModule {
+public class BannerModule {
     private Integer rank;
     private String title;
     private String imgUrl;

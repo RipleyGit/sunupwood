@@ -11,6 +11,7 @@ import cn.chainof.sunup.utils.AutoConvertUtil;
 import cn.chainof.sunup.utils.DateUtil;
 import cn.chainof.sunup.utils.KeyUtil;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,11 +99,54 @@ public class ProjectUserServiceImpl implements ProjectUserService {
             throw new ClientException("用户名已存在！");
         }
         ProjectUser user = projectUserMapper.selectByPrimaryKey(projectUser.getId());
-        AutoConvertUtil.nullAutoFill(user,projectUser);
-        projectUser.setUpdateTime(DateUtil.getCurrentDate());
-        projectUser.setUpdateUser(UserContext.getUserSession().getName());
+        if (user != null) {
+            AutoConvertUtil.nullAutoFill(user,projectUser);
+            projectUser.setUpdateTime(DateUtil.getCurrentDate());
+            projectUser.setUpdateUser(UserContext.getUserSession().getName());
+        }else {
+            throw new ClientException("用户不存在！");
+        }
         return projectUser.getId();
 
+    }
+
+    @Override
+    public List<ProjectUser> queryList(String key, Integer pageIndex, Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        ProjectUserExample example = new ProjectUserExample();
+        example.setOrderByClause("create_time DESC");
+        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+        if (StringUtil.isNotEmpty(key)){
+            String like = "%" + key + "%";
+            ProjectUserExample.Criteria nameLike = example.createCriteria().andNameLike(like);
+            example.or(nameLike);
+            ProjectUserExample.Criteria emailLike = example.createCriteria().andEmailLike(like);
+            example.or(emailLike);
+            ProjectUserExample.Criteria phoneLike = example.createCriteria().andPhoneLike(like);
+            example.or(phoneLike);
+        }
+        List<ProjectUser> list = projectUserMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public ProjectUser getUserById(String id) {
+        return projectUserMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
+    public String deletedById(String id) {
+        ProjectUser user = projectUserMapper.selectByPrimaryKey(id);
+        if (user != null) {
+            user.setIsDeleted(Const.IS_DELETED);
+            user.setUpdateTime(DateUtil.getCurrentDate());
+            user.setUpdateUser(UserContext.getUserSession().getName());
+            projectUserMapper.updateByPrimaryKeySelective(user);
+        }else {
+            throw new ClientException("用户不存在！");
+        }
+        return id;
     }
 
 

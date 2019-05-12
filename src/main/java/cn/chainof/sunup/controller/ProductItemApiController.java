@@ -15,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@CrossOrigin
 @RestController
 public class ProductItemApiController implements ProductItemApi {
 
@@ -43,7 +45,7 @@ public class ProductItemApiController implements ProductItemApi {
         if (productItem != null) {
             throw new ClientException("该分类已存在");
         }
-        if (!Const.ONE.equals(item.getIsRoot()) && item.getParentId() == null) {
+        if (Const.ZERO.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {
             item.setIsRoot(Const.ONE);
@@ -134,7 +136,12 @@ public class ProductItemApiController implements ProductItemApi {
     @Override
     public ResponseEntity<List<ItemDTO>> getRootItems() {
         List<ProductItem> list = productItemService.getRootItems();
-        List<ItemDTO> dtoList = AutoConvertUtil.convert2List(list,ItemDTO.class);
+        List<ItemDTO> dtoList = new ArrayList<>();
+        for (ProductItem item:list) {
+            ItemDTO dto = AutoConvertUtil.autoConvertTo(item, ItemDTO.class);
+            dto.setIsRoot(item.getIsRoot().intValue());
+            dtoList.add(dto);
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
@@ -142,10 +149,10 @@ public class ProductItemApiController implements ProductItemApi {
 
     @Override
     public ResponseEntity<Void> modifyItem(@ApiParam(value = "", required = true) @Valid @RequestBody ItemDTO item) {
-        if (item == null || StringUtil.isEmpty(item.getId())|| StringUtil.isEmpty(item.getItemName())){
+        if (item == null || StringUtil.isEmpty(item.getId())){
             throw new ClientException("修改的分类不能为空！");
         }
-        if (!Const.ONE.equals(item.getIsRoot()) && item.getParentId() == null) {
+        if (Const.ZERO.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {
             item.setIsRoot(Const.ONE);

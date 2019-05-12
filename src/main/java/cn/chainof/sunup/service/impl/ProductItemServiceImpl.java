@@ -125,7 +125,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     public List<ProductItem> getRootItems() {
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andIsRootEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andIsRootEqualTo(Const.ONE.byteValue());
         return productItemMapper.selectByExample(example);
     }
 

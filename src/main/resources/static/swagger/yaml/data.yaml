@@ -165,7 +165,7 @@ paths:
     put:
       tags:
         - "ProjectUser"
-      summary: 修改用户信息（用户名不允许修改）
+      summary: 修改用户信息
       operationId: updateUser
       parameters:
         - name: "user"
@@ -212,12 +212,13 @@ paths:
     get:
       tags:
         - "ProjectLabel"
-      summary: "获取标签列表"
+      summary: "获取标签"
       operationId: "getLabel"
       parameters:
         - in: query
           name: id
           type: string
+          required: true
       responses:
         200:
           description: "success"

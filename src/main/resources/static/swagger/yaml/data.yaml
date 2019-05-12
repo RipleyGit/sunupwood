@@ -20,6 +20,12 @@ tags:
   description: "设计师"
 - name: "ProjectBanner"
   description: "Banner图管理"
+- name: "ProductDesign"
+  description: "产品设计"
+- name: "AdornDesign"
+  description: "装饰设计"
+- name: "AdornDesign"
+  description: "装饰设计"
 
 schemes:
 - "http"
@@ -237,7 +243,6 @@ paths:
             $ref: '#/definitions/LabelDTO'
             required:
               - name
-              - labelCode
       responses:
           200:
             description: "success"
@@ -862,9 +867,221 @@ paths:
             items:
               $ref: '#/definitions/BannerDTO'
           description: "Banner图列表"
+  /project/design/adorn:
+    post:
+      summary: 装饰设计-添加
+      tags:
+        - "AdornDesign"
+      operationId: addAdorn
+      parameters:
+        - in: body
+          name: adornDto
+          required: true
+          description: 装饰设计内容
+          schema:
+            $ref: '#/definitions/AdornDesignDTO'
+            required:
+              - name
+      responses:
+        200:
+          description: 添加成功
+    put:
+      tags:
+        - "AdornDesign"
+      summary: 修改装饰设计内容
+      operationId: updateAdorn
+      parameters:
+        - in: body
+          name: adornDto
+          required: true
+          description: 装饰设计内容
+          schema:
+            $ref: '#/definitions/AdornDesignDTO'
+            required:
+              - name
+      responses:
+        200:
+          description: 修改成功
+    delete:
+      tags:
+        - "AdornDesign"
+      summary: 删除装饰内容
+      operationId: deleteById
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+
+      responses:
+        200:
+          description: 删除成功
+    get:
+      tags:
+        - "AdornDesign"
+      summary: 装饰设计内容信息
+      operationId: getAdornInfo
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+          description: 唯一ID
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/AdornDesignDTO'
+          description: "获取成功"
+  /project/design/adorn/queryList:
+    get:
+      tags:
+        - "AdornDesign"
+      summary: 获取装饰内容列表
+      operationId: queryAdornList
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 3
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AdornDesignDTO'
+          description: "装饰内容列表"
+
+  /project/design/product:
+    post:
+      summary: 产品设计-添加
+      tags:
+        - "ProductDesign"
+      operationId: addProductDesign
+      parameters:
+        - in: body
+          name: productDto
+          required: true
+          description: 产品设计内容
+          schema:
+            $ref: '#/definitions/ProductDesignDTO'
+      responses:
+        200:
+          description: 添加成功
+    put:
+      tags:
+        - "ProductDesign"
+      summary: 修改装饰设计内容
+      operationId: updateProductDesign
+      parameters:
+        - in: body
+          name: designDto
+          required: true
+          description: 产品设计内容
+          schema:
+            $ref: '#/definitions/ProductDesignDTO'
+      responses:
+        200:
+          description: 修改成功
+    delete:
+      tags:
+        - "ProductDesign"
+      summary: 删除装饰内容
+      operationId: deleteById
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          description: 删除成功
+    get:
+      tags:
+        - "ProductDesign"
+      summary: 产品设计内容信息
+      operationId: getProductDesignDTOInfo
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+          description: 唯一ID
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/ProductDesignDTO'
+          description: "获取成功"
+  /project/design/product/queryList:
+    get:
+      tags:
+        - "ProductDesign"
+      summary: 获取产品内容列表
+      operationId: queryProductList
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 5
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDesignDTO'
+          description: "产品设计内容列表"
 
 definitions:
+  AdornDesignDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+        description:  描述
+      lordImg:
+        type: string
+        description: 主图
+      imgUrls:
+        type: array
+        items:
+          type: string
+          description: 图片集
 
+  ProductDesignDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+        description: 中文描述
+      egName:
+        type: string
+        description: 英文描述
+      lordImg:
+        type: string
+        description: 主图
+      isLarge:
+        type: integer
+        description: 是否是大图
+      imgUrls:
+        type: array
+        items:
+          type: string
+          description: 图片集
   BannerDTO:
     type: object
     properties:

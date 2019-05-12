@@ -92,7 +92,7 @@ public interface ProjectUserApi {
     ResponseEntity<Void> registerUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserDTO user);
 
 
-    @ApiOperation(value = "修改用户信息（用户名不允许修改）", nickname = "updateUser", notes = "", authorizations = {
+    @ApiOperation(value = "修改用户信息", nickname = "updateUser", notes = "", authorizations = {
         @Authorization(value = "token")
     }, tags={ "ProjectUser", })
     @ApiResponses(value = { 

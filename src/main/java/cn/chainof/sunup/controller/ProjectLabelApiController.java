@@ -33,8 +33,8 @@ public class ProjectLabelApiController implements ProjectLabelApi {
 
     @Override
     public ResponseEntity<Void> addLabel(@ApiParam(value = "" ,required=true )  @Valid @RequestBody LabelDTO label){
-        if (StringUtil.isEmpty(label.getName())||StringUtil.isEmpty(label.getLabelCode())){
-            throw new ClientException("标签名或代码不能为空！");
+        if (StringUtil.isEmpty(label.getName())){
+            throw new ClientException("标签名不能为空！");
         }
         if (label.getName().length() >25){
             throw new ClientException("标签名不能过长！");

@@ -69,7 +69,7 @@ public class AdornDesignServiceImpl implements AdornDesignService {
         ProjectModuleExample example = new ProjectModuleExample();
         example.createCriteria().andModuleEqualTo(ModuleConst.ADORNDESIGN)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
-        List<ProjectModule> moduleList = projectModuleMapper.selectByExample(example);
+        List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
         List<AdornDesignDTO> dtoList = new ArrayList<>();
         for (ProjectModule module:moduleList) {
             AdornDesignDTO dto = getProductDesignDTO(module);

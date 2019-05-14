@@ -3,10 +3,8 @@ package cn.chainof.sunup.mapper;
 import cn.chainof.sunup.model.ProjectDesigner;
 import cn.chainof.sunup.model.ProjectDesignerExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-@Mapper
+
 public interface ProjectDesignerMapper {
     long countByExample(ProjectDesignerExample example);
 

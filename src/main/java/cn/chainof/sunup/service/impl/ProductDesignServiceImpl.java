@@ -59,7 +59,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         ProjectModuleExample example = new ProjectModuleExample();
         example.createCriteria().andModuleEqualTo(ModuleConst.PRODUCTDESIGN)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
-        List<ProjectModule> moduleList = projectModuleMapper.selectByExample(example);
+        List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
         List<ProductDesignDTO> dtoList = new ArrayList<>();
         for (ProjectModule module:moduleList) {
             ProductDesignDTO dto = getProductDesignDTO(module);
@@ -97,6 +97,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         ProductDesignModule module = new ProductDesignModule();
         module.setEgName(productDto.getEgName());
         module.setName(productDto.getName());
+        module.setLordImg(productDto.getLordImg());
         module.setIsLarge(productDto.getIsLarge());
         module.setImgUrls(productDto.getImgUrls());
         bannerModule.setContent(JSON.toJSONString(module));

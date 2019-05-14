@@ -38,9 +38,9 @@ public class ProjectDesignerApiController implements ProjectDesignerApi {
     @Override
     public ResponseEntity<Void> addDesigner(@ApiParam(value = "", required = true) @Valid @RequestBody DesignerDTO designerDto){
 
-        if (StringUtil.isEmpty(designerDto.getName())){
-            log.error("设计师名称不能为空");
-            throw new ClientException("设计师名称不能为空");
+        if (StringUtil.isEmpty(designerDto.getName())||StringUtil.isEmpty(designerDto.getPhoto())){
+            log.error("设计师名称和头像不能为空");
+            throw new ClientException("设计师名称和头像不能为空");
         }
         ProjectDesigner newDesigner = AutoConvertUtil.autoConvertTo(designerDto, ProjectDesigner.class);
         newDesigner.setSamplereels(JSON.toJSONString(designerDto.getImgReels()));
@@ -92,9 +92,9 @@ public class ProjectDesignerApiController implements ProjectDesignerApi {
             log.error("修改ID不能为空");
             throw new ClientException("修改ID不能为空");
         }
-        if (StringUtil.isEmpty(designerDto.getName())){
-            log.error("设计师名称不能为空");
-            throw new ClientException("设计师名称不能为空");
+        if (StringUtil.isEmpty(designerDto.getName())||StringUtil.isEmpty(designerDto.getPhoto())){
+            log.error("设计师名称和头像不能为空");
+            throw new ClientException("设计师名称和头像不能为空");
         }
         ProjectDesigner designer = projectDesignerService.getDesignerByName(designerDto.getName());
         if (designer != null){

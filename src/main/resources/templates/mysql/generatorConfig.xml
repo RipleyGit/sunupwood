@@ -42,14 +42,14 @@
 <!--        <table tableName="project_news" domainObjectName="ProjectNews">-->
 <!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
 <!--        </table>-->
-<!--        <table tableName="project_designer" domainObjectName="ProjectDesigner">-->
-<!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
-
+        <table tableName="project_designer" domainObjectName="ProjectDesigner">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
 <!--        <table tableName="project_module" domainObjectName="ProjectModule">-->
 <!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
 <!--        </table>-->
-        <table tableName="project_user" domainObjectName="ProjectUser">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
+<!--        <table tableName="project_user" domainObjectName="ProjectUser">-->
+<!--            <property name="ignoreQualifiersAtRuntime" value="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

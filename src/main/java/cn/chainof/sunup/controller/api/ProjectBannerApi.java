@@ -69,7 +69,7 @@ public interface ProjectBannerApi {
     ResponseEntity<List<BannerDTO>> getBannerList(@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "3") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="3") Integer pageSize);
 
 
-    @ApiOperation(value = "新增banner图", nickname = "updateBanner", notes = "", authorizations = {
+    @ApiOperation(value = "修改banner图", nickname = "updateBanner", notes = "", authorizations = {
         @Authorization(value = "token")
     }, tags={ "ProjectBanner", })
     @ApiResponses(value = { 

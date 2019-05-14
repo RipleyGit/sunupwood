@@ -829,7 +829,7 @@ paths:
         200:
           description: 新增成功
     put:
-      summary: 新增banner图
+      summary: 修改banner图
       operationId: updateBanner
       tags:
         - "ProjectBanner"
@@ -1110,6 +1110,9 @@ definitions:
       age:
         type: string
         description: 年龄
+      photo:
+        type: string
+        description: 个人照片
       introduce:
         type: string
         description: 个人介绍

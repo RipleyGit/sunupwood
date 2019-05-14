@@ -29,6 +29,9 @@ public class DesignerDTO   {
   @JsonProperty("age")
   private String age = null;
 
+  @JsonProperty("photo")
+  private String photo = null;
+
   @JsonProperty("introduce")
   private String introduce = null;
 
@@ -116,6 +119,26 @@ public class DesignerDTO   {
     this.age = age;
   }
 
+  public DesignerDTO photo(String photo) {
+    this.photo = photo;
+    return this;
+  }
+
+  /**
+   * 个人照片
+   * @return photo
+  **/
+  @ApiModelProperty(value = "个人照片")
+
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
+
   public DesignerDTO introduce(String introduce) {
     this.introduce = introduce;
     return this;
@@ -178,13 +201,14 @@ public class DesignerDTO   {
         Objects.equals(this.name, designerDTO.name) &&
         Objects.equals(this.sex, designerDTO.sex) &&
         Objects.equals(this.age, designerDTO.age) &&
+        Objects.equals(this.photo, designerDTO.photo) &&
         Objects.equals(this.introduce, designerDTO.introduce) &&
         Objects.equals(this.imgReels, designerDTO.imgReels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, sex, age, introduce, imgReels);
+    return Objects.hash(id, name, sex, age, photo, introduce, imgReels);
   }
 
   @Override
@@ -196,6 +220,7 @@ public class DesignerDTO   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sex: ").append(toIndentedString(sex)).append("\n");
     sb.append("    age: ").append(toIndentedString(age)).append("\n");
+    sb.append("    photo: ").append(toIndentedString(photo)).append("\n");
     sb.append("    introduce: ").append(toIndentedString(introduce)).append("\n");
     sb.append("    imgReels: ").append(toIndentedString(imgReels)).append("\n");
     sb.append("}");

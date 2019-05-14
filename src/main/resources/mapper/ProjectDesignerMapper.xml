@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
     <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
@@ -75,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, sex, age, introduce, is_deleted, create_user, update_user, create_time, 
+    id, name, sex, age, photo, introduce, is_deleted, create_user, update_user, create_time, 
     update_time
   </sql>
   <sql id="Blob_Column_List">
@@ -131,13 +132,15 @@
   </delete>
   <insert id="insert" parameterType="cn.chainof.sunup.model.ProjectDesigner">
     insert into project_designer (id, name, sex, 
-      age, introduce, is_deleted, 
-      create_user, update_user, create_time, 
-      update_time, sampleReels)
+      age, photo, introduce, 
+      is_deleted, create_user, update_user, 
+      create_time, update_time, sampleReels
+      )
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{age,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
-      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{samplereels,jdbcType=LONGVARCHAR})
+      #{age,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, 
+      #{isDeleted,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{samplereels,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.chainof.sunup.model.ProjectDesigner">
     insert into project_designer
@@ -153,6 +156,9 @@
       </if>
       <if test="age != null">
         age,
+      </if>
+      <if test="photo != null">
+        photo,
       </if>
       <if test="introduce != null">
         introduce,
@@ -188,6 +194,9 @@
       </if>
       <if test="age != null">
         #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
       </if>
       <if test="introduce != null">
         #{introduce,jdbcType=VARCHAR},
@@ -233,6 +242,9 @@
       <if test="record.age != null">
         age = #{record.age,jdbcType=VARCHAR},
       </if>
+      <if test="record.photo != null">
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
       <if test="record.introduce != null">
         introduce = #{record.introduce,jdbcType=VARCHAR},
       </if>
@@ -265,6 +277,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR},
       introduce = #{record.introduce,jdbcType=VARCHAR},
       is_deleted = #{record.isDeleted,jdbcType=TINYINT},
       create_user = #{record.createUser,jdbcType=VARCHAR},
@@ -282,6 +295,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR},
       introduce = #{record.introduce,jdbcType=VARCHAR},
       is_deleted = #{record.isDeleted,jdbcType=TINYINT},
       create_user = #{record.createUser,jdbcType=VARCHAR},
@@ -303,6 +317,9 @@
       </if>
       <if test="age != null">
         age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
       </if>
       <if test="introduce != null">
         introduce = #{introduce,jdbcType=VARCHAR},
@@ -333,6 +350,7 @@
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       age = #{age,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
       introduce = #{introduce,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
       create_user = #{createUser,jdbcType=VARCHAR},
@@ -347,6 +365,7 @@
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       age = #{age,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
       introduce = #{introduce,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
       create_user = #{createUser,jdbcType=VARCHAR},

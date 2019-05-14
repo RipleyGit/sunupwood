@@ -66,7 +66,7 @@ public class ProjectBannerServiceImpl implements ProjectBannerService {
         ProjectModuleExample example = new ProjectModuleExample();
         example.createCriteria().andModuleEqualTo(ModuleConst.BANNER)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
-        List<ProjectModule> moduleList = projectModuleMapper.selectByExample(example);
+        List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
         List<BannerDTO> dtoList = new ArrayList<>();
         for (ProjectModule module:moduleList) {
             BannerDTO dto = getBannerDTO(module);

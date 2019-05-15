@@ -74,6 +74,7 @@ public class ProductServiceImpl implements ProductService {
         PageHelper.startPage(pageIndex,pageSize);
 
         ProductExample example = new ProductExample();
+        example.setOrderByClause("update_time DESC");
         if (StringUtil.isNotEmpty(key)){
             String likeKey = "%" + key + "%";
             ProductExample.Criteria nameLike = example.createCriteria().andNameLike(likeKey);
@@ -121,6 +122,7 @@ public class ProductServiceImpl implements ProductService {
         }
         PageHelper.startPage(pageIndex,pageSize);
         ProductExample example = new ProductExample();
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemIdEqualTo(itemId);
         list = productMapper.selectByExample(example);
         return list;
@@ -136,6 +138,7 @@ public class ProductServiceImpl implements ProductService {
         }
         PageHelper.startPage(pageIndex,pageSize);
         ProductExample example = new ProductExample();
+        example.setOrderByClause("update_time DESC");
         String labelLike = "%" + labelId + "%";
         example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andLabelsLike(labelLike);
         list = productMapper.selectByExample(example);
@@ -146,6 +149,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProductExample example = new ProductExample();
+        example.setOrderByClause("update_time DESC");
         ProductExample.Criteria criteria = example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
         if (StringUtil.isNotEmpty(itemId)){
             criteria.andItemIdEqualTo(itemId);

@@ -65,6 +65,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public ProjectLabel updateLabel(ProjectLabel label) {
         ProjectLabelExample example = new ProjectLabelExample();
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andNameEqualTo(label.getName())
                 .andIsDeletedEqualTo(Const.IS_NORMAL)
                 .andIdNotEqualTo(label.getId());
@@ -85,6 +86,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     public List<ProjectLabel> queryListByKey(String keyword) {
         List<ProjectLabel> list = new ArrayList<>();
         ProjectLabelExample example = new ProjectLabelExample();
+        example.setOrderByClause("update_time DESC");
         if (StringUtil.isNotEmpty(keyword)) {
             keyword = "%" + keyword + "%";
             example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andNameLike(keyword);

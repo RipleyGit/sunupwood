@@ -51,7 +51,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         String id = String.valueOf(KeyUtil.genUniqueKey());
         newDesigner.setId(id);
         if (StringUtil.isEmpty(newDesigner.getSamplereels())){
-            newDesigner.setSamplereels("{}");
+            newDesigner.setSamplereels("[]");
         }
         newDesigner.setCreateTime(DateUtil.getCurrentDate());
         newDesigner.setCreateUser(UserContext.getUserSession().getName());
@@ -91,6 +91,10 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         }
         ProjectDesigner designer = projectDesignerMapper.selectByPrimaryKey(updateDesigner.getId());
         AutoConvertUtil.nullAutoFill(updateDesigner,designer);
+        if (StringUtil.isEmpty(updateDesigner.getSamplereels())){
+            updateDesigner.setSamplereels("[]");
+        }
+        updateDesigner.setIsDeleted(Const.IS_NORMAL);
         updateDesigner.setUpdateTime(DateUtil.getCurrentDate());
         updateDesigner.setUpdateUser(UserContext.getUserSession().getName());
         projectDesignerMapper.updateByPrimaryKeyWithBLOBs(updateDesigner);
@@ -101,10 +105,10 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
     public List<ProjectDesigner> queryList(String key, Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectDesignerExample example = new ProjectDesignerExample();
-        example.setOrderByClause("create_time DESC");
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
         if (StringUtil.isEmpty(key)){
-            return projectDesignerMapper.selectByExample(example);
+            return projectDesignerMapper.selectByExampleWithBLOBs(example);
         }
         String like = "%" + key + "%";
         ProjectDesignerExample.Criteria nameLike = example.createCriteria().andNameLike(like);
@@ -119,6 +123,6 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         example.or(sexLike);
         ProjectDesignerExample.Criteria introduceLike = example.createCriteria().andIntroduceLike(like);
         example.or(introduceLike);
-        return projectDesignerMapper.selectByExample(example);
+        return projectDesignerMapper.selectByExampleWithBLOBs(example);
     }
 }

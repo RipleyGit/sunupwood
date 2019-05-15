@@ -114,7 +114,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     public List<ProjectUser> queryList(String key, Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectUserExample example = new ProjectUserExample();
-        example.setOrderByClause("create_time DESC");
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
         if (StringUtil.isNotEmpty(key)){
             String like = "%" + key + "%";

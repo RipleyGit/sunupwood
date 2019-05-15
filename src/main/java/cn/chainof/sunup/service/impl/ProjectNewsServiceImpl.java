@@ -66,7 +66,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     public List<ProjectNews> queryList(String key, Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectNewsExample example = new ProjectNewsExample();
-        example.setOrderByClause("create_time DESC");
+        example.setOrderByClause("update_time DESC");
         if(StringUtil.isNotEmpty(key)){
             String like = "%" + key + "%";
             ProjectNewsExample.Criteria authorLike = example.createCriteria().andAuthorLike(like);
@@ -77,6 +77,6 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
             example.or(titleLike);
         }
         example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
-        return projectNewsMapper.selectByExample(example);
+        return projectNewsMapper.selectByExampleWithBLOBs(example);
     }
 }

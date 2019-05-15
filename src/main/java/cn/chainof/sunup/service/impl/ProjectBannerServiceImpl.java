@@ -64,6 +64,7 @@ public class ProjectBannerServiceImpl implements ProjectBannerService {
     public List<BannerDTO> queryList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectModuleExample example = new ProjectModuleExample();
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.BANNER)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);

@@ -67,6 +67,7 @@ public class AdornDesignServiceImpl implements AdornDesignService {
     public List<AdornDesignDTO> queryAdornList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectModuleExample example = new ProjectModuleExample();
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.ADORNDESIGN)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);

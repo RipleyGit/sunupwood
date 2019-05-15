@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -71,7 +72,16 @@ public class ProjectDesignerApiController implements ProjectDesignerApi {
     @Override
     public ResponseEntity<List<DesignerDTO>> getDesignerList(@ApiParam(value = "") @Valid @RequestParam(value = "key", required = false) String key, @ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue = "0") Integer pageIndex, @ApiParam(value = "页面大小", defaultValue = "3") @Valid @RequestParam(value = "pageSize", required = false, defaultValue = "3") Integer pageSize){
         List<ProjectDesigner> list = projectDesignerService.queryList(key,pageIndex,pageSize);
-        List<DesignerDTO> dtoList = AutoConvertUtil.convert2List(list, DesignerDTO.class);
+        List<DesignerDTO> dtoList = new ArrayList<>();
+        for (ProjectDesigner designer:list) {
+            DesignerDTO dto = AutoConvertUtil.autoConvertTo(designer, DesignerDTO.class);
+            if (StringUtil.isNotEmpty(designer.getSamplereels())) {
+                dto.setImgReels(JSON.parseArray(designer.getSamplereels(),String.class));
+            }else {
+                dto.setImgReels(new ArrayList<>());
+            }
+            dtoList.add(dto);
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
@@ -92,17 +102,12 @@ public class ProjectDesignerApiController implements ProjectDesignerApi {
             log.error("修改ID不能为空");
             throw new ClientException("修改ID不能为空");
         }
-        if (StringUtil.isEmpty(designerDto.getName())||StringUtil.isEmpty(designerDto.getPhoto())){
-            log.error("设计师名称和头像不能为空");
-            throw new ClientException("设计师名称和头像不能为空");
-        }
-        ProjectDesigner designer = projectDesignerService.getDesignerByName(designerDto.getName());
-        if (designer != null){
-            log.error("已存在该设计师");
-            throw new ClientException("已存在该设计师");
-        }
-
         ProjectDesigner updateDesigner = AutoConvertUtil.autoConvertTo(designerDto, ProjectDesigner.class);
+        if (designerDto.getImgReels()==null){
+            updateDesigner.setSamplereels("[]");
+        }else {
+            updateDesigner.setSamplereels(JSON.toJSONString(designerDto.getImgReels()));
+        }
         projectDesignerService.updateDesigner(updateDesigner);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);

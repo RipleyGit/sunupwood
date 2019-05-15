@@ -57,6 +57,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
     public List<ProductDesignDTO> queryProductList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectModuleExample example = new ProjectModuleExample();
+        example.setOrderByClause("update_time DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.PRODUCTDESIGN)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);

@@ -106,6 +106,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     public List<ProductItem> queryListByKey(String key) {
         List<ProductItem> list = new ArrayList<>();
         ProductItemExample example = new ProductItemExample();
+        example.setOrderByClause("update_time DESC");
         if (StringUtil.isNotEmpty(key)){
             key = "%"+key+"%";
             example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemNameLike(key);

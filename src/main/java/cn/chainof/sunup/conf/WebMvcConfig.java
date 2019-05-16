@@ -16,6 +16,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:9528")
+                .allowedOrigins("http://localhost:8080")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 .maxAge(3600)
                 .allowCredentials(true);
@@ -27,6 +28,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:9528");
+        config.addAllowedOrigin("http://localhost:8080");
         config.addAllowedOrigin("null");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");

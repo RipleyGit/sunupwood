@@ -29,6 +29,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String addProjectNews(ProjectNews news) {
         String newsId = String.valueOf(KeyUtil.genUniqueKey());
+        news.setId(newsId);
         news.setCreateTime(DateUtil.getCurrentDate());
         news.setCreateUser(UserContext.getUserSession().getName());
         projectNewsMapper.insertSelective(news);

@@ -431,14 +431,12 @@ paths:
       tags:
         - "Product"
       summary: 删除商品
-      operationId: deleteProducts
+      operationId: deleteProduct
       parameters:
         - in: query
-          name: ids
+          name: id
           required: true
-          type: array
-          items:
-            type: string
+          type: string
       responses:
         200:
           description: 删除成功

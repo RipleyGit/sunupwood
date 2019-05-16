@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
         List<Product> list = productMapper.selectByExample(example);
         for (Product pro:list) {
             pro.setIsDeleted(Const.IS_DELETED);
-            productMapper.insertSelective(pro);
+            productMapper.updateByPrimaryKeySelective(pro);
         }
         return list.stream().map(Product::getId).collect(Collectors.toList());
     }
@@ -75,6 +75,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
+        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
         if (StringUtil.isNotEmpty(key)){
             String likeKey = "%" + key + "%";
             ProductExample.Criteria nameLike = example.createCriteria().andNameLike(likeKey);
@@ -165,5 +166,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(String id) {
         return productMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public String deleteProduct(String id) {
+        Product product = productMapper.selectByPrimaryKey(id);
+        product.setIsDeleted(Const.IS_DELETED);
+        productMapper.updateByPrimaryKeySelective(product);
+        return id;
     }
 }

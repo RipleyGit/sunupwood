@@ -3,16 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="55fe4665-c93e-46d1-b721-287b5c7a96a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/CorsFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,22 +59,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectDesignerService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state relative-caret-position="361">
+              <caret line="174" column="59" selection-start-line="174" selection-start-column="59" selection-end-line="174" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6965#6966#0" expanded="true" />
+                <element signature="e#7024#7025#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java">
+        <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-core/5.0.9.RELEASE/spring-core-5.0.9.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="95">
+              <caret line="103" selection-start-line="103" selection-end-line="103" />
             </state>
           </provider>
         </entry>
@@ -85,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="112" column="76" selection-start-line="112" selection-start-column="61" selection-end-line="112" selection-end-column="76" />
+            <state relative-caret-position="191">
+              <caret line="128" column="96" selection-start-line="128" selection-start-column="96" selection-end-line="128" selection-end-column="96" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,10 +94,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="62" column="58" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="58" />
+            <state relative-caret-position="162">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="433" column="32" selection-start-line="433" selection-start-column="32" selection-end-line="433" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/WebMvcConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="503">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,67 +124,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-67">
-              <caret line="69" column="53" lean-forward="true" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="125" column="61" selection-start-line="125" selection-start-column="61" selection-end-line="125" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="33" column="68" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="277">
+              <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
+            <state relative-caret-position="189">
+              <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="357">
+              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="46" column="149" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="149" />
             </state>
           </provider>
         </entry>
@@ -213,7 +200,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/utils/JacksonUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/TypeEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/ClassEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/enums/TestEnum.java" />
@@ -235,15 +221,12 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/BannerModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectUserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/CorsFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/WebMvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductDesignService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductDesignApiController.java" />
@@ -252,7 +235,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/AdornDesignApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/AdornDesignService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/module/AdornDesignModule.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java" />
@@ -260,10 +242,15 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/WebMvcConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -331,6 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -404,6 +392,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sunup" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sell" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunupwood" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sunup" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sell" type="b2602c69:ProjectViewProjectNode" />
@@ -504,7 +502,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -697,7 +694,8 @@
       <workItem from="1557587602430" duration="10462000" />
       <workItem from="1557634087730" duration="12659000" />
       <workItem from="1557845806665" duration="2251000" />
-      <workItem from="1557895627324" duration="1414000" />
+      <workItem from="1557895627324" duration="2301000" />
+      <workItem from="1557929418345" duration="2691000" />
     </task>
     <servers />
   </component>
@@ -734,13 +732,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145377000" />
+    <option name="totallyTimeSpent" value="148955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.3297568" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.3190272" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -750,8 +748,8 @@
       <window_info id="Web" order="7" sideWeight="0.50179213" side_tool="true" weight="0.23319027" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32961586" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34696406" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.37670383" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34696406" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.51301116" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -767,7 +765,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.17095852" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.16523606" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="CDI" order="6" />
@@ -846,7 +844,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java</url>
-          <line>134</line>
+          <line>133</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
@@ -920,30 +918,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectBannerApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectBannerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/EmailMsgDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/model/ProjectUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2">
@@ -1042,48 +1016,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="35" column="11" selection-start-line="34" selection-start-column="4" selection-end-line="35" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="58" column="48" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductDesignApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="47" lean-forward="true" selection-start-line="38" selection-start-column="4" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/CorsFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="28" column="30" lean-forward="true" selection-start-column="2" selection-end-line="29" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/WebMvcConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1186,13 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="1114" column="25" selection-start-line="1114" selection-start-column="25" selection-end-line="1114" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/mapper/ProjectDesignerMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1231,60 +1160,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-67">
-          <caret line="69" column="53" lean-forward="true" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="53" />
+        <state relative-caret-position="1003">
+          <caret line="59" column="53" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="112" column="76" selection-start-line="112" selection-start-column="61" selection-end-line="112" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="62" column="58" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="125" column="61" selection-start-line="125" selection-start-column="61" selection-end-line="125" selection-end-column="61" />
+        <state relative-caret-position="1173">
+          <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1293,14 +1182,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="255">
           <caret line="33" column="68" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
+        <state relative-caret-position="1309">
           <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1310,8 +1199,116 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
+        <state relative-caret-position="1802">
           <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="96" column="22" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/CorsFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="28" column="30" lean-forward="true" selection-start-column="2" selection-end-line="29" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/WebMvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/apache/repo/org/springframework/spring-core/5.0.9.RELEASE/spring-core-5.0.9.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="433" column="32" selection-start-line="433" selection-start-column="32" selection-end-line="433" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="174" column="59" selection-start-line="174" selection-start-column="59" selection-end-line="174" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6965#6966#0" expanded="true" />
+            <element signature="e#7024#7025#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="46" column="149" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="128" column="96" selection-start-line="128" selection-start-column="96" selection-end-line="128" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
         </state>
       </provider>
     </entry>

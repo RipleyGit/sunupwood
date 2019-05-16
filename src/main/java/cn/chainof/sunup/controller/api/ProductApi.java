@@ -36,7 +36,7 @@ public interface ProductApi {
     ResponseEntity<Void> addProductInfo(@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProductDTO productInfo);
 
 
-    @ApiOperation(value = "删除商品", nickname = "deleteProducts", notes = "", authorizations = {
+    @ApiOperation(value = "删除商品", nickname = "deleteProduct", notes = "", authorizations = {
         @Authorization(value = "token")
     }, tags={ "Product", })
     @ApiResponses(value = { 
@@ -44,7 +44,7 @@ public interface ProductApi {
     @RequestMapping(value = "/project/product/info",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteProducts(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "ids", required = true) List<String> ids);
+    ResponseEntity<Void> deleteProduct(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id);
 
 
     @ApiOperation(value = "获取商品内容", nickname = "getProductInfo", notes = "", response = ProductDTO.class, authorizations = {

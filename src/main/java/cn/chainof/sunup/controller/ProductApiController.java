@@ -48,10 +48,9 @@ public class ProductApiController implements ProductApi {
 
 
     @Override
-    public ResponseEntity<Void> deleteProducts(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "ids", required = true) List<String> ids){
-        if (ids !=null && ids.size()>0){
-            productService.deleteProducts(ids);
-        }
+    public ResponseEntity<Void> deleteProduct(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id){
+
+        productService.deleteProduct(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(headers, HttpStatus.OK);

@@ -193,7 +193,11 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO getDto(Product product) {
         List<ProductItem> itemList = productItemService.queryListByIds(Arrays.asList(product.getItemId()));
         Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
-        List<ProjectLabel> labelList = projectLabelService.queryListByIds(JSON.parseArray(product.getLabels(),String.class));
+        List<ProjectLabel> labelList = new ArrayList<>();
+        String labels = product.getLabels();
+        if (StringUtil.isNotEmpty(labels)) {
+            labelList = projectLabelService.queryListByIds(JSON.parseArray(labels,String.class));
+        }
         Map<String, String> labelMap = labelList.stream().collect(Collectors.toMap(ProjectLabel::getId, a -> a.getName(), (k1, k2) -> k1));
 
         ProductDTO dto = getProductDto(product,itemMap,labelMap);
@@ -203,14 +207,21 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> getDtoList(List<Product> list) {
 
-        List<ProductItem> itemList = productItemService.queryListByIds(list.stream().map(Product::getItemId).collect(Collectors.toList()));
+        List<ProductItem> itemList = new ArrayList<>();
+        List<String> itemIds = list.stream().map(Product::getItemId).collect(Collectors.toList());
+        if (itemIds!=null&&itemIds.size()>0) {
+            itemList= productItemService.queryListByIds(itemIds);
+        }
         Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
         List<String> labelIds = new ArrayList<>();
         for (Product product:list) {
             List<String> ids = JSON.parseArray(product.getLabels(), String.class);
             labelIds.addAll(ids);
         }
-        List<ProjectLabel> labelList = projectLabelService.queryListByIds(labelIds);
+        List<ProjectLabel> labelList = new ArrayList<>();
+        if (labelIds.size()>0) {
+            labelList = projectLabelService.queryListByIds(labelIds);
+        }
         Map<String, String> labelMap = labelList.stream().collect(Collectors.toMap(ProjectLabel::getId, a -> a.getName(), (k1, k2) -> k1));
 
         List<ProductDTO> dtoList = new ArrayList<>();

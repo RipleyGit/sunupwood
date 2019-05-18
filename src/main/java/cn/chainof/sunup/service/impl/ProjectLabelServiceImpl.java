@@ -120,4 +120,11 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         }
         return list.get(0);
     }
+
+    @Override
+    public List<ProjectLabel> queryListByIds(List<String> labels) {
+        ProjectLabelExample example = new ProjectLabelExample();
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andIdIn(labels);
+        return projectLabelMapper.selectByExample(example);
+    }
 }

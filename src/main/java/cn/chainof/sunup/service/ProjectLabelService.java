@@ -19,4 +19,6 @@ public interface ProjectLabelService {
     ProjectLabel getLabelById(String id);
 
     ProjectLabel getLabelByCode(String labelCode);
+
+    List<ProjectLabel> queryListByIds(List<String> labels);
 }

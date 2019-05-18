@@ -54,9 +54,16 @@ public class ProductDTO   {
   @JsonProperty("itemId")
   private String itemId = null;
 
+  @JsonProperty("itemName")
+  private String itemName = null;
+
   @JsonProperty("labels")
   @Valid
   private List<String> labels = null;
+
+  @JsonProperty("labelNames")
+  @Valid
+  private List<String> labelNames = null;
 
   @JsonProperty("createUser")
   private String createUser = null;
@@ -318,6 +325,26 @@ public class ProductDTO   {
     this.itemId = itemId;
   }
 
+  public ProductDTO itemName(String itemName) {
+    this.itemName = itemName;
+    return this;
+  }
+
+  /**
+   * 分类名称
+   * @return itemName
+  **/
+  @ApiModelProperty(value = "分类名称")
+
+
+  public String getItemName() {
+    return itemName;
+  }
+
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
+  }
+
   public ProductDTO labels(List<String> labels) {
     this.labels = labels;
     return this;
@@ -344,6 +371,34 @@ public class ProductDTO   {
 
   public void setLabels(List<String> labels) {
     this.labels = labels;
+  }
+
+  public ProductDTO labelNames(List<String> labelNames) {
+    this.labelNames = labelNames;
+    return this;
+  }
+
+  public ProductDTO addLabelNamesItem(String labelNamesItem) {
+    if (this.labelNames == null) {
+      this.labelNames = new ArrayList<String>();
+    }
+    this.labelNames.add(labelNamesItem);
+    return this;
+  }
+
+  /**
+   * 标签名列表
+   * @return labelNames
+  **/
+  @ApiModelProperty(value = "标签名列表")
+
+
+  public List<String> getLabelNames() {
+    return labelNames;
+  }
+
+  public void setLabelNames(List<String> labelNames) {
+    this.labelNames = labelNames;
   }
 
   public ProductDTO createUser(String createUser) {
@@ -448,7 +503,9 @@ public class ProductDTO   {
         Objects.equals(this.imgUrls, productDTO.imgUrls) &&
         Objects.equals(this.taobaoLink, productDTO.taobaoLink) &&
         Objects.equals(this.itemId, productDTO.itemId) &&
+        Objects.equals(this.itemName, productDTO.itemName) &&
         Objects.equals(this.labels, productDTO.labels) &&
+        Objects.equals(this.labelNames, productDTO.labelNames) &&
         Objects.equals(this.createUser, productDTO.createUser) &&
         Objects.equals(this.updateUser, productDTO.updateUser) &&
         Objects.equals(this.createTime, productDTO.createTime) &&
@@ -457,7 +514,7 @@ public class ProductDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, price, sales, amount, measure, texture, productDeclare, imgUrls, taobaoLink, itemId, labels, createUser, updateUser, createTime, updateTime);
+    return Objects.hash(id, type, name, price, sales, amount, measure, texture, productDeclare, imgUrls, taobaoLink, itemId, itemName, labels, labelNames, createUser, updateUser, createTime, updateTime);
   }
 
   @Override
@@ -477,7 +534,9 @@ public class ProductDTO   {
     sb.append("    imgUrls: ").append(toIndentedString(imgUrls)).append("\n");
     sb.append("    taobaoLink: ").append(toIndentedString(taobaoLink)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    labelNames: ").append(toIndentedString(labelNames)).append("\n");
     sb.append("    createUser: ").append(toIndentedString(createUser)).append("\n");
     sb.append("    updateUser: ").append(toIndentedString(updateUser)).append("\n");
     sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");

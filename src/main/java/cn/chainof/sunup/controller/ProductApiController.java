@@ -58,21 +58,7 @@ public class ProductApiController implements ProductApi {
     @Override
     public ResponseEntity<ProductDTO> getProductInfo(@NotNull @Valid String id) {
         Product product = productService.getProductById(id);
-        ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
-        if (StringUtil.isNotEmpty(product.getImgUrls())){
-            List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
-            dto.setImgUrls(imgUrls);
-        }
-        if (StringUtil.isNotEmpty(product.getLabels())){
-            List<String> labels = JSON.parseArray(product.getLabels(), String.class);
-            dto.setLabels(labels);
-        }
-        if (product.getCreateTime() != null) {
-            dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
-        }
-        if (product.getUpdateTime()!=null) {
-            dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
-        }
+        ProductDTO dto = productService.getDto(product);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dto,headers, HttpStatus.OK);
@@ -84,25 +70,7 @@ public class ProductApiController implements ProductApi {
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
         List<Product> list = productService.queryProducts(key,pageIndex,pageSize);
-        List<ProductDTO> dtoList = new ArrayList<>();
-        for (Product product:list) {
-            ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
-            if (StringUtil.isNotEmpty(product.getImgUrls())){
-                List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
-                dto.setImgUrls(imgUrls);
-            }
-            if (StringUtil.isNotEmpty(product.getLabels())){
-                List<String> labels = JSON.parseArray(product.getLabels(), String.class);
-                dto.setLabels(labels);
-            }
-            if (product.getCreateTime() != null) {
-                dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
-            }
-            if (product.getUpdateTime()!=null) {
-                dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
-            }
-            dtoList.add(dto);
-        }
+        List<ProductDTO> dtoList = productService.getDtoList(list);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
@@ -130,25 +98,7 @@ public class ProductApiController implements ProductApi {
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
         List<Product> list = productService.queryListByItem(itemId,pageIndex,pageSize);
-        List<ProductDTO> dtoList = new ArrayList<>();
-        for (Product product:list) {
-            ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
-            if (StringUtil.isNotEmpty(product.getImgUrls())){
-                List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
-                dto.setImgUrls(imgUrls);
-            }
-            if (StringUtil.isNotEmpty(product.getLabels())){
-                List<String> labels = JSON.parseArray(product.getLabels(), String.class);
-                dto.setLabels(labels);
-            }
-            if (product.getCreateTime() != null) {
-                dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
-            }
-            if (product.getUpdateTime()!=null) {
-                dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
-            }
-            dtoList.add(dto);
-        }
+        List<ProductDTO> dtoList = productService.getDtoList(list);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
@@ -159,25 +109,8 @@ public class ProductApiController implements ProductApi {
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
         List<Product> list = productService.queryListByItemLabel(itemId,labelId,pageIndex,pageSize);
-        List<ProductDTO> dtoList = new ArrayList<>();
-        for (Product product:list) {
-            ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
-            if (StringUtil.isNotEmpty(product.getImgUrls())){
-                List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
-                dto.setImgUrls(imgUrls);
-            }
-            if (StringUtil.isNotEmpty(product.getLabels())){
-                List<String> labels = JSON.parseArray(product.getLabels(), String.class);
-                dto.setLabels(labels);
-            }
-            if (product.getCreateTime() != null) {
-                dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
-            }
-            if (product.getUpdateTime()!=null) {
-                dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
-            }
-            dtoList.add(dto);
-        }
+        List<ProductDTO> dtoList = productService.getDtoList(list);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
@@ -189,25 +122,7 @@ public class ProductApiController implements ProductApi {
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
         List<Product> list = productService.queryListByLabel(labelId,pageIndex,pageSize);
-        List<ProductDTO> dtoList = new ArrayList<>();
-        for (Product product:list) {
-            ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
-            if (StringUtil.isNotEmpty(product.getImgUrls())){
-                List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
-                dto.setImgUrls(imgUrls);
-            }
-            if (StringUtil.isNotEmpty(product.getLabels())){
-                List<String> labels = JSON.parseArray(product.getLabels(), String.class);
-                dto.setLabels(labels);
-            }
-            if (product.getCreateTime() != null) {
-                dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
-            }
-            if (product.getUpdateTime()!=null) {
-                dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
-            }
-            dtoList.add(dto);
-        }
+        List<ProductDTO> dtoList = productService.getDtoList(list);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);

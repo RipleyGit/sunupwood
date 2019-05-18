@@ -136,4 +136,11 @@ public class ProductItemServiceImpl implements ProductItemService {
         example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemParentEqualTo(parentId);
         return productItemMapper.selectByExample(example);
     }
+
+    @Override
+    public List<ProductItem> queryListByIds(List<String> asList) {
+        ProductItemExample example = new ProductItemExample();
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andIdIn(asList);
+        return productItemMapper.selectByExample(example);
+    }
 }

@@ -1,5 +1,6 @@
 package cn.chainof.sunup.service;
 
+import cn.chainof.sunup.controller.dto.data.ProductDTO;
 import cn.chainof.sunup.model.Product;
 
 import java.util.List;
@@ -22,4 +23,8 @@ public interface ProductService {
     Product getProductById(String id);
 
     String deleteProduct(String id);
+
+    ProductDTO getDto(Product product);
+
+    List<ProductDTO> getDtoList(List<Product> list);
 }

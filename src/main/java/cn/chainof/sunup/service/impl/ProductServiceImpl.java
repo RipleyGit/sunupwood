@@ -2,6 +2,7 @@ package cn.chainof.sunup.service.impl;
 
 import cn.chainof.sunup.common.UserContext;
 import cn.chainof.sunup.constant.Const;
+import cn.chainof.sunup.controller.dto.data.ProductDTO;
 import cn.chainof.sunup.mapper.ProductMapper;
 import cn.chainof.sunup.model.Product;
 import cn.chainof.sunup.model.ProductExample;
@@ -10,8 +11,10 @@ import cn.chainof.sunup.model.ProjectLabel;
 import cn.chainof.sunup.service.ProductItemService;
 import cn.chainof.sunup.service.ProductService;
 import cn.chainof.sunup.service.ProjectLabelService;
+import cn.chainof.sunup.utils.AutoConvertUtil;
 import cn.chainof.sunup.utils.DateUtil;
 import cn.chainof.sunup.utils.KeyUtil;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -186,5 +188,61 @@ public class ProductServiceImpl implements ProductService {
         product.setIsDeleted(Const.B_ONE);
         productMapper.updateByPrimaryKeySelective(product);
         return id;
+    }
+    @Override
+    public ProductDTO getDto(Product product) {
+        List<ProductItem> itemList = productItemService.queryListByIds(Arrays.asList(product.getItemId()));
+        Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
+        List<ProjectLabel> labelList = projectLabelService.queryListByIds(JSON.parseArray(product.getLabels(),String.class));
+        Map<String, String> labelMap = labelList.stream().collect(Collectors.toMap(ProjectLabel::getId, a -> a.getName(), (k1, k2) -> k1));
+
+        ProductDTO dto = getProductDto(product,itemMap,labelMap);
+        return dto;
+    }
+
+    @Override
+    public List<ProductDTO> getDtoList(List<Product> list) {
+
+        List<ProductItem> itemList = productItemService.queryListByIds(list.stream().map(Product::getItemId).collect(Collectors.toList()));
+        Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
+        List<String> labelIds = new ArrayList<>();
+        for (Product product:list) {
+            List<String> ids = JSON.parseArray(product.getLabels(), String.class);
+            labelIds.addAll(ids);
+        }
+        List<ProjectLabel> labelList = projectLabelService.queryListByIds(labelIds);
+        Map<String, String> labelMap = labelList.stream().collect(Collectors.toMap(ProjectLabel::getId, a -> a.getName(), (k1, k2) -> k1));
+
+        List<ProductDTO> dtoList = new ArrayList<>();
+        for (Product product:list) {
+            ProductDTO dto = getProductDto(product,itemMap,labelMap);
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    private ProductDTO getProductDto(Product product, Map<String,String> itemMap,Map<String,String> labelMap){
+        ProductDTO dto = AutoConvertUtil.autoConvertTo(product,ProductDTO.class);
+        if (StringUtil.isNotEmpty(product.getImgUrls())){
+            List<String> imgUrls = JSON.parseArray(product.getImgUrls(), String.class);
+            dto.setImgUrls(imgUrls);
+        }
+        if (StringUtil.isNotEmpty(product.getLabels())){
+            List<String> labels = JSON.parseArray(product.getLabels(), String.class);
+            dto.setLabels(labels);
+        }
+        if (product.getCreateTime() != null) {
+            dto.setCreateTime(DateUtil.getDateStr(product.getCreateTime()));
+        }
+        if (product.getUpdateTime()!=null) {
+            dto.setUpdateTime(DateUtil.getDateStr(product.getUpdateTime()));
+        }
+        dto.setItemName(itemMap.get(product.getItemId()));
+        List<String> labeNames = new ArrayList<>();
+        for (String label:dto.getLabels()) {
+            labeNames.add(labelMap.get(label));
+        }
+        dto.setLabelNames(labeNames);
+        return dto;
     }
 }

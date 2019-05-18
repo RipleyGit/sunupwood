@@ -1234,11 +1234,19 @@ definitions:
       itemId:
         type: string
         description: "分类ID"
+      itemName:
+        type: string
+        description: "分类名称"
       labels:
         type: array
         items:
           type: string
         description: "标签列表"
+      labelNames:
+        type: array
+        items:
+          type: string
+        description: "标签名列表"
       createUser:
         type: string
         description: "创建人"

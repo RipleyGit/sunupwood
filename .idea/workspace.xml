@@ -3,27 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="55fe4665-c93e-46d1-b721-287b5c7a96a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/AdornDesignApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/AdornDesignApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/CrossOriginBase.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductDesignApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductDesignApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectLabelApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectNewsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectUserApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/dto/data/ProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectLabelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectLabelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -75,12 +63,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="165" column="20" lean-forward="true" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+            <state relative-caret-position="159">
+              <caret line="211" column="9" lean-forward="true" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7778#7779#0" expanded="true" />
+                <element signature="e#7884#7885#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectLabelService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="23" column="21" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -95,19 +101,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectBannerApi.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+            <state relative-caret-position="395">
+              <caret line="1247" column="22" selection-start-line="1247" selection-start-column="22" selection-end-line="1247" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectOtherApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="323">
+              <caret line="126" column="83" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -115,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1658">
-              <caret line="128" column="95" selection-start-line="128" selection-start-column="95" selection-end-line="128" selection-end-column="95" />
+            <state relative-caret-position="2204">
+              <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,19 +131,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="19" column="62" selection-start-line="18" selection-start-column="60" selection-end-line="19" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="132" selection-start-line="132" selection-end-line="132" />
+            <state relative-caret-position="340">
+              <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -152,19 +149,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-197">
-              <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectDesignerApiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="30" selection-start-line="30" selection-end-line="31" selection-end-column="15" />
+            <state relative-caret-position="391">
+              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -211,8 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/type/BannerType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/type/TypeBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/UserContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/common/base/TypeBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ClientException.java" />
@@ -235,16 +221,12 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectUserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/SunUpApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectNewsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductDesignApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectNewsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/mysql/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectBannerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductDesignServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/AdornDesignServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/conf/WebMvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
@@ -260,6 +242,12 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductItemApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProjectBannerApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/constant/Const.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectLabelService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java" />
       </list>
@@ -717,7 +705,7 @@
       <workItem from="1557974086430" duration="1170000" />
       <workItem from="1557999914701" duration="1242000" />
       <workItem from="1558009102771" duration="5793000" />
-      <workItem from="1558143299920" duration="4416000" />
+      <workItem from="1558143299920" duration="8044000" />
     </task>
     <servers />
   </component>
@@ -754,13 +742,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162600000" />
+    <option name="totallyTimeSpent" value="166228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.20100144" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.26180258" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -770,8 +758,8 @@
       <window_info id="Web" order="7" sideWeight="0.50179213" side_tool="true" weight="0.23319027" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32961586" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5638166" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.330855" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1833953" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.330855" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -866,7 +854,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java</url>
-          <line>132</line>
+          <line>100</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
@@ -944,22 +932,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java</url>
-          <line>118</line>
+          <line>224</line>
           <properties />
-          <option name="timeStamp" value="42" />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java</url>
+          <line>205</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java</url>
+          <line>212</line>
+          <properties />
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/DefaultApi.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProjectLabelApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductDesignService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -1084,13 +1076,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/api/ProductApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1139,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectDesignerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
@@ -1183,13 +1161,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1884">
-          <caret line="1081" column="21" selection-start-line="1081" selection-start-column="14" selection-end-line="1081" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1311,30 +1282,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/swagger/yaml/data.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
+        <state relative-caret-position="395">
+          <caret line="1247" column="22" selection-start-line="1247" selection-start-column="22" selection-end-line="1247" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProductItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/ProjectLabelService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductItemServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1658">
-          <caret line="128" column="95" selection-start-line="128" selection-start-column="95" selection-end-line="128" selection-end-column="95" />
+        <state relative-caret-position="2204">
+          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProjectLabelServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="126" column="83" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/controller/ProductApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chainof/sunup/service/impl/ProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="165" column="20" lean-forward="true" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+        <state relative-caret-position="159">
+          <caret line="211" column="9" lean-forward="true" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7778#7779#0" expanded="true" />
+            <element signature="e#7884#7885#0" expanded="true" />
           </folding>
         </state>
       </provider>

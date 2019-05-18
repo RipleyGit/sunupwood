@@ -36,7 +36,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         String id = String.valueOf(KeyUtil.genUniqueKey());
         productDto.setId(id);
         ProjectModule bannerModule = getProjectModule(productDto);
-        bannerModule.setIsDeleted(Const.IS_NORMAL);
+        bannerModule.setIsDeleted(Const.B_ZERO);
         bannerModule.setCreateTime(DateUtil.getCurrentDate());
         bannerModule.setCreateUser(UserContext.getUserSession().getName());
         projectModuleMapper.insertSelective(bannerModule);
@@ -60,7 +60,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         ProjectModuleExample example = new ProjectModuleExample();
         example.setOrderByClause("rank DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.PRODUCTDESIGN)
-                .andIsDeletedEqualTo(Const.IS_NORMAL);
+                .andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
         List<ProductDesignDTO> dtoList = new ArrayList<>();
         for (ProjectModule module:moduleList) {
@@ -84,7 +84,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deleteById(String id) {
         ProjectModule module = projectModuleMapper.selectByPrimaryKey(id);
-        module.setIsDeleted(Const.IS_DELETED);
+        module.setIsDeleted(Const.B_ONE);
         module.setUpdateTime(DateUtil.getCurrentDate());
         module.setUpdateUser(UserContext.getUserSession().getName());
         projectModuleMapper.updateByPrimaryKeySelective(module);

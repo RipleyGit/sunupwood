@@ -41,7 +41,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     public String updateProjectNews(ProjectNews news) {
         String newsId = news.getId();
         ProjectNews projectNews = projectNewsMapper.selectByPrimaryKey(newsId);
-        news.setIsDeleted(Const.IS_NORMAL);
+        news.setIsDeleted(Const.B_ZERO);
         news.setCreateTime(projectNews.getCreateTime());
         news.setCreateUser(projectNews.getCreateUser());
         news.setUpdateTime(DateUtil.getCurrentDate());
@@ -54,7 +54,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deleteById(String id) {
         ProjectNews projectNews = projectNewsMapper.selectByPrimaryKey(id);
-        projectNews.setIsDeleted(Const.IS_DELETED);
+        projectNews.setIsDeleted(Const.B_ONE);
         projectNewsMapper.updateByPrimaryKey(projectNews);
         return id;
     }
@@ -78,7 +78,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
             ProjectNewsExample.Criteria titleLike = example.createCriteria().andTitleLike(like);
             example.or(titleLike);
         }
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         return projectNewsMapper.selectByExampleWithBLOBs(example);
     }
 
@@ -88,7 +88,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
         ProjectNewsExample example = new ProjectNewsExample();
         example.setOrderByClause("rank DESC");
 
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL)
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO)
                 .andStyeEqualTo(style);
         return projectNewsMapper.selectByExampleWithBLOBs(example);
 

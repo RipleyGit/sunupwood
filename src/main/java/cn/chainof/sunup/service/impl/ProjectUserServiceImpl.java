@@ -32,7 +32,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public Long addNewUser(String name, String password) {
         ProjectUserExample example = new ProjectUserExample();
-        example.createCriteria().andNameEqualTo(name).andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andNameEqualTo(name).andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectUser> list = projectUserMapper.selectByExample(example);
         if (list != null && list.size() >0){
             throw new ClientException("用户名已存在！");
@@ -51,7 +51,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     @Override
     public ProjectUser getByName(String name) {
         ProjectUserExample example = new ProjectUserExample();
-        example.createCriteria().andNameEqualTo(name).andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andNameEqualTo(name).andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectUser> list = projectUserMapper.selectByExample(example);
         if (list == null || list.size() <1) {
             return null;
@@ -65,7 +65,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectUserExample example = new ProjectUserExample();
         example.setOrderByClause("create_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectUser> list = projectUserMapper.selectByExample(example);
         return list;
     }
@@ -74,7 +74,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String addNewUser(ProjectUser projectUser) {
         ProjectUserExample example = new ProjectUserExample();
-        example.createCriteria().andNameEqualTo(projectUser.getName()).andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andNameEqualTo(projectUser.getName()).andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectUser> list = projectUserMapper.selectByExample(example);
         if (list != null && list.size() >0){
             throw new ClientException("用户名已存在！");
@@ -92,7 +92,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     public String updateUser(ProjectUser projectUser) {
         ProjectUserExample example = new ProjectUserExample();
         example.createCriteria().andNameEqualTo(projectUser.getName())
-                .andIsDeletedEqualTo(Const.IS_NORMAL)
+                .andIsDeletedEqualTo(Const.B_ZERO)
                 .andIdNotEqualTo(projectUser.getId());
         List<ProjectUser> list = projectUserMapper.selectByExample(example);
         if (list != null && list.size() >0){
@@ -115,7 +115,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectUserExample example = new ProjectUserExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         if (StringUtil.isNotEmpty(key)){
             String like = "%" + key + "%";
             ProjectUserExample.Criteria nameLike = example.createCriteria().andNameLike(like);
@@ -139,7 +139,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     public String deletedById(String id) {
         ProjectUser user = projectUserMapper.selectByPrimaryKey(id);
         if (user != null) {
-            user.setIsDeleted(Const.IS_DELETED);
+            user.setIsDeleted(Const.B_ONE);
             user.setUpdateTime(DateUtil.getCurrentDate());
             user.setUpdateUser(UserContext.getUserSession().getName());
             projectUserMapper.updateByPrimaryKeySelective(user);

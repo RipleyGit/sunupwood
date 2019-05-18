@@ -42,11 +42,11 @@ public class ProductServiceImpl implements ProductService {
     public String addProductInfo(Product product) {
         String productId = String.valueOf(KeyUtil.genUniqueKey());
         product.setId(productId);
-        product.setIsDeleted(Const.IS_NORMAL);
-        if (StringUtil.isEmpty(product.getImgUrls())){
+        product.setIsDeleted(Const.B_ZERO);
+        if (StringUtil.isEmpty(product.getImgUrls())) {
             product.setImgUrls("{}");
         }
-        if (StringUtil.isEmpty(product.getLabels())){
+        if (StringUtil.isEmpty(product.getLabels())) {
             product.setLabels("{}");
         }
         product.setCreateTime(DateUtil.getCurrentDate());
@@ -61,8 +61,8 @@ public class ProductServiceImpl implements ProductService {
         ProductExample example = new ProductExample();
         example.createCriteria().andIdIn(ids);
         List<Product> list = productMapper.selectByExample(example);
-        for (Product pro:list) {
-            pro.setIsDeleted(Const.IS_DELETED);
+        for (Product pro : list) {
+            pro.setIsDeleted(Const.B_ONE);
             productMapper.updateByPrimaryKeySelective(pro);
         }
         return list.stream().map(Product::getId).collect(Collectors.toList());
@@ -71,12 +71,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> queryProducts(String key, Integer pageIndex, Integer pageSize) {
 
-        PageHelper.startPage(pageIndex,pageSize);
+        PageHelper.startPage(pageIndex, pageSize);
 
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
-        if (StringUtil.isNotEmpty(key)){
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
+        if (StringUtil.isNotEmpty(key)) {
             String likeKey = "%" + key + "%";
             ProductExample.Criteria nameLike = example.createCriteria().andNameLike(likeKey);
             example.or(nameLike);
@@ -117,14 +117,20 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> queryListByItem(String itemId, Integer pageIndex, Integer pageSize) {
         List<Product> list = new ArrayList<>();
         ProductItem item = productItemService.getItemById(itemId);
-        if (item == null){
+        if (item == null) {
             log.info("选择分类不存在");
             return list;
         }
-        PageHelper.startPage(pageIndex,pageSize);
+
+        PageHelper.startPage(pageIndex, pageSize);
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemIdEqualTo(itemId);
+        if (item.getIsRoot().equals(Const.B_ONE)) {
+            List<String> idList = productItemService.getItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdIn(idList);
+        } else {
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdEqualTo(itemId);
+        }
         list = productMapper.selectByExample(example);
         return list;
     }
@@ -133,33 +139,39 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> queryListByLabel(String labelId, Integer pageIndex, Integer pageSize) {
         List<Product> list = new ArrayList<>();
         ProjectLabel label = projectLabelService.getLabelById(labelId);
-        if (label == null){
+        if (label == null) {
             log.info("选择标签不存在");
             return list;
         }
-        PageHelper.startPage(pageIndex,pageSize);
+        PageHelper.startPage(pageIndex, pageSize);
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
         String labelLike = "%" + labelId + "%";
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andLabelsLike(labelLike);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andLabelsLike(labelLike);
         list = productMapper.selectByExample(example);
         return list;
     }
 
     @Override
     public List<Product> queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize) {
-        PageHelper.startPage(pageIndex,pageSize);
+        PageHelper.startPage(pageIndex, pageSize);
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
-        ProductExample.Criteria criteria = example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
-        if (StringUtil.isNotEmpty(itemId)){
-            criteria.andItemIdEqualTo(itemId);
+        ProductExample.Criteria criteria = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
+        if (StringUtil.isNotEmpty(itemId)) {
+            ProductItem item = productItemService.getItemById(itemId);
+            if (item.getIsRoot().equals(Const.B_ONE)) {
+                List<String> idList = productItemService.getItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
+                criteria.andItemIdIn(idList);
+            } else {
+                criteria.andItemIdEqualTo(itemId);
+            }
         }
-        if (StringUtil.isNotEmpty(labelId)){
+        if (StringUtil.isNotEmpty(labelId)) {
             String like = "%" + labelId + "%";
             criteria.andLabelsLike(like);
         }
-        List<Product>  list= productMapper.selectByExample(example);
+        List<Product> list = productMapper.selectByExample(example);
         return list;
     }
 
@@ -171,7 +183,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public String deleteProduct(String id) {
         Product product = productMapper.selectByPrimaryKey(id);
-        product.setIsDeleted(Const.IS_DELETED);
+        product.setIsDeleted(Const.B_ONE);
         productMapper.updateByPrimaryKeySelective(product);
         return id;
     }

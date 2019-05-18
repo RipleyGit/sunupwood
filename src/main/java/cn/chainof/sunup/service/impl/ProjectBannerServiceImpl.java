@@ -46,7 +46,7 @@ public class ProjectBannerServiceImpl implements ProjectBannerService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deleteBannerById(String id) {
         ProjectModule module = projectModuleMapper.selectByPrimaryKey(id);
-        module.setIsDeleted(Const.IS_DELETED);
+        module.setIsDeleted(Const.B_ONE);
         module.setUpdateTime(DateUtil.getCurrentDate());
         module.setUpdateUser(UserContext.getUserSession().getName());
         projectModuleMapper.updateByPrimaryKeySelective(module);
@@ -66,7 +66,7 @@ public class ProjectBannerServiceImpl implements ProjectBannerService {
         ProjectModuleExample example = new ProjectModuleExample();
         example.setOrderByClause("rank DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.BANNER)
-                .andIsDeletedEqualTo(Const.IS_NORMAL);
+                .andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
         List<BannerDTO> dtoList = new ArrayList<>();
         for (ProjectModule module:moduleList) {

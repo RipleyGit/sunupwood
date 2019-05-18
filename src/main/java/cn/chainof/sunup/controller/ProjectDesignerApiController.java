@@ -30,7 +30,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class ProjectDesignerApiController extends CrossOriginBase implements ProjectDesignerApi {
+public class ProjectDesignerApiController implements ProjectDesignerApi {
 
     @Autowired
     private ProjectDesignerService projectDesignerService;

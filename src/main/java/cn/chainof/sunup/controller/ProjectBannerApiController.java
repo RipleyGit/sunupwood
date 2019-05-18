@@ -17,15 +17,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Slf4j
-@CrossOrigin
-public class ProjectBannerApiController extends CrossOriginBase implements ProjectBannerApi {
+@RestController
+public class ProjectBannerApiController implements ProjectBannerApi {
 
     @Autowired
     private ProjectBannerService projectBannerService;

@@ -30,7 +30,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     @Override
     public ProjectLabel getLabelByName(String name) {
         ProjectLabelExample example = new ProjectLabelExample();
-        example.createCriteria().andNameEqualTo(name).andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andNameEqualTo(name).andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectLabel> list = projectLabelMapper.selectByExample(example);
         if (list == null || list.size() < 1) {
             return null;
@@ -48,7 +48,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         ProjectUser user = UserContext.getUserSession();
         projectLabel.setId(labelId);
         projectLabel.setCreateTime(DateUtil.getCurrentDate());
-        projectLabel.setIsDeleted(Const.IS_NORMAL);
+        projectLabel.setIsDeleted(Const.B_ZERO);
         projectLabel.setCreateUser(user.getName());
         projectLabelMapper.insertSelective(projectLabel);//
         return labelId;
@@ -67,7 +67,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         ProjectLabelExample example = new ProjectLabelExample();
         example.setOrderByClause("update_time DESC");
         example.createCriteria().andNameEqualTo(label.getName())
-                .andIsDeletedEqualTo(Const.IS_NORMAL)
+                .andIsDeletedEqualTo(Const.B_ZERO)
                 .andIdNotEqualTo(label.getId());
         List<ProjectLabel> labels = projectLabelMapper.selectByExample(example);
         if (labels != null && labels.size()>0){
@@ -75,7 +75,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         }
         ProjectLabel projectLabel = projectLabelMapper.selectByPrimaryKey(label.getId());
         projectLabel.setName(label.getName());
-        projectLabel.setIsDeleted(Const.IS_NORMAL);
+        projectLabel.setIsDeleted(Const.B_ZERO);
         projectLabel.setLabelDeclare(label.getLabelDeclare());
         projectLabel.setUpdateTime(DateUtil.getCurrentDate());
         projectLabel.setUpdateUser(UserContext.getUserSession().getName());
@@ -90,15 +90,15 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         example.setOrderByClause("update_time DESC");
         if (StringUtil.isNotEmpty(keyword)) {
             keyword = "%" + keyword + "%";
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andNameLike(keyword);
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andNameLike(keyword);
             List<ProjectLabel> listByName = projectLabelMapper.selectByExample(example);
             list.addAll(listByName);
             example = new ProjectLabelExample();
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andLabelDeclareLike(keyword);
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andLabelDeclareLike(keyword);
             List<ProjectLabel> listByDeclare = projectLabelMapper.selectByExample(example);
             list.addAll(listByDeclare);
         } else {
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
             list = projectLabelMapper.selectByExample(example);
         }
 
@@ -113,7 +113,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
     @Override
     public ProjectLabel getLabelByCode(String labelCode) {
         ProjectLabelExample example = new ProjectLabelExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andLabelCodeEqualTo(labelCode);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andLabelCodeEqualTo(labelCode);
         List<ProjectLabel> list = projectLabelMapper.selectByExample(example);
         if (list.size() < 1) {
             return null;

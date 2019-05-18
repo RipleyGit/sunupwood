@@ -31,7 +31,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
     public ProjectDesigner getDesignerByName(String name) {
 
         ProjectDesignerExample example = new ProjectDesignerExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andNameEqualTo(name);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andNameEqualTo(name);
         List<ProjectDesigner> list = projectDesignerMapper.selectByExample(example);
         if (list == null || list.size() < 1) {
             return null;
@@ -65,7 +65,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         ProjectDesigner designer = projectDesignerMapper.selectByPrimaryKey(id);
         designer.setUpdateTime(DateUtil.getCurrentDate());
         designer.setUpdateUser(UserContext.getUserSession().getName());
-        designer.setIsDeleted(Const.IS_DELETED);
+        designer.setIsDeleted(Const.B_ONE);
         projectDesignerMapper.updateByPrimaryKey(designer);
         return id;
     }
@@ -82,7 +82,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         ProjectDesignerExample example = new ProjectDesignerExample();
         example.createCriteria().andNameEqualTo(updateDesigner.getName())
                 .andIdNotEqualTo(updateDesigner.getId())
-                .andIsDeletedEqualTo(Const.IS_NORMAL);
+                .andIsDeletedEqualTo(Const.B_ZERO);
         List<ProjectDesigner> list = projectDesignerMapper.selectByExample(example);
 
         if (list != null && list.size()>0){
@@ -94,7 +94,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         if (StringUtil.isEmpty(updateDesigner.getSamplereels())){
             updateDesigner.setSamplereels("[]");
         }
-        updateDesigner.setIsDeleted(Const.IS_NORMAL);
+        updateDesigner.setIsDeleted(Const.B_ZERO);
         updateDesigner.setUpdateTime(DateUtil.getCurrentDate());
         updateDesigner.setUpdateUser(UserContext.getUserSession().getName());
         projectDesignerMapper.updateByPrimaryKeyWithBLOBs(updateDesigner);
@@ -106,7 +106,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectDesignerExample example = new ProjectDesignerExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         if (StringUtil.isEmpty(key)){
             return projectDesignerMapper.selectByExampleWithBLOBs(example);
         }

@@ -15,7 +15,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +26,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class ProductItemApiController extends CrossOriginBase implements ProductItemApi {
+public class ProductItemApiController implements ProductItemApi {
 
     @Autowired
     private ProductItemService productItemService;
@@ -44,12 +43,12 @@ public class ProductItemApiController extends CrossOriginBase implements Product
         if (productItem != null) {
             throw new ClientException("该分类已存在");
         }
-        if (Const.ZERO.equals(item.getIsRoot()) && item.getParentId() == null) {
+        if (Const.I_ZERO.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {
-            item.setIsRoot(Const.ONE);
+            item.setIsRoot(Const.I_ONE);
         }else {
-            item.setIsRoot(Const.ZERO);
+            item.setIsRoot(Const.I_ZERO);
         }
         ProductItem newItem = AutoConvertUtil.autoConvertTo(item, ProductItem.class);
         newItem.setItemParent(item.getParentId());
@@ -151,12 +150,12 @@ public class ProductItemApiController extends CrossOriginBase implements Product
         if (item == null || StringUtil.isEmpty(item.getId())){
             throw new ClientException("修改的分类不能为空！");
         }
-        if (Const.ZERO.equals(item.getIsRoot()) && item.getParentId() == null) {
+        if (Const.I_ZERO.equals(item.getIsRoot()) && item.getParentId() == null) {
             throw new ClientException("非根分类需要选择上级分类");
         }else if (StringUtil.isEmpty(item.getParentId())) {
-            item.setIsRoot(Const.ONE);
+            item.setIsRoot(Const.I_ONE);
         }else {
-            item.setIsRoot(Const.ZERO);
+            item.setIsRoot(Const.I_ZERO);
         }
         ProductItem updateItem = AutoConvertUtil.autoConvertTo(item, ProductItem.class);
         updateItem.setItemParent(item.getParentId());

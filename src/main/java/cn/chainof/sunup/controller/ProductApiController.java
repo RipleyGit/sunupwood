@@ -25,7 +25,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class ProductApiController extends CrossOriginBase implements ProductApi {
+public class ProductApiController implements ProductApi {
 
 
     @Autowired

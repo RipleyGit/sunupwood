@@ -31,7 +31,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     public ProductItem getItemByName(String itemName,String parentId) {
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemNameEqualTo(itemName).andItemParentEqualTo(parentId);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemNameEqualTo(itemName).andItemParentEqualTo(parentId);
         List<ProductItem> itemList = productItemMapper.selectByExample(example);
         if (itemList == null || itemList.size()<1){
             return null;
@@ -46,7 +46,7 @@ public class ProductItemServiceImpl implements ProductItemService {
         ProjectUser user = UserContext.getUserSession();
         if (newItem.getRank()==null){
             ProductItemExample example = new ProductItemExample();
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemParentEqualTo(newItem.getItemParent());
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemParentEqualTo(newItem.getItemParent());
             List<ProductItem> itemList = productItemMapper.selectByExample(example);
             Integer max = itemList.stream().map(ProductItem::getRank).max(Integer::compareTo).get();
             newItem.setRank(max+1);
@@ -55,7 +55,7 @@ public class ProductItemServiceImpl implements ProductItemService {
         newItem.setId(itemId);
         newItem.setCreateTime(DateUtil.getCurrentDate());
         newItem.setCreateUser(user.getName());
-        newItem.setIsDeleted(Const.IS_NORMAL);
+        newItem.setIsDeleted(Const.B_ZERO);
         productItemMapper.insertSelective(newItem);
         return itemId;
     }
@@ -69,7 +69,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String updateItem(ProductItem updateItem) {
         ProductItemExample itemExample = new ProductItemExample();
-        itemExample.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL)
+        itemExample.createCriteria().andIsDeletedEqualTo(Const.B_ZERO)
                 .andItemNameEqualTo(updateItem.getItemName())
                 .andIdNotEqualTo(updateItem.getId());
         List<ProductItem> list = productItemMapper.selectByExample(itemExample);
@@ -80,7 +80,7 @@ public class ProductItemServiceImpl implements ProductItemService {
         ProjectUser user = UserContext.getUserSession();
         if (updateItem.getRank()==null){
             ProductItemExample example = new ProductItemExample();
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemParentEqualTo(updateItem.getItemParent());
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemParentEqualTo(updateItem.getItemParent());
             List<ProductItem> itemList = productItemMapper.selectByExample(example);
             Integer max = itemList.stream().map(ProductItem::getRank).max(Integer::compareTo).get();
             updateItem.setRank(max+1);
@@ -95,7 +95,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deletedItem(String id) {
         ProductItem productItem = productItemMapper.selectByPrimaryKey(id);
-        productItem.setIsDeleted(Const.IS_DELETED);
+        productItem.setIsDeleted(Const.B_ONE);
         productItem.setUpdateTime(DateUtil.getCurrentDate());
         productItem.setUpdateUser(UserContext.getUserSession().getName());
         productItemMapper.updateByPrimaryKeySelective(productItem);
@@ -109,15 +109,15 @@ public class ProductItemServiceImpl implements ProductItemService {
         example.setOrderByClause("update_time DESC");
         if (StringUtil.isNotEmpty(key)){
             key = "%"+key+"%";
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemNameLike(key);
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemNameLike(key);
             List<ProductItem> listByName = productItemMapper.selectByExample(example);
             list.addAll(listByName);
             example = new ProductItemExample();
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemDeclareLike(key);
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemDeclareLike(key);
             List<ProductItem> listByDeclare = productItemMapper.selectByExample(example);
             list.addAll(listByDeclare);
         }else {
-            example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
             list = productItemMapper.selectByExample(example);
         }
         return list;
@@ -126,14 +126,14 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     public List<ProductItem> getRootItems() {
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andIsRootEqualTo(Const.ONE.byteValue());
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andIsRootEqualTo(Const.I_ONE.byteValue());
         return productItemMapper.selectByExample(example);
     }
 
     @Override
     public List<ProductItem> getItemsByParentId(String parentId) {
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL).andItemParentEqualTo(parentId);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemParentEqualTo(parentId);
         return productItemMapper.selectByExample(example);
     }
 }

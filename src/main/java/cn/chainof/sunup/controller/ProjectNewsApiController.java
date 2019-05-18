@@ -27,7 +27,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class ProjectNewsApiController extends CrossOriginBase implements ProjectNewsApi {
+public class ProjectNewsApiController implements ProjectNewsApi {
 
     @Autowired
     private ProjectNewsService projectNewsService;

@@ -35,8 +35,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@CrossOrigin
-public class ProjectOtherApiController implements ProjectOtherApi {
+public class ProjectOtherApiController extends CrossOriginBase implements ProjectOtherApi {
 
     @Autowired
     private JavaMailSender mailSender;

@@ -21,6 +21,9 @@ public class NewsDTO   {
   @JsonProperty("stye")
   private String stye = null;
 
+  @JsonProperty("rank")
+  private Integer rank = null;
+
   @JsonProperty("title")
   private String title = null;
 
@@ -86,6 +89,26 @@ public class NewsDTO   {
 
   public void setStye(String stye) {
     this.stye = stye;
+  }
+
+  public NewsDTO rank(Integer rank) {
+    this.rank = rank;
+    return this;
+  }
+
+  /**
+   * 排序
+   * @return rank
+  **/
+  @ApiModelProperty(value = "排序")
+
+
+  public Integer getRank() {
+    return rank;
+  }
+
+  public void setRank(Integer rank) {
+    this.rank = rank;
   }
 
   public NewsDTO title(String title) {
@@ -280,6 +303,7 @@ public class NewsDTO   {
     NewsDTO newsDTO = (NewsDTO) o;
     return Objects.equals(this.id, newsDTO.id) &&
         Objects.equals(this.stye, newsDTO.stye) &&
+        Objects.equals(this.rank, newsDTO.rank) &&
         Objects.equals(this.title, newsDTO.title) &&
         Objects.equals(this.intro, newsDTO.intro) &&
         Objects.equals(this.author, newsDTO.author) &&
@@ -293,7 +317,7 @@ public class NewsDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, stye, title, intro, author, backImg, subject, createUser, updateUser, createTime, updateTime);
+    return Objects.hash(id, stye, rank, title, intro, author, backImg, subject, createUser, updateUser, createTime, updateTime);
   }
 
   @Override
@@ -303,6 +327,7 @@ public class NewsDTO   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    stye: ").append(toIndentedString(stye)).append("\n");
+    sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    intro: ").append(toIndentedString(intro)).append("\n");
     sb.append("    author: ").append(toIndentedString(author)).append("\n");

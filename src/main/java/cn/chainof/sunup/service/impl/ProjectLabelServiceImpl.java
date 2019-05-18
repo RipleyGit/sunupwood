@@ -75,6 +75,7 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         }
         ProjectLabel projectLabel = projectLabelMapper.selectByPrimaryKey(label.getId());
         projectLabel.setName(label.getName());
+        projectLabel.setIsDeleted(Const.IS_NORMAL);
         projectLabel.setLabelDeclare(label.getLabelDeclare());
         projectLabel.setUpdateTime(DateUtil.getCurrentDate());
         projectLabel.setUpdateUser(UserContext.getUserSession().getName());

@@ -15,8 +15,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:9528")
-                .allowedOrigins("http://localhost:8080")
+//                .allowedOrigins("http://localhost:9528","https://customs.guqinet.com")
+//                .allowedOrigins("http://localhost:8080")
+//                .allowedOrigins("https://customs.guqinet.com/test2")
+//                .allowedOrigins("https://customs.guqinet.com/test")
+                .allowedOrigins("*")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 .maxAge(3600)
                 .allowCredentials(true);
@@ -27,8 +30,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:9528");
-        config.addAllowedOrigin("http://localhost:8080");
+        config.addAllowedOrigin("*");
+//        config.addAllowedOrigin("http://localhost:9528");
+//        config.addAllowedOrigin("http://localhost:8080");
+//        config.addAllowedOrigin("https://customs.guqinet.com");
+//        config.addAllowedOrigin("https://customs.guqinet.com/test");
+//        config.addAllowedOrigin("https://customs.guqinet.com/test2");
         config.addAllowedOrigin("null");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");

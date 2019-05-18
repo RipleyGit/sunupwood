@@ -41,6 +41,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     public String updateProjectNews(ProjectNews news) {
         String newsId = news.getId();
         ProjectNews projectNews = projectNewsMapper.selectByPrimaryKey(newsId);
+        news.setIsDeleted(Const.IS_NORMAL);
         news.setCreateTime(projectNews.getCreateTime());
         news.setCreateUser(projectNews.getCreateUser());
         news.setUpdateTime(DateUtil.getCurrentDate());
@@ -67,7 +68,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     public List<ProjectNews> queryList(String key, Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectNewsExample example = new ProjectNewsExample();
-        example.setOrderByClause("update_time DESC");
+        example.setOrderByClause("rank DESC");
         if(StringUtil.isNotEmpty(key)){
             String like = "%" + key + "%";
             ProjectNewsExample.Criteria authorLike = example.createCriteria().andAuthorLike(like);
@@ -79,5 +80,17 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
         }
         example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL);
         return projectNewsMapper.selectByExampleWithBLOBs(example);
+    }
+
+    @Override
+    public List<ProjectNews> queryListByStyle(String style, Integer pageIndex, Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        ProjectNewsExample example = new ProjectNewsExample();
+        example.setOrderByClause("rank DESC");
+
+        example.createCriteria().andIsDeletedEqualTo(Const.IS_NORMAL)
+                .andStyeEqualTo(style);
+        return projectNewsMapper.selectByExampleWithBLOBs(example);
+
     }
 }

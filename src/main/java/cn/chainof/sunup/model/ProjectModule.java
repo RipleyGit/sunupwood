@@ -12,6 +12,8 @@ public class ProjectModule implements Serializable {
 
     private String keyword;
 
+    private Integer rank;
+
     private Byte isDeleted;
 
     private String createUser;
@@ -56,6 +58,14 @@ public class ProjectModule implements Serializable {
 
     public void setKeyword(String keyword) {
         this.keyword = keyword == null ? null : keyword.trim();
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
     public Byte getIsDeleted() {
@@ -122,6 +132,7 @@ public class ProjectModule implements Serializable {
             && (this.getIntro() == null ? other.getIntro() == null : this.getIntro().equals(other.getIntro()))
             && (this.getModule() == null ? other.getModule() == null : this.getModule().equals(other.getModule()))
             && (this.getKeyword() == null ? other.getKeyword() == null : this.getKeyword().equals(other.getKeyword()))
+            && (this.getRank() == null ? other.getRank() == null : this.getRank().equals(other.getRank()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()))
             && (this.getCreateUser() == null ? other.getCreateUser() == null : this.getCreateUser().equals(other.getCreateUser()))
             && (this.getUpdateUser() == null ? other.getUpdateUser() == null : this.getUpdateUser().equals(other.getUpdateUser()))
@@ -138,6 +149,7 @@ public class ProjectModule implements Serializable {
         result = prime * result + ((getIntro() == null) ? 0 : getIntro().hashCode());
         result = prime * result + ((getModule() == null) ? 0 : getModule().hashCode());
         result = prime * result + ((getKeyword() == null) ? 0 : getKeyword().hashCode());
+        result = prime * result + ((getRank() == null) ? 0 : getRank().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         result = prime * result + ((getCreateUser() == null) ? 0 : getCreateUser().hashCode());
         result = prime * result + ((getUpdateUser() == null) ? 0 : getUpdateUser().hashCode());

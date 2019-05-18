@@ -24,9 +24,8 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Slf4j
-@CrossOrigin
 @RestController
-public class ProductDesignApiController implements ProductDesignApi {
+public class ProductDesignApiController extends CrossOriginBase implements ProductDesignApi {
 
 
     @Autowired

@@ -23,6 +23,9 @@ public class ProductDesignDTO   {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("rank")
+  private Integer rank = null;
+
   @JsonProperty("egName")
   private String egName = null;
 
@@ -74,6 +77,26 @@ public class ProductDesignDTO   {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public ProductDesignDTO rank(Integer rank) {
+    this.rank = rank;
+    return this;
+  }
+
+  /**
+   * 排序
+   * @return rank
+  **/
+  @ApiModelProperty(value = "排序")
+
+
+  public Integer getRank() {
+    return rank;
+  }
+
+  public void setRank(Integer rank) {
+    this.rank = rank;
   }
 
   public ProductDesignDTO egName(String egName) {
@@ -176,6 +199,7 @@ public class ProductDesignDTO   {
     ProductDesignDTO productDesignDTO = (ProductDesignDTO) o;
     return Objects.equals(this.id, productDesignDTO.id) &&
         Objects.equals(this.name, productDesignDTO.name) &&
+        Objects.equals(this.rank, productDesignDTO.rank) &&
         Objects.equals(this.egName, productDesignDTO.egName) &&
         Objects.equals(this.lordImg, productDesignDTO.lordImg) &&
         Objects.equals(this.isLarge, productDesignDTO.isLarge) &&
@@ -184,7 +208,7 @@ public class ProductDesignDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, egName, lordImg, isLarge, imgUrls);
+    return Objects.hash(id, name, rank, egName, lordImg, isLarge, imgUrls);
   }
 
   @Override
@@ -194,6 +218,7 @@ public class ProductDesignDTO   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    egName: ").append(toIndentedString(egName)).append("\n");
     sb.append("    lordImg: ").append(toIndentedString(lordImg)).append("\n");
     sb.append("    isLarge: ").append(toIndentedString(isLarge)).append("\n");

@@ -5,6 +5,7 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="stye" jdbcType="VARCHAR" property="stye" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="back_img" jdbcType="VARCHAR" property="backImg" />
     <result column="intro" jdbcType="VARCHAR" property="intro" />
@@ -76,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, stye, title, author, back_img, intro, is_deleted, create_user, update_user, create_time, 
-    update_time
+    id, stye, title, rank, author, back_img, intro, is_deleted, create_user, update_user, 
+    create_time, update_time
   </sql>
   <sql id="Blob_Column_List">
     subject
@@ -132,15 +133,15 @@
   </delete>
   <insert id="insert" parameterType="cn.chainof.sunup.model.ProjectNews">
     insert into project_news (id, stye, title, 
-      author, back_img, intro, 
-      is_deleted, create_user, update_user, 
-      create_time, update_time, subject
-      )
+      rank, author, back_img, 
+      intro, is_deleted, create_user, 
+      update_user, create_time, update_time, 
+      subject)
     values (#{id,jdbcType=VARCHAR}, #{stye,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
-      #{author,jdbcType=VARCHAR}, #{backImg,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{subject,jdbcType=LONGVARCHAR}
-      )
+      #{rank,jdbcType=INTEGER}, #{author,jdbcType=VARCHAR}, #{backImg,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{subject,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.chainof.sunup.model.ProjectNews">
     insert into project_news
@@ -153,6 +154,9 @@
       </if>
       <if test="title != null">
         title,
+      </if>
+      <if test="rank != null">
+        rank,
       </if>
       <if test="author != null">
         author,
@@ -191,6 +195,9 @@
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
       </if>
       <if test="author != null">
         #{author,jdbcType=VARCHAR},
@@ -239,6 +246,9 @@
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
+      <if test="record.rank != null">
+        rank = #{record.rank,jdbcType=INTEGER},
+      </if>
       <if test="record.author != null">
         author = #{record.author,jdbcType=VARCHAR},
       </if>
@@ -276,6 +286,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       stye = #{record.stye,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=INTEGER},
       author = #{record.author,jdbcType=VARCHAR},
       back_img = #{record.backImg,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
@@ -294,6 +305,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       stye = #{record.stye,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=INTEGER},
       author = #{record.author,jdbcType=VARCHAR},
       back_img = #{record.backImg,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
@@ -314,6 +326,9 @@
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=INTEGER},
       </if>
       <if test="author != null">
         author = #{author,jdbcType=VARCHAR},
@@ -349,6 +364,7 @@
     update project_news
     set stye = #{stye,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=INTEGER},
       author = #{author,jdbcType=VARCHAR},
       back_img = #{backImg,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
@@ -364,6 +380,7 @@
     update project_news
     set stye = #{stye,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=INTEGER},
       author = #{author,jdbcType=VARCHAR},
       back_img = #{backImg,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},

@@ -26,9 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@CrossOrigin
 @RestController
-public class ProductItemApiController implements ProductItemApi {
+public class ProductItemApiController extends CrossOriginBase implements ProductItemApi {
 
     @Autowired
     private ProductItemService productItemService;

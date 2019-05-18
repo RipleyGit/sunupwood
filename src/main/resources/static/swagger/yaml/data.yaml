@@ -677,6 +677,35 @@ paths:
             items:
               $ref: '#/definitions/NewsDTO'
           description: "新闻内容信息"
+  /project/center/newsListByStyle:
+    get:
+      tags:
+        - "ProjectNews"
+      summary: "查看新闻内容"
+      operationId: newsListByStyle
+      parameters:
+        - in: query
+          name: style
+          type: string
+          required: true
+          description: 新闻类型：1/公司新闻；2/行业新闻
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 6
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/NewsDTO'
+          description: "新闻内容信息"
 
   /project/product/designer:
     post:
@@ -1049,6 +1078,9 @@ definitions:
       name:
         type: string
         description:  描述
+      rank:
+        type: integer
+        description: 排序
       lordImg:
         type: string
         description: 主图
@@ -1066,6 +1098,9 @@ definitions:
       name:
         type: string
         description: 中文描述
+      rank:
+        type: integer
+        description: 排序
       egName:
         type: string
         description: 英文描述
@@ -1102,6 +1137,9 @@ definitions:
       name:
         type: string
         description: 设计师名
+      rank:
+        type: integer
+        description: 排序
       sex:
         type: string
         description: 性别
@@ -1128,6 +1166,9 @@ definitions:
       stye:
         type: string
         description: 新闻类型：1，公司新闻；2 行业新闻
+      rank:
+        type: integer
+        description: 排序
       title:
         type: string
         description: 新闻标题

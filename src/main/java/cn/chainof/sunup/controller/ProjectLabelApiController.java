@@ -25,8 +25,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@CrossOrigin
-public class ProjectLabelApiController implements ProjectLabelApi {
+public class ProjectLabelApiController extends CrossOriginBase implements ProjectLabelApi {
 
     @Autowired
     private ProjectLabelService projectLabelService;

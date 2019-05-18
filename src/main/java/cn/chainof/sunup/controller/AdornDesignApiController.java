@@ -24,9 +24,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 @Slf4j
-@CrossOrigin
 @RestController
-public class AdornDesignApiController implements AdornDesignApi {
+public class AdornDesignApiController extends CrossOriginBase implements AdornDesignApi  {
 
     @Autowired
     private AdornDesignService adornDesignService;

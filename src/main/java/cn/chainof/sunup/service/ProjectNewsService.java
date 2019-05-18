@@ -15,4 +15,6 @@ public interface ProjectNewsService {
     ProjectNews getNewsInfo(String id);
 
     List<ProjectNews> queryList(String key, Integer pageIndex, Integer pageSize);
+
+    List<ProjectNews> queryListByStyle(String style, Integer pageIndex, Integer pageSize);
 }

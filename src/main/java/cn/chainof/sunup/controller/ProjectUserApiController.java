@@ -26,9 +26,8 @@ import java.util.List;
 
 
 @Slf4j
-@CrossOrigin
 @RestController
-public class ProjectUserApiController implements ProjectUserApi {
+public class ProjectUserApiController extends CrossOriginBase implements ProjectUserApi {
 
     @Autowired
     private ProjectUserService projectUserService;

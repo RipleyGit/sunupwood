@@ -36,6 +36,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         String id = String.valueOf(KeyUtil.genUniqueKey());
         productDto.setId(id);
         ProjectModule bannerModule = getProjectModule(productDto);
+        bannerModule.setIsDeleted(Const.IS_NORMAL);
         bannerModule.setCreateTime(DateUtil.getCurrentDate());
         bannerModule.setCreateUser(UserContext.getUserSession().getName());
         projectModuleMapper.insertSelective(bannerModule);
@@ -57,7 +58,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
     public List<ProductDesignDTO> queryProductList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectModuleExample example = new ProjectModuleExample();
-        example.setOrderByClause("update_time DESC");
+        example.setOrderByClause("rank DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.PRODUCTDESIGN)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
@@ -95,6 +96,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         bannerModule.setId(productDto.getId());
         bannerModule.setModule(ModuleConst.PRODUCTDESIGN);
         bannerModule.setIntro(productDto.getName()+productDto.getEgName());
+        bannerModule.setRank(productDto.getRank());
         ProductDesignModule module = new ProductDesignModule();
         module.setEgName(productDto.getEgName());
         module.setName(productDto.getName());
@@ -109,6 +111,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
         ProductDesignDTO dto = new ProductDesignDTO();
         ProductDesignModule designModule = JSON.parseObject(module.getContent(), ProductDesignModule.class);
         dto.setId(module.getId());
+        dto.setRank(module.getRank());
         dto.setName(designModule.getName());
         dto.setEgName(designModule.getEgName());
         dto.setImgUrls(designModule.getImgUrls());

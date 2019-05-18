@@ -79,4 +79,15 @@ public interface ProjectNewsApi {
         method = RequestMethod.PUT)
     ResponseEntity<Void> modifyNewsInfo(@ApiParam(value = "" ,required=true )  @Valid @RequestBody NewsDTO newsDto);
 
+
+    @ApiOperation(value = "查看新闻内容", nickname = "newsListByStyle", notes = "", response = NewsDTO.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProjectNews", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "新闻内容信息", response = NewsDTO.class, responseContainer = "List") })
+    @RequestMapping(value = "/project/center/newsListByStyle",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<NewsDTO>> newsListByStyle(@NotNull @ApiParam(value = "新闻类型：1/公司新闻；2/行业新闻", required = true) @Valid @RequestParam(value = "style", required = true) String style,@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "6") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="6") Integer pageSize);
+
 }

@@ -6,6 +6,7 @@
     <result column="intro" jdbcType="VARCHAR" property="intro" />
     <result column="module" jdbcType="VARCHAR" property="module" />
     <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
     <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
@@ -74,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, intro, module, keyword, is_deleted, create_user, update_user, create_time, update_time
+    id, intro, module, keyword, rank, is_deleted, create_user, update_user, create_time, 
+    update_time
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -129,13 +131,13 @@
   </delete>
   <insert id="insert" parameterType="cn.chainof.sunup.model.ProjectModule">
     insert into project_module (id, intro, module, 
-      keyword, is_deleted, create_user, 
-      update_user, create_time, update_time, 
-      content)
+      keyword, rank, is_deleted, 
+      create_user, update_user, create_time, 
+      update_time, content)
     values (#{id,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{module,jdbcType=VARCHAR}, 
-      #{keyword,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR}, 
-      #{updateUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{content,jdbcType=LONGVARCHAR})
+      #{keyword,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.chainof.sunup.model.ProjectModule">
     insert into project_module
@@ -151,6 +153,9 @@
       </if>
       <if test="keyword != null">
         keyword,
+      </if>
+      <if test="rank != null">
+        rank,
       </if>
       <if test="isDeleted != null">
         is_deleted,
@@ -183,6 +188,9 @@
       </if>
       <if test="keyword != null">
         #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
       </if>
       <if test="isDeleted != null">
         #{isDeleted,jdbcType=TINYINT},
@@ -225,6 +233,9 @@
       <if test="record.keyword != null">
         keyword = #{record.keyword,jdbcType=VARCHAR},
       </if>
+      <if test="record.rank != null">
+        rank = #{record.rank,jdbcType=INTEGER},
+      </if>
       <if test="record.isDeleted != null">
         is_deleted = #{record.isDeleted,jdbcType=TINYINT},
       </if>
@@ -254,6 +265,7 @@
       intro = #{record.intro,jdbcType=VARCHAR},
       module = #{record.module,jdbcType=VARCHAR},
       keyword = #{record.keyword,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=INTEGER},
       is_deleted = #{record.isDeleted,jdbcType=TINYINT},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
@@ -270,6 +282,7 @@
       intro = #{record.intro,jdbcType=VARCHAR},
       module = #{record.module,jdbcType=VARCHAR},
       keyword = #{record.keyword,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=INTEGER},
       is_deleted = #{record.isDeleted,jdbcType=TINYINT},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
@@ -290,6 +303,9 @@
       </if>
       <if test="keyword != null">
         keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=INTEGER},
       </if>
       <if test="isDeleted != null">
         is_deleted = #{isDeleted,jdbcType=TINYINT},
@@ -317,6 +333,7 @@
     set intro = #{intro,jdbcType=VARCHAR},
       module = #{module,jdbcType=VARCHAR},
       keyword = #{keyword,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=INTEGER},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_user = #{updateUser,jdbcType=VARCHAR},
@@ -330,6 +347,7 @@
     set intro = #{intro,jdbcType=VARCHAR},
       module = #{module,jdbcType=VARCHAR},
       keyword = #{keyword,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=INTEGER},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_user = #{updateUser,jdbcType=VARCHAR},

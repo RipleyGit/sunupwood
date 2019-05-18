@@ -10,6 +10,8 @@ public class ProjectNews implements Serializable {
 
     private String title;
 
+    private Integer rank;
+
     private String author;
 
     private String backImg;
@@ -52,6 +54,14 @@ public class ProjectNews implements Serializable {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
     public String getAuthor() {
@@ -141,6 +151,7 @@ public class ProjectNews implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getStye() == null ? other.getStye() == null : this.getStye().equals(other.getStye()))
             && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
+            && (this.getRank() == null ? other.getRank() == null : this.getRank().equals(other.getRank()))
             && (this.getAuthor() == null ? other.getAuthor() == null : this.getAuthor().equals(other.getAuthor()))
             && (this.getBackImg() == null ? other.getBackImg() == null : this.getBackImg().equals(other.getBackImg()))
             && (this.getIntro() == null ? other.getIntro() == null : this.getIntro().equals(other.getIntro()))
@@ -159,6 +170,7 @@ public class ProjectNews implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getStye() == null) ? 0 : getStye().hashCode());
         result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
+        result = prime * result + ((getRank() == null) ? 0 : getRank().hashCode());
         result = prime * result + ((getAuthor() == null) ? 0 : getAuthor().hashCode());
         result = prime * result + ((getBackImg() == null) ? 0 : getBackImg().hashCode());
         result = prime * result + ((getIntro() == null) ? 0 : getIntro().hashCode());

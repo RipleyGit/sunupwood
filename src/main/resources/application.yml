@@ -57,3 +57,5 @@ qcloud.cos:
   BucketName: sunup-wood-1252366727
   Region: ap-chengdu
   ImgUrl: https://sunup-wood-1252366727.cos.ap-chengdu.myqcloud.com
+
+allowedOrigins:

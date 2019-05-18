@@ -64,7 +64,7 @@ public class ProjectBannerServiceImpl implements ProjectBannerService {
     public List<BannerDTO> queryList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectModuleExample example = new ProjectModuleExample();
-        example.setOrderByClause("update_time DESC");
+        example.setOrderByClause("rank DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.BANNER)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
@@ -99,6 +99,7 @@ public class ProjectBannerServiceImpl implements ProjectBannerService {
     private ProjectModule getProjectModule(BannerDTO banner) {
         ProjectModule bannerModule = new ProjectModule();
         bannerModule.setId(banner.getId());
+        bannerModule.setRank(banner.getRank());
         bannerModule.setModule(ModuleConst.BANNER);
         bannerModule.setIntro(banner.getTitle());
         bannerModule.setKeyword(banner.getTitle());

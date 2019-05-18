@@ -23,6 +23,9 @@ public class AdornDesignDTO   {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("rank")
+  private Integer rank = null;
+
   @JsonProperty("lordImg")
   private String lordImg = null;
 
@@ -68,6 +71,26 @@ public class AdornDesignDTO   {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public AdornDesignDTO rank(Integer rank) {
+    this.rank = rank;
+    return this;
+  }
+
+  /**
+   * 排序
+   * @return rank
+  **/
+  @ApiModelProperty(value = "排序")
+
+
+  public Integer getRank() {
+    return rank;
+  }
+
+  public void setRank(Integer rank) {
+    this.rank = rank;
   }
 
   public AdornDesignDTO lordImg(String lordImg) {
@@ -130,13 +153,14 @@ public class AdornDesignDTO   {
     AdornDesignDTO adornDesignDTO = (AdornDesignDTO) o;
     return Objects.equals(this.id, adornDesignDTO.id) &&
         Objects.equals(this.name, adornDesignDTO.name) &&
+        Objects.equals(this.rank, adornDesignDTO.rank) &&
         Objects.equals(this.lordImg, adornDesignDTO.lordImg) &&
         Objects.equals(this.imgUrls, adornDesignDTO.imgUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, lordImg, imgUrls);
+    return Objects.hash(id, name, rank, lordImg, imgUrls);
   }
 
   @Override
@@ -146,6 +170,7 @@ public class AdornDesignDTO   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    lordImg: ").append(toIndentedString(lordImg)).append("\n");
     sb.append("    imgUrls: ").append(toIndentedString(imgUrls)).append("\n");
     sb.append("}");

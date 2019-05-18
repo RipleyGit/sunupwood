@@ -67,7 +67,7 @@ public class AdornDesignServiceImpl implements AdornDesignService {
     public List<AdornDesignDTO> queryAdornList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectModuleExample example = new ProjectModuleExample();
-        example.setOrderByClause("update_time DESC");
+        example.setOrderByClause("rank DESC");
         example.createCriteria().andModuleEqualTo(ModuleConst.ADORNDESIGN)
                 .andIsDeletedEqualTo(Const.IS_NORMAL);
         List<ProjectModule> moduleList = projectModuleMapper.selectByExampleWithBLOBs(example);
@@ -96,6 +96,7 @@ public class AdornDesignServiceImpl implements AdornDesignService {
         module.setIntro(adornDto.getName());
         module.setKeyword(adornDto.getName());
         AdornDesignModule adorn = new AdornDesignModule();
+        module.setRank(adornDto.getRank());
         adorn.setImgUrls(adornDto.getImgUrls());
         adorn.setLordImg(adornDto.getLordImg());
         adorn.setName(adornDto.getName());
@@ -107,6 +108,7 @@ public class AdornDesignServiceImpl implements AdornDesignService {
     private AdornDesignDTO getProductDesignDTO(ProjectModule module) {
         AdornDesignDTO dto = new AdornDesignDTO();
         dto.setId(module.getId());
+        dto.setRank(module.getRank());
         AdornDesignModule designModule = JSON.parseObject(module.getContent(), AdornDesignModule.class);
         dto.setName(designModule.getName());
         dto.setLordImg(designModule.getLordImg());

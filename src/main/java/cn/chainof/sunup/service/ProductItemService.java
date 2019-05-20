@@ -22,4 +22,6 @@ public interface ProductItemService {
     List<ProductItem> getItemsByParentId(String parentId);
 
     List<ProductItem> queryListByIds(List<String> asList);
+
+    List<ProductItem> queryListByName(String itemName);
 }

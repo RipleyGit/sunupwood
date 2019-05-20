@@ -98,6 +98,11 @@ public class ProductServiceImpl implements ProductService {
             example.or(userLike);
             ProductExample.Criteria updateUserLike = example.createCriteria().andUpdateUserLike(likeKey);
             example.or(updateUserLike);
+            List<ProductItem> itemList = productItemService.queryListByName(likeKey);
+            if (itemList != null && itemList.size()>0){
+                ProductExample.Criteria itemLike = example.createCriteria().andItemIdIn(itemList.stream().map(ProductItem::getId).collect(Collectors.toList()));
+                example.or(itemLike);
+            }
         }
         return productMapper.selectByExample(example);
     }
@@ -191,6 +196,9 @@ public class ProductServiceImpl implements ProductService {
     }
     @Override
     public ProductDTO getDto(Product product) {
+        if (product == null){
+            return new ProductDTO();
+        }
         List<ProductItem> itemList = productItemService.queryListByIds(Arrays.asList(product.getItemId()));
         Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
         List<ProjectLabel> labelList = new ArrayList<>();

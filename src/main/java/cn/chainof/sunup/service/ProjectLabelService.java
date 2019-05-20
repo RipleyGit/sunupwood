@@ -21,4 +21,6 @@ public interface ProjectLabelService {
     ProjectLabel getLabelByCode(String labelCode);
 
     List<ProjectLabel> queryListByIds(List<String> labels);
+
+    List<ProjectLabel> queryListByName(String name);
 }

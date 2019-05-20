@@ -127,4 +127,11 @@ public class ProjectLabelServiceImpl implements ProjectLabelService {
         example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andIdIn(labels);
         return projectLabelMapper.selectByExample(example);
     }
+
+    @Override
+    public List<ProjectLabel> queryListByName(String name) {
+        ProjectLabelExample example = new ProjectLabelExample();
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andNameLike(name);
+        return projectLabelMapper.selectByExample(example);
+    }
 }

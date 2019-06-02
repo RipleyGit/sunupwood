@@ -9,8 +9,6 @@ import java.util.List;
 public interface ProductService {
     String addProductInfo(Product product);
 
-    List<String> deleteProducts(List<String> ids);
-
     ProductArray queryProducts(String key, Integer pageIndex, Integer pageSize);
 
     String modifyProductInfo(Product product);
@@ -21,11 +19,11 @@ public interface ProductService {
 
     ProductArray queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize);
 
-    Product getProductById(String id);
 
     String deleteProduct(String id);
 
-    ProductDTO getDto(Product product);
 
     List<ProductDTO> getDtoList(List<Product> list);
+
+    ProductDTO getProductDto(String id);
 }

@@ -84,11 +84,7 @@ public class ProductDesignServiceImpl implements ProductDesignService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deleteById(String id) {
-        ProjectModule module = projectModuleMapper.selectByPrimaryKey(id);
-        module.setIsDeleted(Const.B_ONE);
-        module.setUpdateTime(DateUtil.getCurrentDate());
-        module.setUpdateUser(UserContext.getUserSession().getName());
-        projectModuleMapper.updateByPrimaryKeySelective(module);
+        projectModuleMapper.deleteByPrimaryKey(id);
         return id;
     }
 

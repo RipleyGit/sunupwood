@@ -94,11 +94,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deletedItem(String id) {
-        ProductItem productItem = productItemMapper.selectByPrimaryKey(id);
-        productItem.setIsDeleted(Const.B_ONE);
-        productItem.setUpdateTime(DateUtil.getCurrentDate());
-        productItem.setUpdateUser(UserContext.getUserSession().getName());
-        productItemMapper.updateByPrimaryKeySelective(productItem);
+        productItemMapper.deleteByPrimaryKey(id);
         return id;
     }
 

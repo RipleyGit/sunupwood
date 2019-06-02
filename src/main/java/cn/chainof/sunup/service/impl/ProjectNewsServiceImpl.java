@@ -53,9 +53,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deleteById(String id) {
-        ProjectNews projectNews = projectNewsMapper.selectByPrimaryKey(id);
-        projectNews.setIsDeleted(Const.B_ONE);
-        projectNewsMapper.updateByPrimaryKey(projectNews);
+        projectNewsMapper.deleteByPrimaryKey(id);
         return id;
     }
 

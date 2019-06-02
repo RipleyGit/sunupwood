@@ -60,19 +60,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
-    public List<String> deleteProducts(List<String> ids) {
-        ProductExample example = new ProductExample();
-        example.createCriteria().andIdIn(ids);
-        List<Product> list = productMapper.selectByExample(example);
-        for (Product pro : list) {
-            pro.setIsDeleted(Const.B_ONE);
-            productMapper.updateByPrimaryKeySelective(pro);
-        }
-        return list.stream().map(Product::getId).collect(Collectors.toList());
-    }
-
-    @Override
     public ProductArray queryProducts(String key, Integer pageIndex, Integer pageSize) {
         List<ProductItem> itemList = new ArrayList<>();
         if (StringUtil.isNotEmpty(key)){
@@ -137,7 +124,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductArray queryListByItem(String itemId, Integer pageIndex, Integer pageSize) {
-        List<Product> list = new ArrayList<>();
         ProductItem item = productItemService.getItemById(itemId);
         if (item == null) {
             log.info("选择分类不存在");
@@ -153,7 +139,7 @@ public class ProductServiceImpl implements ProductService {
         } else {
             example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdEqualTo(itemId);
         }
-        list = productMapper.selectByExample(example);
+        List<Product> list = productMapper.selectByExample(example);
         PageInfo<Product> pageInfo = new PageInfo<>(list);
         ProductArray array = new ProductArray();
         array.setProductList(getDtoList(list));
@@ -168,7 +154,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductArray queryListByLabel(String labelId, Integer pageIndex, Integer pageSize) {
-        List<Product> list = new ArrayList<>();
         ProjectLabel label = projectLabelService.getLabelById(labelId);
         if (label == null) {
             log.info("选择标签不存在");
@@ -179,7 +164,7 @@ public class ProductServiceImpl implements ProductService {
         example.setOrderByClause("update_time DESC");
         String labelLike = "%" + labelId + "%";
         example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andLabelsLike(labelLike);
-        list = productMapper.selectByExample(example);
+        List<Product> list = productMapper.selectByExample(example);
         PageInfo<Product> pageInfo = new PageInfo<>(list);
         ProductArray array = new ProductArray();
         array.setProductList(getDtoList(list));
@@ -226,33 +211,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(String id) {
-        return productMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
     public String deleteProduct(String id) {
-        Product product = productMapper.selectByPrimaryKey(id);
-        product.setIsDeleted(Const.B_ONE);
-        productMapper.updateByPrimaryKeySelective(product);
+        productMapper.deleteByPrimaryKey(id);
         return id;
-    }
-    @Override
-    public ProductDTO getDto(Product product) {
-        if (product == null){
-            return new ProductDTO();
-        }
-        List<ProductItem> itemList = productItemService.queryListByIds(Arrays.asList(product.getItemId()));
-        Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
-        List<ProjectLabel> labelList = new ArrayList<>();
-        String labels = product.getLabels();
-        if (StringUtil.isNotEmpty(labels)) {
-            labelList = projectLabelService.queryListByIds(JSON.parseArray(labels,String.class));
-        }
-        Map<String, String> labelMap = labelList.stream().collect(Collectors.toMap(ProjectLabel::getId, a -> a.getName(), (k1, k2) -> k1));
-
-        ProductDTO dto = getProductDto(product,itemMap,labelMap);
-        return dto;
     }
 
     @Override
@@ -281,6 +242,22 @@ public class ProductServiceImpl implements ProductService {
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+    @Override
+    public ProductDTO getProductDto(String id) {
+        Product product = productMapper.selectByPrimaryKey(id);
+        List<ProductItem> itemList = productItemService.queryListByIds(Arrays.asList(product.getItemId()));
+        Map<String, String> itemMap = itemList.stream().collect(Collectors.toMap(ProductItem::getId, a -> a.getItemName(), (k1, k2) -> k1));
+        List<ProjectLabel> labelList = new ArrayList<>();
+        List<String> labels = JSON.parseArray(product.getLabels(), String.class);
+        if (labels != null && labels.size() > 0) {
+            labelList = projectLabelService.queryListByIds(labels);
+        }
+        Map<String, String> labelMap = labelList.stream().collect(Collectors.toMap(ProjectLabel::getId, a -> a.getName(), (k1, k2) -> k1));
+
+        ProductDTO dto = getProductDto(product,itemMap,labelMap);
+        return dto;
     }
 
     private ProductDTO getProductDto(Product product, Map<String,String> itemMap,Map<String,String> labelMap){

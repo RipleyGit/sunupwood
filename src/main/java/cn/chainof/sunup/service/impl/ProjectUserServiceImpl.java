@@ -138,15 +138,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deletedById(String id) {
-        ProjectUser user = projectUserMapper.selectByPrimaryKey(id);
-        if (user != null) {
-            user.setIsDeleted(Const.B_ONE);
-            user.setUpdateTime(DateUtil.getCurrentDate());
-            user.setUpdateUser(UserContext.getUserSession().getName());
-            projectUserMapper.updateByPrimaryKeySelective(user);
-        }else {
-            throw new ClientException("用户不存在！");
-        }
+        projectUserMapper.deleteByPrimaryKey(id);
         return id;
     }
 

@@ -62,11 +62,7 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS)
     public String deletedById(String id) {
-        ProjectDesigner designer = projectDesignerMapper.selectByPrimaryKey(id);
-        designer.setUpdateTime(DateUtil.getCurrentDate());
-        designer.setUpdateUser(UserContext.getUserSession().getName());
-        designer.setIsDeleted(Const.B_ONE);
-        projectDesignerMapper.updateByPrimaryKey(designer);
+        projectDesignerMapper.deleteByPrimaryKey(id);
         return id;
     }
 

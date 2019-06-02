@@ -58,8 +58,7 @@ public class ProductApiController implements ProductApi {
 
     @Override
     public ResponseEntity<ProductDTO> getProductInfo(@NotNull @Valid String id) {
-        Product product = productService.getProductById(id);
-        ProductDTO dto = productService.getDto(product);
+        ProductDTO dto = productService.getProductDto(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(dto,headers, HttpStatus.OK);

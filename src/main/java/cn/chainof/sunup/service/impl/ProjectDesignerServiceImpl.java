@@ -106,22 +106,22 @@ public class ProjectDesignerServiceImpl implements ProjectDesignerService {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectDesignerExample example = new ProjectDesignerExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         if (StringUtil.isEmpty(key)){
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
             return projectDesignerMapper.selectByExampleWithBLOBs(example);
         }
         String like = "%" + key + "%";
-        ProjectDesignerExample.Criteria nameLike = example.createCriteria().andNameLike(like);
+        ProjectDesignerExample.Criteria nameLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andNameLike(like);
         example.or(nameLike);
-        ProjectDesignerExample.Criteria ageLike = example.createCriteria().andAgeLike(like);
+        ProjectDesignerExample.Criteria ageLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andAgeLike(like);
         example.or(ageLike);
-        ProjectDesignerExample.Criteria createUserLike = example.createCriteria().andCreateUserLike(like);
+        ProjectDesignerExample.Criteria createUserLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andCreateUserLike(like);
         example.or(createUserLike);
-        ProjectDesignerExample.Criteria updateUserLike = example.createCriteria().andUpdateUserLike(like);
+        ProjectDesignerExample.Criteria updateUserLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andUpdateUserLike(like);
         example.or(updateUserLike);
-        ProjectDesignerExample.Criteria sexLike = example.createCriteria().andSexLike(like);
+        ProjectDesignerExample.Criteria sexLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andSexLike(like);
         example.or(sexLike);
-        ProjectDesignerExample.Criteria introduceLike = example.createCriteria().andIntroduceLike(like);
+        ProjectDesignerExample.Criteria introduceLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andIntroduceLike(like);
         example.or(introduceLike);
         return projectDesignerMapper.selectByExampleWithBLOBs(example);
     }

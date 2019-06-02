@@ -24,8 +24,7 @@ tags:
   description: "产品设计"
 - name: "AdornDesign"
   description: "装饰设计"
-- name: "AdornDesign"
-  description: "装饰设计"
+
 
 schemes:
 - "http"
@@ -497,9 +496,8 @@ paths:
       responses:
         200:
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ProductDTO'
+            type: object
+            $ref: '#/definitions/ProductArray'
           description: "商品列表"
   /project/product/listbyItem:
     get:
@@ -524,9 +522,8 @@ paths:
       responses:
         200:
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ProductDTO'
+            type: object
+            $ref: '#/definitions/ProductArray'
           description: "商品列表"
   /project/product/listbyLabel:
     get:
@@ -553,9 +550,8 @@ paths:
       responses:
         200:
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ProductDTO'
+            type: object
+            $ref: '#/definitions/ProductArray'
           description: "商品列表"
 
   /project/product/listbyItemLabel:
@@ -586,9 +582,8 @@ paths:
       responses:
         200:
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ProductDTO'
+            type: object
+            $ref: '#/definitions/ProductArray'
           description: "商品列表"
 
 
@@ -984,6 +979,97 @@ paths:
               $ref: '#/definitions/AdornDesignDTO'
           description: "装饰内容列表"
 
+  /project/design/item/product:
+    post:
+      summary: 产品设计分类-添加
+      tags:
+        - "ProductDesign"
+      operationId: addProductDesignItem
+      parameters:
+        - in: body
+          name: productItemDto
+          required: true
+          description: 产品设计分类
+          schema:
+            $ref: '#/definitions/ProductDesignItemDTO'
+            required:
+              - name
+              - lordImg
+      responses:
+        200:
+          description: 添加成功
+    put:
+      tags:
+        - "ProductDesign"
+      summary: 修改产品分类的内容
+      operationId: updateProductDesignItem
+      parameters:
+        - in: body
+          name: designDto
+          required: true
+          description: 产品分类的内容
+          schema:
+            $ref: '#/definitions/ProductDesignItemDTO'
+            required:
+              - id
+              - name
+              - lordImg
+      responses:
+        200:
+          description: 修改成功
+    delete:
+      tags:
+        - "ProductDesign"
+      summary: 删除产品设计分类
+      operationId: deleteItemById
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+      responses:
+        200:
+          description: 删除成功
+    get:
+      tags:
+        - "ProductDesign"
+      summary: 产品设计分类内容信息
+      operationId: getProductDesignItemDTOInfo
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: true
+          description: 唯一ID
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/ProductDesignItemDTO'
+          description: "获取成功"
+  /project/design/item/product/queryList:
+    get:
+      tags:
+        - "ProductDesign"
+      summary: 获取产品设计分类列表
+      operationId: queryProductItemList
+      parameters:
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 2
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDesignItemDTO'
+          description: "产品设计分类列表"
   /project/design/product:
     post:
       summary: 产品设计-添加
@@ -997,6 +1083,10 @@ paths:
           description: 产品设计内容
           schema:
             $ref: '#/definitions/ProductDesignDTO'
+            required:
+              - parentId
+              - name
+              - lordImg
       responses:
         200:
           description: 添加成功
@@ -1012,6 +1102,11 @@ paths:
           description: 产品设计内容
           schema:
             $ref: '#/definitions/ProductDesignDTO'
+            required:
+              - id
+              - parentId
+              - name
+              - lordImg
       responses:
         200:
           description: 修改成功
@@ -1068,6 +1163,34 @@ paths:
             items:
               $ref: '#/definitions/ProductDesignDTO'
           description: "产品设计内容列表"
+  /project/design/product/queryList/{itemId}:
+    get:
+      tags:
+        - "ProductDesign"
+      summary: 获取产品内容列表
+      operationId: queryProductListByItem
+      parameters:
+        - in: path
+          name: itemId
+          type: string
+          required: true
+        - in: query
+          name: pageIndex
+          type: integer
+          description: 当前页数
+          default: 0
+        - in: query
+          name: pageSize
+          type: integer
+          description: 页面大小
+          default: 9
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductDesignDTO'
+          description: "产品设计内容列表"
 
 definitions:
   AdornDesignDTO:
@@ -1090,11 +1213,35 @@ definitions:
           type: string
           description: 图片集
 
+  ProductDesignItemDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+        description: 中文描述
+      rank:
+        type: integer
+        description: 排序
+      egName:
+        type: string
+        description: 英文描述
+      lordImg:
+        type: string
+        description: 主图
+
   ProductDesignDTO:
     type: object
     properties:
       id:
         type: string
+      itemId:
+        type: string
+        description: 分类ID
+      itemName:
+        type: string
+        description: 分类名称
       name:
         type: string
         description: 中文描述
@@ -1193,6 +1340,29 @@ definitions:
       updateTime:
         type: string
 
+  ProductArray:
+    type: object
+    properties:
+      productList:
+        type: array
+        items:
+          $ref: '#/definitions/ProductDTO'
+        description: 商品列表
+      pageInfo:
+        type: object
+        $ref: '#/definitions/PageInfo'
+  PageInfo:
+    type: object
+    properties:
+      pageIndex:
+        type: integer
+        description: 当前页数
+      pageSize:
+        type: integer
+        description: 当前页面大小
+      total:
+        type: integer
+        description: 总数
 
   ProductDTO:
     type: object

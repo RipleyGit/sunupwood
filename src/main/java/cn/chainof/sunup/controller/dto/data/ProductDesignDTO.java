@@ -20,6 +20,12 @@ public class ProductDesignDTO   {
   @JsonProperty("id")
   private String id = null;
 
+  @JsonProperty("itemId")
+  private String itemId = null;
+
+  @JsonProperty("itemName")
+  private String itemName = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -57,6 +63,46 @@ public class ProductDesignDTO   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public ProductDesignDTO itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * 分类ID
+   * @return itemId
+  **/
+  @ApiModelProperty(value = "分类ID")
+
+
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public ProductDesignDTO itemName(String itemName) {
+    this.itemName = itemName;
+    return this;
+  }
+
+  /**
+   * 分类名称
+   * @return itemName
+  **/
+  @ApiModelProperty(value = "分类名称")
+
+
+  public String getItemName() {
+    return itemName;
+  }
+
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
   }
 
   public ProductDesignDTO name(String name) {
@@ -198,6 +244,8 @@ public class ProductDesignDTO   {
     }
     ProductDesignDTO productDesignDTO = (ProductDesignDTO) o;
     return Objects.equals(this.id, productDesignDTO.id) &&
+        Objects.equals(this.itemId, productDesignDTO.itemId) &&
+        Objects.equals(this.itemName, productDesignDTO.itemName) &&
         Objects.equals(this.name, productDesignDTO.name) &&
         Objects.equals(this.rank, productDesignDTO.rank) &&
         Objects.equals(this.egName, productDesignDTO.egName) &&
@@ -208,7 +256,7 @@ public class ProductDesignDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, rank, egName, lordImg, isLarge, imgUrls);
+    return Objects.hash(id, itemId, itemName, name, rank, egName, lordImg, isLarge, imgUrls);
   }
 
   @Override
@@ -217,6 +265,8 @@ public class ProductDesignDTO   {
     sb.append("class ProductDesignDTO {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    egName: ").append(toIndentedString(egName)).append("\n");

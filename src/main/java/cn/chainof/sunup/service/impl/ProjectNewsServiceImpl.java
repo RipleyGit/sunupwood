@@ -46,7 +46,7 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
         news.setCreateUser(projectNews.getCreateUser());
         news.setUpdateTime(DateUtil.getCurrentDate());
         news.setUpdateUser(UserContext.getUserSession().getName());
-        projectNewsMapper.updateByPrimaryKey(news);
+        projectNewsMapper.updateByPrimaryKeyWithBLOBs(news);
         return newsId;
     }
 
@@ -71,14 +71,16 @@ public class ProjectNewsServiceImpl implements ProjectNewsService {
         example.setOrderByClause("rank DESC");
         if(StringUtil.isNotEmpty(key)){
             String like = "%" + key + "%";
-            ProjectNewsExample.Criteria authorLike = example.createCriteria().andAuthorLike(like);
+            ProjectNewsExample.Criteria authorLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andAuthorLike(like);
             example.or(authorLike);
-            ProjectNewsExample.Criteria introLike = example.createCriteria().andIntroLike(like);
+            ProjectNewsExample.Criteria introLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andIntroLike(like);
             example.or(introLike);
-            ProjectNewsExample.Criteria titleLike = example.createCriteria().andTitleLike(like);
+            ProjectNewsExample.Criteria titleLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andTitleLike(like);
             example.or(titleLike);
+        }else {
+
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         }
-        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         return projectNewsMapper.selectByExampleWithBLOBs(example);
     }
 

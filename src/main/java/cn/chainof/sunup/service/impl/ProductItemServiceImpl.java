@@ -147,7 +147,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     public List<ProductItem> queryListByName(String itemName){
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemNameLike(itemName);
+        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemNameLike("%"+itemName+"%");
         return productItemMapper.selectByExample(example);
     }
 }

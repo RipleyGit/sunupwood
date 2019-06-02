@@ -1,6 +1,7 @@
 package cn.chainof.sunup.controller;
 
 import cn.chainof.sunup.controller.api.ProductApi;
+import cn.chainof.sunup.controller.dto.data.ProductArray;
 import cn.chainof.sunup.controller.dto.data.ProductDTO;
 import cn.chainof.sunup.exception.ClientException;
 import cn.chainof.sunup.model.Product;
@@ -66,14 +67,13 @@ public class ProductApiController implements ProductApi {
 
 
     @Override
-    public ResponseEntity<List<ProductDTO>> getProducts(@ApiParam(value = "") @Valid @RequestParam(value = "key", required = false) String key,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize){
+    public ResponseEntity<ProductArray> getProducts(@ApiParam(value = "") @Valid @RequestParam(value = "key", required = false) String key, @ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex, @ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize){
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
-        List<Product> list = productService.queryProducts(key,pageIndex,pageSize);
-        List<ProductDTO> dtoList = productService.getDtoList(list);
+        ProductArray array = productService.queryProducts(key,pageIndex,pageSize);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+        return new ResponseEntity<>(array,headers, HttpStatus.OK);
     }
 
 
@@ -94,38 +94,34 @@ public class ProductApiController implements ProductApi {
 
 
     @Override
-    public ResponseEntity<List<ProductDTO>> queryListByItem(@NotNull @ApiParam(value = "必填 分类ID", required = true) @Valid @RequestParam(value = "itemId", required = true) String itemId,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize){
+    public ResponseEntity<ProductArray> queryListByItem(@NotNull @ApiParam(value = "必填 分类ID", required = true) @Valid @RequestParam(value = "itemId", required = true) String itemId,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize){
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
-        List<Product> list = productService.queryListByItem(itemId,pageIndex,pageSize);
-        List<ProductDTO> dtoList = productService.getDtoList(list);
+        ProductArray array =  productService.queryListByItem(itemId,pageIndex,pageSize);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+        return new ResponseEntity<>(array,headers, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<ProductDTO>> queryListByItemLabel(@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize,@ApiParam(value = "标签ID") @Valid @RequestParam(value = "labelId", required = false) String labelId,@ApiParam(value = "分类ID") @Valid @RequestParam(value = "itemId", required = false) String itemId){
+    public ResponseEntity<ProductArray> queryListByItemLabel(@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize,@ApiParam(value = "标签ID") @Valid @RequestParam(value = "labelId", required = false) String labelId,@ApiParam(value = "分类ID") @Valid @RequestParam(value = "itemId", required = false) String itemId){
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
-        List<Product> list = productService.queryListByItemLabel(itemId,labelId,pageIndex,pageSize);
-        List<ProductDTO> dtoList = productService.getDtoList(list);
-
+        ProductArray array = productService.queryListByItemLabel(itemId,labelId,pageIndex,pageSize);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+        return new ResponseEntity<>(array,headers, HttpStatus.OK);
     }
 
 
     @Override
-    public ResponseEntity<List<ProductDTO>> queryListByLabel(@NotNull @ApiParam(value = "必填 标签ID", required = true) @Valid @RequestParam(value = "labelId", required = true) String labelId,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize){
+    public ResponseEntity<ProductArray> queryListByLabel(@NotNull @ApiParam(value = "必填 标签ID", required = true) @Valid @RequestParam(value = "labelId", required = true) String labelId,@ApiParam(value = "当前页数") @Valid @RequestParam(value = "pageIndex", required = false,defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小") @Valid @RequestParam(value = "pageSize", required = false,defaultValue="6") Integer pageSize){
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10:pageSize;
-        List<Product> list = productService.queryListByLabel(labelId,pageIndex,pageSize);
-        List<ProductDTO> dtoList = productService.getDtoList(list);
+        ProductArray array = productService.queryListByLabel(labelId,pageIndex,pageSize);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+        return new ResponseEntity<>(array,headers, HttpStatus.OK);
     }
 
 }

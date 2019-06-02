@@ -2,6 +2,7 @@ package cn.chainof.sunup.service.impl;
 
 import cn.chainof.sunup.common.UserContext;
 import cn.chainof.sunup.constant.Const;
+import cn.chainof.sunup.controller.dto.data.ProductArray;
 import cn.chainof.sunup.controller.dto.data.ProductDTO;
 import cn.chainof.sunup.mapper.ProductMapper;
 import cn.chainof.sunup.model.Product;
@@ -16,6 +17,7 @@ import cn.chainof.sunup.utils.DateUtil;
 import cn.chainof.sunup.utils.KeyUtil;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,40 +73,53 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> queryProducts(String key, Integer pageIndex, Integer pageSize) {
-
+    public ProductArray queryProducts(String key, Integer pageIndex, Integer pageSize) {
+        List<ProductItem> itemList = new ArrayList<>();
+        if (StringUtil.isNotEmpty(key)){
+            itemList = productItemService.queryListByName(key);
+        }
         PageHelper.startPage(pageIndex, pageSize);
-
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
+
         if (StringUtil.isNotEmpty(key)) {
             String likeKey = "%" + key + "%";
-            ProductExample.Criteria nameLike = example.createCriteria().andNameLike(likeKey);
+            ProductExample.Criteria nameLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andNameLike(likeKey);
             example.or(nameLike);
-            ProductExample.Criteria declareLike = example.createCriteria().andProductDeclareLike(likeKey);
+            ProductExample.Criteria declareLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andProductDeclareLike(likeKey);
             example.or(declareLike);
-            ProductExample.Criteria priceLike = example.createCriteria().andPriceLike(likeKey);
+            ProductExample.Criteria priceLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andPriceLike(likeKey);
             example.or(priceLike);
-            ProductExample.Criteria amountLike = example.createCriteria().andAmountLike(likeKey);
+            ProductExample.Criteria amountLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andAmountLike(likeKey);
             example.or(amountLike);
-            ProductExample.Criteria measureLike = example.createCriteria().andMeasureLike(likeKey);
+            ProductExample.Criteria measureLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andMeasureLike(likeKey);
             example.or(measureLike);
-            ProductExample.Criteria salesLike = example.createCriteria().andSalesLike(likeKey);
+            ProductExample.Criteria salesLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andSalesLike(likeKey);
             example.or(salesLike);
-            ProductExample.Criteria textureLike = example.createCriteria().andTextureLike(likeKey);
+            ProductExample.Criteria textureLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andTextureLike(likeKey);
             example.or(textureLike);
-            ProductExample.Criteria userLike = example.createCriteria().andCreateUserLike(likeKey);
+            ProductExample.Criteria userLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andCreateUserLike(likeKey);
             example.or(userLike);
-            ProductExample.Criteria updateUserLike = example.createCriteria().andUpdateUserLike(likeKey);
+            ProductExample.Criteria updateUserLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andUpdateUserLike(likeKey);
             example.or(updateUserLike);
-            List<ProductItem> itemList = productItemService.queryListByName(likeKey);
             if (itemList != null && itemList.size()>0){
-                ProductExample.Criteria itemLike = example.createCriteria().andItemIdIn(itemList.stream().map(ProductItem::getId).collect(Collectors.toList()));
+                ProductExample.Criteria itemLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdIn(itemList.stream().map(ProductItem::getId).collect(Collectors.toList()));
                 example.or(itemLike);
             }
+        }else {
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         }
-        return productMapper.selectByExample(example);
+        List<Product> list = productMapper.selectByExample(example);
+        PageInfo<Product> pageInfo = new PageInfo<>(list);
+        ProductArray array = new ProductArray();
+        array.setProductList(getDtoList(list));
+        cn.chainof.sunup.controller.dto.data.PageInfo page = new cn.chainof.sunup.controller.dto.data.PageInfo();
+        page.setPageIndex(pageIndex);
+        page.setPageSize(pageSize);
+        Long total = Long.valueOf(pageInfo.getTotal());
+        page.setTotal(total.intValue());
+        array.setPageInfo(page);
+        return array;
     }
 
     @Override
@@ -121,12 +136,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> queryListByItem(String itemId, Integer pageIndex, Integer pageSize) {
+    public ProductArray queryListByItem(String itemId, Integer pageIndex, Integer pageSize) {
         List<Product> list = new ArrayList<>();
         ProductItem item = productItemService.getItemById(itemId);
         if (item == null) {
             log.info("选择分类不存在");
-            return list;
+            return new ProductArray();
         }
 
         PageHelper.startPage(pageIndex, pageSize);
@@ -139,16 +154,25 @@ public class ProductServiceImpl implements ProductService {
             example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdEqualTo(itemId);
         }
         list = productMapper.selectByExample(example);
-        return list;
+        PageInfo<Product> pageInfo = new PageInfo<>(list);
+        ProductArray array = new ProductArray();
+        array.setProductList(getDtoList(list));
+        cn.chainof.sunup.controller.dto.data.PageInfo page = new cn.chainof.sunup.controller.dto.data.PageInfo();
+        page.setPageIndex(pageIndex);
+        page.setPageSize(pageSize);
+        Long total = Long.valueOf(pageInfo.getTotal());
+        page.setTotal(total.intValue());
+        array.setPageInfo(page);
+        return array;
     }
 
     @Override
-    public List<Product> queryListByLabel(String labelId, Integer pageIndex, Integer pageSize) {
+    public ProductArray queryListByLabel(String labelId, Integer pageIndex, Integer pageSize) {
         List<Product> list = new ArrayList<>();
         ProjectLabel label = projectLabelService.getLabelById(labelId);
         if (label == null) {
             log.info("选择标签不存在");
-            return list;
+            return new ProductArray();
         }
         PageHelper.startPage(pageIndex, pageSize);
         ProductExample example = new ProductExample();
@@ -156,11 +180,21 @@ public class ProductServiceImpl implements ProductService {
         String labelLike = "%" + labelId + "%";
         example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andLabelsLike(labelLike);
         list = productMapper.selectByExample(example);
-        return list;
+        PageInfo<Product> pageInfo = new PageInfo<>(list);
+        ProductArray array = new ProductArray();
+        array.setProductList(getDtoList(list));
+        cn.chainof.sunup.controller.dto.data.PageInfo page = new cn.chainof.sunup.controller.dto.data.PageInfo();
+        page.setPageIndex(pageIndex);
+        page.setPageSize(pageSize);
+        Long total = Long.valueOf(pageInfo.getTotal());
+        page.setTotal(total.intValue());
+        array.setPageInfo(page);
+        return array;
     }
 
     @Override
-    public List<Product> queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize) {
+    public ProductArray queryListByItemLabel(String itemId, String labelId, Integer pageIndex, Integer pageSize) {
+
         PageHelper.startPage(pageIndex, pageSize);
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
@@ -179,7 +213,16 @@ public class ProductServiceImpl implements ProductService {
             criteria.andLabelsLike(like);
         }
         List<Product> list = productMapper.selectByExample(example);
-        return list;
+        PageInfo<Product> pageInfo = new PageInfo<>(list);
+        ProductArray array = new ProductArray();
+        array.setProductList(getDtoList(list));
+        cn.chainof.sunup.controller.dto.data.PageInfo page = new cn.chainof.sunup.controller.dto.data.PageInfo();
+        page.setPageIndex(pageIndex);
+        page.setPageSize(pageSize);
+        Long total = Long.valueOf(pageInfo.getTotal());
+        page.setTotal(total.intValue());
+        array.setPageInfo(page);
+        return array;
     }
 
     @Override

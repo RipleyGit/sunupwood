@@ -115,15 +115,16 @@ public class ProjectUserServiceImpl implements ProjectUserService {
         PageHelper.startPage(pageIndex,pageSize);
         ProjectUserExample example = new ProjectUserExample();
         example.setOrderByClause("update_time DESC");
-        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         if (StringUtil.isNotEmpty(key)){
             String like = "%" + key + "%";
-            ProjectUserExample.Criteria nameLike = example.createCriteria().andNameLike(like);
+            ProjectUserExample.Criteria nameLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andNameLike(like);
             example.or(nameLike);
-            ProjectUserExample.Criteria emailLike = example.createCriteria().andEmailLike(like);
+            ProjectUserExample.Criteria emailLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andEmailLike(like);
             example.or(emailLike);
-            ProjectUserExample.Criteria phoneLike = example.createCriteria().andPhoneLike(like);
+            ProjectUserExample.Criteria phoneLike = example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andPhoneLike(like);
             example.or(phoneLike);
+        }else {
+            example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO);
         }
         List<ProjectUser> list = projectUserMapper.selectByExample(example);
         return list;

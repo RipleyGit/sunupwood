@@ -5,12 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ProductDesignModule {
+public class ProductDesignItemModule {
     private String name;
     private String egName;
-    private String ItemName;
     private String lordImg;
-    private Integer isLarge;
-    private List<String> imgUrls;
 
 }

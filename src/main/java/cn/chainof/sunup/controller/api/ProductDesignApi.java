@@ -6,6 +6,7 @@
 package cn.chainof.sunup.controller.api;
 
 import cn.chainof.sunup.controller.dto.data.ProductDesignDTO;
+import cn.chainof.sunup.controller.dto.data.ProductDesignItemDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -36,6 +37,17 @@ public interface ProductDesignApi {
     ResponseEntity<Void> addProductDesign(@ApiParam(value = "产品设计内容" ,required=true )  @Valid @RequestBody ProductDesignDTO productDto);
 
 
+    @ApiOperation(value = "产品设计分类-添加", nickname = "addProductDesignItem", notes = "", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductDesign", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "添加成功") })
+    @RequestMapping(value = "/project/design/item/product",
+        produces = { "application/json" }, 
+        method = RequestMethod.POST)
+    ResponseEntity<Void> addProductDesignItem(@ApiParam(value = "产品设计分类" ,required=true )  @Valid @RequestBody ProductDesignItemDTO productItemDto);
+
+
     @ApiOperation(value = "删除装饰内容", nickname = "deleteById", notes = "", authorizations = {
         @Authorization(value = "token")
     }, tags={ "ProductDesign", })
@@ -45,6 +57,17 @@ public interface ProductDesignApi {
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteById(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id);
+
+
+    @ApiOperation(value = "删除产品设计分类", nickname = "deleteItemById", notes = "", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductDesign", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "删除成功") })
+    @RequestMapping(value = "/project/design/item/product",
+        produces = { "application/json" }, 
+        method = RequestMethod.DELETE)
+    ResponseEntity<Void> deleteItemById(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id);
 
 
     @ApiOperation(value = "产品设计内容信息", nickname = "getProductDesignDTOInfo", notes = "", response = ProductDesignDTO.class, authorizations = {
@@ -58,6 +81,28 @@ public interface ProductDesignApi {
     ResponseEntity<ProductDesignDTO> getProductDesignDTOInfo(@NotNull @ApiParam(value = "唯一ID", required = true) @Valid @RequestParam(value = "id", required = true) String id);
 
 
+    @ApiOperation(value = "产品设计分类内容信息", nickname = "getProductDesignItemDTOInfo", notes = "", response = ProductDesignItemDTO.class, authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductDesign", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "获取成功", response = ProductDesignItemDTO.class) })
+    @RequestMapping(value = "/project/design/item/product",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<ProductDesignItemDTO> getProductDesignItemDTOInfo(@NotNull @ApiParam(value = "唯一ID", required = true) @Valid @RequestParam(value = "id", required = true) String id);
+
+
+    @ApiOperation(value = "获取产品设计分类列表", nickname = "queryProductItemList", notes = "", response = ProductDesignItemDTO.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductDesign", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "产品设计分类列表", response = ProductDesignItemDTO.class, responseContainer = "List") })
+    @RequestMapping(value = "/project/design/item/product/queryList",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ProductDesignItemDTO>> queryProductItemList(@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "2") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="2") Integer pageSize);
+
+
     @ApiOperation(value = "获取产品内容列表", nickname = "queryProductList", notes = "", response = ProductDesignDTO.class, responseContainer = "List", authorizations = {
         @Authorization(value = "token")
     }, tags={ "ProductDesign", })
@@ -69,6 +114,17 @@ public interface ProductDesignApi {
     ResponseEntity<List<ProductDesignDTO>> queryProductList(@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "5") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="5") Integer pageSize);
 
 
+    @ApiOperation(value = "获取产品内容列表", nickname = "queryProductListByItem", notes = "", response = ProductDesignDTO.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductDesign", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "产品设计内容列表", response = ProductDesignDTO.class, responseContainer = "List") })
+    @RequestMapping(value = "/project/design/product/queryList/{itemId}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ProductDesignDTO>> queryProductListByItem(@ApiParam(value = "",required=true) @PathVariable("itemId") String itemId,@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "9") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="9") Integer pageSize);
+
+
     @ApiOperation(value = "修改装饰设计内容", nickname = "updateProductDesign", notes = "", authorizations = {
         @Authorization(value = "token")
     }, tags={ "ProductDesign", })
@@ -78,5 +134,16 @@ public interface ProductDesignApi {
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
     ResponseEntity<Void> updateProductDesign(@ApiParam(value = "产品设计内容" ,required=true )  @Valid @RequestBody ProductDesignDTO designDto);
+
+
+    @ApiOperation(value = "修改产品分类的内容", nickname = "updateProductDesignItem", notes = "", authorizations = {
+        @Authorization(value = "token")
+    }, tags={ "ProductDesign", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "修改成功") })
+    @RequestMapping(value = "/project/design/item/product",
+        produces = { "application/json" }, 
+        method = RequestMethod.PUT)
+    ResponseEntity<Void> updateProductDesignItem(@ApiParam(value = "产品分类的内容" ,required=true )  @Valid @RequestBody ProductDesignItemDTO designDto);
 
 }

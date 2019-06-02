@@ -7,6 +7,7 @@ package cn.chainof.sunup.controller;
 
 import cn.chainof.sunup.controller.api.ProductDesignApi;
 import cn.chainof.sunup.controller.dto.data.ProductDesignDTO;
+import cn.chainof.sunup.controller.dto.data.ProductDesignItemDTO;
 import cn.chainof.sunup.exception.ClientException;
 import cn.chainof.sunup.service.ProductDesignService;
 import com.github.pagehelper.util.StringUtil;
@@ -32,9 +33,12 @@ public class ProductDesignApiController implements ProductDesignApi {
     private ProductDesignService productDesignService;
 
     @Override
-    public ResponseEntity<Void> addProductDesign(@ApiParam(value = "产品设计内容", required = true) @Valid @RequestBody ProductDesignDTO productDto){
-        if (StringUtil.isEmpty(productDto.getLordImg())|| StringUtil.isEmpty(productDto.getName())){
+    public ResponseEntity<Void> addProductDesign(@ApiParam(value = "产品设计内容", required = true) @Valid @RequestBody ProductDesignDTO productDto) {
+        if (StringUtil.isEmpty(productDto.getLordImg()) || StringUtil.isEmpty(productDto.getName())) {
             throw new ClientException("主图和名称不能为空");
+        }
+        if (StringUtil.isEmpty(productDto.getItemId())){
+            throw new ClientException("产品设计分类不能为空");
         }
         productDesignService.addProductDesign(productDto);
         HttpHeaders headers = new HttpHeaders();
@@ -42,32 +46,54 @@ public class ProductDesignApiController implements ProductDesignApi {
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<Void> addProductDesignItem(@ApiParam(value = "产品设计分类", required = true) @Valid @RequestBody ProductDesignItemDTO productItemDto) {
+        if (StringUtil.isEmpty(productItemDto.getLordImg()) || StringUtil.isEmpty(productItemDto.getName())) {
+            throw new ClientException("主图和名称不能为空");
+        }
+        productDesignService.addProductDesignItem(productItemDto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
+    }
+
 
     @Override
-    public ResponseEntity<ProductDesignDTO> getProductDesignDTOInfo(@NotNull @ApiParam(value = "唯一ID", required = true) @Valid @RequestParam(value = "id", required = true) String id){
+    public ResponseEntity<ProductDesignDTO> getProductDesignDTOInfo(@NotNull @ApiParam(value = "唯一ID", required = true) @Valid @RequestParam(value = "id", required = true) String id) {
         ProductDesignDTO dto = productDesignService.getProductDesignDTOInfo(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(dto,headers, HttpStatus.OK);
+        return new ResponseEntity<>(dto, headers, HttpStatus.OK);
     }
 
-
     @Override
-    public ResponseEntity<List<ProductDesignDTO>> queryProductList(@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue = "0") Integer pageIndex, @ApiParam(value = "页面大小", defaultValue = "5") @Valid @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize){
-        List<ProductDesignDTO> dtoList = productDesignService.queryProductList(pageIndex,pageSize);
+    public ResponseEntity<ProductDesignItemDTO> getProductDesignItemDTOInfo(@NotNull @ApiParam(value = "唯一ID", required = true) @Valid @RequestParam(value = "id", required = true) String id) {
+        ProductDesignItemDTO dto = productDesignService.getProductDesignItemDTOInfo(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+        return new ResponseEntity<>(dto, headers, HttpStatus.OK);
     }
 
 
     @Override
-    public ResponseEntity<Void> updateProductDesign(@ApiParam(value = "产品设计内容", required = true) @Valid @RequestBody ProductDesignDTO designDto){
-        if (StringUtil.isEmpty(designDto.getLordImg())|| StringUtil.isEmpty(designDto.getName())){
+    public ResponseEntity<List<ProductDesignDTO>> queryProductList(@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue = "0") Integer pageIndex, @ApiParam(value = "页面大小", defaultValue = "5") @Valid @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize) {
+        List<ProductDesignDTO> dtoList = productDesignService.queryProductList(pageIndex, pageSize);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(dtoList, headers, HttpStatus.OK);
+    }
+
+
+    @Override
+    public ResponseEntity<Void> updateProductDesign(@ApiParam(value = "产品设计内容", required = true) @Valid @RequestBody ProductDesignDTO designDto) {
+        if (StringUtil.isEmpty(designDto.getLordImg()) || StringUtil.isEmpty(designDto.getName())) {
             throw new ClientException("主图和名称不能为空");
         }
-        if (StringUtil.isEmpty(designDto.getId())){
+        if (StringUtil.isEmpty(designDto.getId())) {
             throw new ClientException("修改时ID不能为空");
+        }
+        if (StringUtil.isEmpty(designDto.getItemId())){
+            throw new ClientException("产品设计分类不能为空");
         }
         productDesignService.updateProductDesign(designDto);
         HttpHeaders headers = new HttpHeaders();
@@ -76,11 +102,50 @@ public class ProductDesignApiController implements ProductDesignApi {
     }
 
     @Override
-    public ResponseEntity<Void> deleteById(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id){
+    public ResponseEntity<Void> updateProductDesignItem(@Valid ProductDesignItemDTO designDto) {
+        if (StringUtil.isEmpty(designDto.getLordImg()) || StringUtil.isEmpty(designDto.getName())) {
+            throw new ClientException("主图和名称不能为空");
+        }
+        if (StringUtil.isEmpty(designDto.getId())) {
+            throw new ClientException("修改时ID不能为空");
+        }
+        productDesignService.updateProductDesignItem(designDto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteById(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id) {
         productDesignService.deleteById(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Void> deleteItemById(@NotNull @Valid String id) {
+        productDesignService.deleteById(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(headers, HttpStatus.OK);    }
+
+    @Override
+    public ResponseEntity<List<ProductDesignItemDTO>> queryProductItemList(@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue = "0") Integer pageIndex, @ApiParam(value = "页面大小", defaultValue = "2") @Valid @RequestParam(value = "pageSize", required = false, defaultValue = "2") Integer pageSize){
+        List<ProductDesignItemDTO> dtoList = productDesignService.queryProductItemList(pageIndex,pageSize);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(dtoList,headers, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<List<ProductDesignDTO>> queryProductListByItem(@ApiParam(value = "",required=true) @PathVariable("itemId") String itemId,@ApiParam(value = "当前页数", defaultValue = "0") @Valid @RequestParam(value = "pageIndex", required = false, defaultValue="0") Integer pageIndex,@ApiParam(value = "页面大小", defaultValue = "9") @Valid @RequestParam(value = "pageSize", required = false, defaultValue="9") Integer pageSize){
+        List<ProductDesignDTO> dtoList = productDesignService.queryProductListByItem(itemId,pageIndex, pageSize);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<>(dtoList, headers, HttpStatus.OK);
+    }
+
+
 
 }

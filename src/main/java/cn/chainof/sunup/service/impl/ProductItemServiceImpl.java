@@ -19,7 +19,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -129,8 +131,26 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     public List<ProductItem> getItemsByParentId(String parentId) {
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemParentEqualTo(parentId);
-        return productItemMapper.selectByExample(example);
+        example.createCriteria().andItemParentEqualTo(parentId);
+
+        HashSet<ProductItem> list = getParentItem(null,parentId);
+        return list.stream().collect(Collectors.toList());
+    }
+
+
+    public HashSet<ProductItem> getParentItem(HashSet<ProductItem> set, String id){
+        if (set == null){
+            set = new HashSet<>();
+        }
+        ProductItemExample example = new ProductItemExample();
+        example.createCriteria().andItemParentEqualTo(id).andIsDeletedEqualTo(Const.B_ZERO);
+        List<ProductItem> itemList = productItemMapper.selectByExample(example);
+        for (ProductItem item:itemList) {
+            set.add(item);
+            getParentItem(set,item.getId());
+        }
+        return set;
+
     }
 
     @Override

@@ -134,7 +134,7 @@ public class ProductServiceImpl implements ProductService {
         ProductExample example = new ProductExample();
         example.setOrderByClause("update_time DESC");
         if (item.getIsRoot().equals(Const.B_ONE)) {
-            List<String> idList = productItemService.getItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
+            List<String> idList = productItemService.getAllItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
             example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdIn(idList);
         } else {
             example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdEqualTo(itemId);
@@ -187,7 +187,7 @@ public class ProductServiceImpl implements ProductService {
         if (StringUtil.isNotEmpty(itemId)) {
             ProductItem item = productItemService.getItemById(itemId);
             if (item.getIsRoot().equals(Const.B_ONE)) {
-                List<String> idList = productItemService.getItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
+                List<String> idList = productItemService.getAllItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
                 criteria.andItemIdIn(idList);
             } else {
                 criteria.andItemIdEqualTo(itemId);

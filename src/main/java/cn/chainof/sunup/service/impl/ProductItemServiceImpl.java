@@ -131,8 +131,13 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     public List<ProductItem> getItemsByParentId(String parentId) {
         ProductItemExample example = new ProductItemExample();
-        example.createCriteria().andItemParentEqualTo(parentId);
+        example.createCriteria().andItemParentEqualTo(parentId).andIsDeletedEqualTo(Const.B_ZERO);
+        return productItemMapper.selectByExample(example);
+    }
 
+
+    @Override
+    public List<ProductItem> getAllItemsByParentId(String parentId) {
         HashSet<ProductItem> list = getParentItem(null,parentId);
         return list.stream().collect(Collectors.toList());
     }

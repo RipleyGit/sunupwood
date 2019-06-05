@@ -51,11 +51,11 @@ logging:
 
 #腾讯云COS
 qcloud.cos:
-  AppId: 1252366727
-  SecretId: AKIDmMgkZ8MSEkzxkHtZQ2UlnaBYgaUGj7C2
-  SecretKey: pQoxrWx84lKgqmTwA9tQhjX5PULyMWR7
-  BucketName: sunup-wood-1252366727
+  AppId: 1259283245
+  SecretId: AKIDsVtCKC5AKEsGWawvDI7gzA8rJVYLjAML
+  SecretKey: xf8ML4Wr1vZx5wXr33mFZgX7RdeOsFOG
+  BucketName: sevennotes-1259283245
   Region: ap-chengdu
-  ImgUrl: https://sunup-wood-1252366727.cos.ap-chengdu.myqcloud.com
+  ImgUrl: https://sevennotes-1259283245.cos.ap-chengdu.myqcloud.com
 
 allowedOrigins:

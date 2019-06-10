@@ -135,6 +135,7 @@ public class ProductServiceImpl implements ProductService {
         example.setOrderByClause("update_time DESC");
         if (item.getIsRoot().equals(Const.B_ONE)) {
             List<String> idList = productItemService.getAllItemsByParentId(itemId).stream().map(ProductItem::getId).collect(Collectors.toList());
+            idList.add(itemId);
             example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdIn(idList);
         } else {
             example.createCriteria().andIsDeletedEqualTo(Const.B_ZERO).andItemIdEqualTo(itemId);

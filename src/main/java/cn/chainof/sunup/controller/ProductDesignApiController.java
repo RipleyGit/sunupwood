@@ -102,7 +102,7 @@ public class ProductDesignApiController implements ProductDesignApi {
     }
 
     @Override
-    public ResponseEntity<Void> updateProductDesignItem(@Valid ProductDesignItemDTO designDto) {
+    public ResponseEntity<Void> updateProductDesignItem(@ApiParam(value = "产品分类的内容" ,required=true )  @Valid @RequestBody ProductDesignItemDTO designDto) {
         if (StringUtil.isEmpty(designDto.getLordImg()) || StringUtil.isEmpty(designDto.getName())) {
             throw new ClientException("主图和名称不能为空");
         }
@@ -124,7 +124,7 @@ public class ProductDesignApiController implements ProductDesignApi {
     }
 
     @Override
-    public ResponseEntity<Void> deleteItemById(@NotNull @Valid String id) {
+    public ResponseEntity<Void> deleteItemById(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "id", required = true) String id) {
         productDesignService.deleteById(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
